@@ -1,4 +1,4 @@
-# Archive Contents — `v1_preprocessed_data.zip`
+# Archive Contents — `preprocessed_data.zip`
 
 Reference documentation for every file in the preprocessed data archive.
 All files are produced by `preprocess.ipynb` and consumed by the nine
