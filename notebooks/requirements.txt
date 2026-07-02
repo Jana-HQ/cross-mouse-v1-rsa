@@ -1,0 +1,20 @@
+# Cross-mouse V1 RSA analysis — Python dependencies
+# Tested on Python 3.9–3.11
+
+# ── Core scientific stack ──────────────────────────────────────────────────
+numpy>=1.24
+scipy>=1.10
+pandas>=2.0
+scikit-learn>=1.3
+
+# ── Data formats ───────────────────────────────────────────────────────────
+h5py>=3.9          # responses.h5 (binned tensors)
+pyarrow>=12.0      # units_meta.parquet, behavioral_state.parquet
+
+# ── Visualisation ──────────────────────────────────────────────────────────
+matplotlib>=3.7
+seaborn>=0.12
+
+# ── Notebook execution ─────────────────────────────────────────────────────
+jupyter>=1.0
+nbformat>=5.9      # used by convert_to_ipynb.py (optional, only for re-conversion)
