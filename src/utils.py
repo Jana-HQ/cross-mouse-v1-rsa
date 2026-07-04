@@ -6,8 +6,8 @@ Import at the top of every part-notebook:
     from utils import (
         setup_archive, window_response,
         compute_similarity_matrices, per_image_consistency,
-        cluster_bootstrap_ci, apply_plot_style, ts_ratio,
-        print_figure_data,
+        rdm_split_half_ceiling, cluster_bootstrap_ci, apply_plot_style,
+        ts_ratio, print_figure_data,
     )
 
 setup_archive() must be called before window_response(); it sets the
@@ -213,6 +213,39 @@ def per_image_consistency(
         per_pair[p] = num / den
 
     return per_pair.mean(0), per_pair, pairs
+
+
+def rdm_split_half_ceiling(mats_half1: list, mats_half2: list) -> np.ndarray:
+    """
+    Per-mouse split-half reliability computed in RDM space, matching the
+    units of per_image_consistency (rather than raw response-vector space).
+
+    Each mouse's two independent-trial-half response matrices are turned
+    into similarity matrices, then per_image_consistency is applied to the
+    pair [sim_half1, sim_half2] exactly as it would be applied to two
+    different mice's similarity matrices — the resulting Spearman r is the
+    within-mouse RDM reliability for that mouse, in the same space as
+    cross-mouse consistency.
+
+    Parameters
+    ----------
+    mats_half1, mats_half2 : lists of (n_items, n_units) float32 arrays,
+        one per mouse, from two independent trial splits (same items,
+        disjoint trials)
+
+    Returns
+    -------
+    reliability : (n_mice,) array — Spearman-Brown corrected per-mouse
+                  RDM split-half reliability
+    """
+    n_mice = len(mats_half1)
+    reliability = np.zeros(n_mice)
+    for i in range(n_mice):
+        sim1, sim2 = compute_similarity_matrices([mats_half1[i], mats_half2[i]])
+        half_r, _, _ = per_image_consistency([sim1, sim2])
+        r = half_r.mean()
+        reliability[i] = 2 * r / (1 + r)   # Spearman-Brown correction
+    return reliability
 
 
 def cluster_bootstrap_ci(
