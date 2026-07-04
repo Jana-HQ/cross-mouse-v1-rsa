@@ -248,24 +248,38 @@ $p = 7.8 \times 10^{-8}$): images activating fewer units were more
 consistently represented across mice.  Response magnitude was a
 secondary predictor (Spearman $r = +0.276$, $p = 2.5 \times 10^{-3}$;
 Figure~\ref{fig:predictors}A--B).  A ResNet50 CNN feature embedding
-(ImageNet-pretrained, layer~2) also predicted consistency in
-leave-one-out ridge regression using the full 512-dimensional embedding
-(LOO Pearson $r = -0.496$, $p = 1.1 \times 10^{-8}$;
-Figure~\ref{fig:predictors}C).  Critically, this CNN-based prediction
-was not subsumed by sparsity: partialling the full-model LOO prediction
-against consistency while controlling for sparsity \textit{increased}
-the correlation magnitude ($r_\mathrm{partial} = -0.828$,
-$p = 5.5 \times 10^{-31}$), and a nested regression comparison showed
-that adding the CNN prediction to a sparsity-only model raised
-$R^2$ from 0.269 to 0.453 ($\Delta R^2 = +0.184$).  Response sparsity
-and CNN-based image complexity therefore each carry independent
-predictive signal about cross-mouse consistency, rather than CNN
-complexity acting only through its co-variation with sparsity.  Galleries
-of the most and least consistently represented images confirm the
-sparsity relationship qualitatively: high-consistency images tend to be
-sparse, high-contrast, or dominated by a single feature, while
-low-consistency images are denser and more spatially heterogeneous
-(Supplementary Figure~S1).
+also predicted consistency in leave-one-out ridge regression; comparing
+across layers, layer~2 (512-dimensional) gave the best accuracy
+(LOO Pearson $r = -0.496$, $p = 1.1 \times 10^{-8}$) and was selected as
+the primary CNN predictor, with the final layer (1000-dimensional)
+performing comparably ($r = -0.486$, $p = 2.5 \times 10^{-8}$;
+Figure~\ref{fig:predictors}C).  Critically, this CNN-based signal was
+not subsumed by sparsity for either layer: added-variable partial
+correlation, controlling for sparsity, retained
+$r_\mathrm{partial} = -0.501$ for layer~2 and $-0.378$ for the final
+layer, and a nested regression comparison showed that adding the CNN
+prediction to a sparsity-only model ($R^2 = 0.269$) raised $R^2$ to
+0.453 for layer~2 ($\Delta R^2 = +0.184$) and to 0.374 for the final
+layer ($\Delta R^2 = +0.105$; Figure~\ref{fig:predictors}D).  A second,
+non-parametric partialling method (rank-residualised Spearman
+correlation) gave a larger-magnitude partial correlation for both
+layers ($r_\mathrm{partial} = -0.828$, $p = 5.5\times10^{-31}$ for
+layer~2; $r_\mathrm{partial} = -0.887$, $p = 9.9\times10^{-41}$ for the
+final layer; Supplementary Figure~S2C), consistent with sparsity acting
+as a partial suppressor --- it shares variance with both consistency and
+the CNN prediction, so removing it from both sharpens their residual
+alignment.  The two partialling methods are convergent (both indicate
+the CNN prediction retains signal independent of sparsity) but differ in
+magnitude, as expected given their different assumptions (Methods).
+Response sparsity and CNN-based image complexity therefore each carry
+independent predictive signal about cross-mouse consistency, rather
+than CNN complexity acting only through its co-variation with sparsity,
+and this conclusion is robust to the specific CNN layer and partialling
+method used.  Galleries of the most and least consistently represented
+images confirm the sparsity relationship qualitatively: high-consistency
+images tend to be sparse, high-contrast, or dominated by a single
+feature, while low-consistency images are denser and more spatially
+heterogeneous (Supplementary Figure~S1).
 
 \begin{figure}[htbp]
   \centering
@@ -277,12 +291,16 @@ low-consistency images are denser and more spatially heterogeneous
   $p = 7.8 \times 10^{-8}$).  Line: linear reference fit.
   \textbf{(B)} Consistency vs.\ mean $|$z-scored response$|$
   (Spearman $r = +0.276$, $p = 2.5 \times 10^{-3}$).
-  \textbf{(C)} CNN layer~2 prediction accuracy: raw LOO Pearson
-  $r = -0.496$ using the full 512-dimensional embedding vs.\ partial
-  Spearman $r_\mathrm{partial} = -0.828$ after controlling for sparsity
-  ($p = 5.5 \times 10^{-31}$).  The partial correlation is not attenuated
-  relative to the raw correlation, indicating CNN-based complexity
-  predicts consistency independently of sparsity rather than through it.}
+  \textbf{(C)} LOO Pearson $r$ per ResNet50 layer (red: layer~2, the
+  primary CNN predictor; blue: $p < 0.05$; light blue: n.s.).  The final
+  layer performs comparably ($r = -0.486$) and is carried through
+  panel~D and Supplementary Figure~S2 as a robustness check.
+  \textbf{(D)} Raw LOO $r$ vs.\ added-variable partial $r$ (sparsity~$|$~CNN
+  and CNN~$|$~sparsity) for layer~2 (solid bars) and the final layer
+  (hatched bars).  Both layers retain a substantial partial correlation
+  after controlling for sparsity (layer~2: $r_\mathrm{partial} = -0.501$;
+  final: $r_\mathrm{partial} = -0.378$), with nested $R^2$ rising from a
+  sparsity-only baseline of 0.269 to 0.453 (layer~2) and 0.374 (final).}
   \label{fig:predictors}
 \end{figure}
 
@@ -1059,16 +1077,32 @@ extractor; global average pooling was applied to each convolutional block
 to yield a fixed-length embedding per image.  Ridge regression with
 leave-one-out cross-validation (LOO, 118 images) was used because the
 feature dimension (256--2048) greatly exceeds the number of images.
-Partial Spearman correlation used rank residualisation: both $x$ and $y$
-were rank-transformed, then the linear effect of the rank-transformed
-covariate was regressed out before computing the correlation of the
-residuals.  When testing whether CNN-based prediction is independent of
-sparsity, the partial correlation and nested-regression comparison
-($R^2$ for consistency~$\sim$~sparsity alone vs.\ consistency~$\sim$~sparsity
-$+$ CNN) were computed against the full ridge LOO prediction from the
-512-dimensional layer~2 embedding, not against a scalar summary of the
-embedding, since it is the full-model prediction that carries the
-predictive signal being tested for independence.
+Layer~2 (512-dimensional) was selected as the primary CNN predictor on
+the basis of LOO accuracy across layers (Figure~\ref{fig:predictors}C);
+the final layer (1000-dimensional), which performed comparably, was
+carried through the same independence-from-sparsity analysis as a
+robustness check (Figure~\ref{fig:predictors}D, Supplementary
+Figure~\ref{fig:S2}).
+
+Independence from sparsity was assessed with two partialling methods.
+(1)~\textit{Added-variable (OLS) partial correlation}, the primary
+method reported in the main text: consistency, sparsity, and the
+full-model CNN LOO prediction were each residualised by ordinary
+least-squares regression on the other predictor, and the Pearson
+correlation of the residuals gives the partial correlation in each
+direction (sparsity~$|$~CNN and CNN~$|$~sparsity).  This is also the
+basis of the nested $R^2$ comparison ($R^2$ for
+consistency~$\sim$~sparsity alone vs.\
+consistency~$\sim$~sparsity~$+$~CNN).
+(2)~\textit{Rank-residualised (Spearman) partial correlation}, an
+independent, non-parametric check reported in Supplementary
+Figure~\ref{fig:S2}C: both variables were rank-transformed, the linear
+effect of the rank-transformed covariate was regressed out, and the
+Spearman correlation of the residuals was computed.  In both cases, the
+CNN quantity partialled was the full ridge LOO prediction from the
+512-dimensional layer~2 (or 1000-dimensional final-layer) embedding, not
+a scalar summary of the embedding, since it is the full-model prediction
+that carries the predictive signal being tested for independence.
 
 \subsection{Sliding-window temporal analysis}
 
@@ -1194,16 +1228,29 @@ The author declares no competing interests.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/figS2_cnn_detail.png}
-  \caption{\textbf{CNN feature prediction detail.}
-  \textbf{(A)} LOO Pearson $r$ per ResNet50 layer; layer~2 achieves best
-  prediction ($r = -0.496$, $p = 1.1 \times 10^{-8}$; dark bars:
-  $p < 0.05$, light bars: n.s.).
-  \textbf{(B)} Added-variable plots residualised against the full
-  512-dimensional layer~2 LOO prediction (not a scalar summary): sparsity
-  (blue) retains a strong partial effect after controlling for the CNN
-  prediction (partial $r = -0.523$), and the CNN prediction (orange)
-  likewise retains a strong partial effect after controlling for sparsity
-  (partial $r = -0.501$).  Both predictors carry independent signal.}
+  \caption{\textbf{Partial-correlation robustness detail, layer~2 and the
+  final ResNet50 layer.}  Layer~2 (blue circles, solid fit) and the final
+  layer (red triangles, dashed fit) are shown together in every panel to
+  confirm the independence-from-sparsity result is not specific to one
+  layer.
+  \textbf{(A)} Added-variable residual scatter, sparsity~$|$~CNN --- the
+  point clouds underlying Figure~\ref{fig:predictors}D's bars (layer~2:
+  partial $r = -0.523$; final: partial $r = -0.424$).
+  \textbf{(B)} Added-variable residual scatter, CNN~$|$~sparsity
+  (layer~2: partial $r = -0.501$; final: partial $r = -0.378$).
+  \textbf{(C)} Rank-based (Spearman) partial correlation, CNN~$|$~sparsity
+  (layer~2: $r = -0.828$, $p = 5.5\times10^{-31}$; final: $r = -0.887$,
+  $p = 9.9\times10^{-41}$) --- a larger-magnitude partial correlation than
+  the added-variable estimates in (A)--(B), consistent with sparsity
+  acting as a partial suppressor: it shares variance with both
+  consistency and the CNN prediction, so removing it from both sharpens
+  their residual alignment.  This is convergent with the main-text result
+  (the CNN prediction carries signal independent of sparsity) but not
+  identical in magnitude, reflecting the different assumptions of the two
+  partialling methods.
+  \textbf{(D)} Nested-$R^2$/partial-$r$ summary table comparing the
+  added-variable (OLS) and rank-residualisation (Spearman) methods side
+  by side, for both layers.}
   \label{fig:S2}
 \end{figure}
 
