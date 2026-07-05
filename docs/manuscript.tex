@@ -291,8 +291,9 @@ heterogeneous (Supplementary Figure~S1).
   $p = 7.8 \times 10^{-8}$).  Line: linear reference fit.
   \textbf{(B)} Consistency vs.\ mean $|$z-scored response$|$
   (Spearman $r = +0.276$, $p = 2.5 \times 10^{-3}$).
-  \textbf{(C)} LOO Pearson $r$ per ResNet50 layer (red: layer~2, the
-  primary CNN predictor; blue: $p < 0.05$; light blue: n.s.).  The final
+  \textbf{(C)} LOO Pearson $r$ per ResNet50 layer (purple: layer~2,
+  the primary CNN predictor; teal: the final layer, the secondary
+  predictor; grey: other layers).  The final
   layer performs comparably ($r = -0.486$) and is carried through
   panel~D and Supplementary Figure~S2 as a robustness check.
   \textbf{(D)} Raw LOO $r$ vs.\ added-variable partial $r$ (sparsity~$|$~CNN
@@ -354,12 +355,12 @@ Figure~S7).
   Mean cross-mouse consistency over time (25~ms windows, 10~ms steps,
   $n = 32$ mice; blue).  Pre-stimulus baseline $\approx 4 \times 10^{-5}$,
   validating the measure.  Onset: 50~ms; peak: $r = 0.307$ at 100~ms
-  (firebrick marker).  Sustained floor: $r = 0.182$ (220--250~ms, shaded
+  (green marker).  Sustained floor: $r = 0.182$ (220--250~ms, shaded
   band and dashed horizontal line).  Vertical dashed line: stimulus onset
   (0~ms); dotted line: stimulus offset (250~ms), beyond which
   back-to-back presentation creates contamination risk from the next
   image's V1 response ($\sim$290--300~ms onset).  Overlaid curve
-  (firebrick): Gaussian-plus-offset model fit decomposing the response
+  (green): Gaussian-plus-offset model fit decomposing the response
   into a transient component (amplitude $0.162 \pm 0.035$, peak
   $124.7 \pm 8.1$~ms, $\sigma = 34.2 \pm 9.2$~ms) and a sustained
   offset ($0.149 \pm 0.015$).}
@@ -432,7 +433,7 @@ that tracks the same underlying signal than as an orthogonal check.
   \includegraphics[width=\textwidth]{figures/fig4_representational_geometry.png}
   \caption{\textbf{The consistency peak coincides with collapse into a
   low-dimensional attractor.}
-  \textbf{(A)} Participation ratio (PR; right axis, firebrick) and mean
+  \textbf{(A)} Participation ratio (PR; right axis, light purple) and mean
   cross-mouse consistency (left axis, blue) co-plotted over time.
   Averaged-matrix PR: pre-stimulus $\approx 108$; peak-window PR $= 31.5$
   (27\% of available dimensions); 250~ms PR $= 61.2$.  Per-mouse PR
@@ -535,7 +536,7 @@ of the normalised curve and is unaffected by overall signal level.
   \includegraphics[width=\textwidth]{figures/fig5_cell_type_dissociation.png}
   \caption{\textbf{Fast-spiking, genetically confirmed PV$^+$ interneurons
   produce a sharper transient than broad-spiking units.}
-  \textbf{(A)} Temporal consistency curves for RSU (blue), FSU (orange),
+  \textbf{(A)} Temporal consistency curves for RSU (pink), FSU (teal),
   and all units (dashed grey).  RSU and FSU rise with identical onset
   latency ($\sim$40~ms; annotated arrow) but diverge in T/S ratio
   (FSU: 2.30$\times$; RSU: 1.67$\times$).  Triangle markers: peak;
@@ -544,11 +545,11 @@ of the normalised curve and is unaffected by overall signal level.
   (opaque) and sustained floor (semi-transparent); T/S ratio annotated
   above each pair.
   \textbf{(C)} Sessions split at median FSU fraction.  High FSU
-  ($n = 16$, mean fraction $= 0.285$, T/S $= 1.81\times$) vs.\ low
-  FSU ($n = 16$, mean fraction $= 0.166$, T/S $= 1.61\times$;
+  ($n = 16$, mean fraction $= 0.285$, T/S $= 1.81\times$, teal-green) vs.\
+  low FSU ($n = 16$, mean fraction $= 0.166$, T/S $= 1.61\times$, dark red;
   $\Delta$T/S $= +0.20$).  Dashed grey: all sessions.
   \textbf{(D)} Temporal curves for waveform-inferred FSU ($n = 27$
-  sessions, orange) and optotagged PV$^+$ units (firebrick dashed,
+  sessions, teal) and optotagged PV$^+$ units (light blue dashed,
   $n = 3$ sessions, 18 confirmed units).  Lower absolute consistency in
   the optotagged analysis reflects fewer units per session; T/S is a
   shape property unaffected by signal level.
@@ -633,7 +634,7 @@ analysis above.
   \caption{\textbf{An inhibition-dominated Wilson-Cowan model reproduces
   the dynamics and generalises to held-out mice.}
   \textbf{(A)} Model fit (dashed) vs.\ data (solid) for RSU
-  ($R^2 = 0.901$, blue) and FSU ($R^2 = 0.913$, orange) curves.
+  ($R^2 = 0.901$, pink) and FSU ($R^2 = 0.913$, teal) curves.
   $r_\mathrm{EI} = 0.608$ (inhibition-dominated; $r_\mathrm{EI} < 1$).
   Note: $w_\mathrm{II}$ converges to its upper bound; see Supplementary
   Figure~S9.
@@ -643,9 +644,9 @@ analysis above.
   recurrent excitation and lateral inhibition).  High T/S ratios
   require $r_\mathrm{EI} < 1$ (left of balance line).
   \textbf{(C)} Five-fold cross-validation over sessions.  Bars (left
-  axis): train $R^2$ (light blue) and test $R^2$ (green) per fold; dashed
-  green: mean test $R^2 = 0.889$.  Points (right axis, purple):
-  $r_\mathrm{EI}$ per fold; dashed purple: mean $= 0.609 \pm 0.013$;
+  axis): train $R^2$ (blue) and test $R^2$ (light blue) per fold; dashed
+  light blue: mean test $R^2 = 0.889$.  Points (right axis, dark red):
+  $r_\mathrm{EI}$ per fold; dashed dark red: mean $= 0.609 \pm 0.013$;
   reference at $r_\mathrm{EI} = 1$.  Inhibition dominates in all five
   held-out subsets.}
   \label{fig:eimodel}
@@ -739,7 +740,7 @@ broader, less stereotyped neural population.
   cross-mouse consistency than natural scenes.}
   Raw mean cross-mouse consistency over time for natural scenes (blue,
   peak $r = 0.307$ at 100~ms, T/S $= 1.68\times$) and static gratings
-  (orange, rises by $\sim$60~ms then stays flat, T/S $\approx 1.00\times$).
+  (gold, rises by $\sim$60~ms then stays flat, T/S $\approx 1.00\times$).
   Gratings rise to a near-immediate plateau; natural scenes show the
   transient-plus-sustained structure.  Dotted vertical line: stimulus
   offset (250~ms); data beyond this point risk contamination from the
@@ -775,8 +776,8 @@ formal test would require a mixed model accounting for this dependence.
   \caption{\textbf{Cross-mouse representational consistency is highest in
   V1 and lower and roughly comparable across four extrastriate areas.}
   \textbf{(A)} Temporal profiles of cross-mouse consistency for all five
-  visual areas (VISp: blue; VISl: orange; VISal: green; VISpm: purple;
-  VISam: brown; $n$ per area in legend).  Stars: empirical peak per area.
+  visual areas (VISp: blue; VISl: green; VISal: yellow; VISpm: red;
+  VISam: purple; $n$ per area in legend).  Stars: empirical peak per area.
   Transient-plus-sustained structure is present across the hierarchy;
   VISp shows the most pronounced transient.
   \textbf{(B)} Peak raw consistency (Spearman $r$) per area (bars, with
@@ -1229,10 +1230,10 @@ The author declares no competing interests.
   \centering
   \includegraphics[width=\textwidth]{figures/figS2_cnn_detail.png}
   \caption{\textbf{Partial-correlation robustness detail, layer~2 and the
-  final ResNet50 layer.}  Layer~2 (blue circles, solid fit) and the final
-  layer (red triangles, dashed fit) are shown together in every panel to
-  confirm the independence-from-sparsity result is not specific to one
-  layer.
+  final ResNet50 layer.}  Layer~2 (purple circles, solid fit) and the
+  final layer (teal circles, dashed fit) are shown together in every
+  panel to confirm the independence-from-sparsity result is not specific
+  to one layer.
   \textbf{(A)} Added-variable residual scatter, sparsity~$|$~CNN --- the
   point clouds underlying Figure~\ref{fig:predictors}D's bars (layer~2:
   partial $r = -0.523$; final: partial $r = -0.424$).
@@ -1319,8 +1320,8 @@ The author declares no competing interests.
   any post-stimulus epoch.
   \textbf{(B)} Rolling Spearman correlation of per-image consistency at
   each sliding window vs.\ the 100~ms reference.  Significance coding
-  (red: $p < 0.05$, pink: n.s.) uses uncorrected $p$-values for
-  illustration; 43 overlapping windows are not independent.}
+  (filled marker: $p < 0.05$, hollow marker: n.s.) uses uncorrected
+  $p$-values for illustration; 43 overlapping windows are not independent.}
   \label{fig:S7}
 \end{figure}
 

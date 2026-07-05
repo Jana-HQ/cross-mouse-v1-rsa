@@ -297,13 +297,19 @@ def apply_plot_style():
     Apply the project-wide matplotlib / seaborn style and return
     the shared colour-constant dictionary.
 
+    Each constant encodes exactly one concept across every notebook it
+    appears in — colors are reused only when the underlying quantity is
+    genuinely the same (e.g. COL_DATA / natural scenes / VISp are all the
+    same default consistency curve). Everything else gets its own dedicated
+    hue rather than borrowing another concept's color.
+
     Usage
     -----
         colors = apply_plot_style()
-        COL_NS  = colors['COL_NS']
-        COL_GR  = colors['COL_GR']
-        COL_FIT = colors['COL_FIT']
-        COL_REF = colors['COL_REF']
+        COL_DATA = colors['COL_DATA']
+        COL_REF  = colors['COL_REF']
+        COL_FIT  = colors['COL_FIT']
+        ...
     """
     import matplotlib.pyplot as plt
     import seaborn as sns
@@ -321,10 +327,47 @@ def apply_plot_style():
     sns.set_style('ticks')
 
     return {
-        'COL_NS':  'steelblue',   # natural scenes / RSU / excitatory / primary
-        'COL_GR':  'darkorange',  # gratings / FSU / inhibitory / secondary
-        'COL_FIT': 'firebrick',   # model fits / peak annotations / genetic validation
-        'COL_REF': 'dimgray',     # reference lines / baselines / all-units
+        # --- structural roles (same meaning in every notebook) ---
+        'COL_DATA': '#0072B2',  # default single-series consistency curve == natural scenes == VISp
+        'COL_REF':  '#999999',  # reference / baseline / "all units" / unity line
+        'COL_FIT':  '#1B5E20',  # model fit / regression line / peak-floor annotation
+
+        # --- stimulus type (part8) ---
+        'COL_GR':   '#e9c716',  # gratings (natural scenes == COL_DATA)
+
+        # --- cell type (part5, part6 E/I model) ---
+        'COL_RSU':    "#F55F74",  # RSU / excitatory-like
+        'COL_FSU':    "#0d7d87",  # FSU / inhibitory-like (waveform-classified)
+        'COL_FSU_PV': "#8cc5e3",  # FSU optotagged PV+ validation (darker tint of COL_FSU)
+
+        # --- brain area (part9) ---
+        'AREA_COLORS': {
+            'VISp':  '#0072B2',  # == COL_DATA, kept consistent
+            'VISl':  '#2CA02C',
+            'VISal': '#E6B800',
+            'VISpm': '#D6455D',
+            'VISam': '#7B4FA0',
+        },
+
+        # --- CNN layer identity (part2, Fig2C/D + FigS2) ---
+        # named COL_* (not CNN_PRIMARY/CNN_SECONDARY) to avoid colliding with
+        # part2's own local variables of that name, which hold ResNet50 layer
+        # *name strings* (e.g. 'layer2', 'final'), not colors.
+        'COL_CNN_PRIMARY':   "#8A6AC8",
+        'COL_CNN_SECONDARY': "#468788",
+
+        # --- one-off accents, each a distinct quantity used in exactly one notebook ---
+        'COL_DIM':  '#B39DDB',  # dimensionality / participation ratio (part4)
+        'COL_REI':  '#661100',  # r_EI parameter (part6)
+        'COL_2ND':  '#9B6A6C',  # 2nd-order RSA (part3 / Fig S8)
+
+        # --- independent subgroup accents (not shared with each other) ---
+        'COL_HIGH_FSU_FRAC':   '#50ad9f',  # high-FSU-fraction sessions (part5C)
+        'COL_LOW_FSU_FRAC':    '#bc272d',  # low-FSU-fraction sessions (part5C)
+        'COL_INFORMED_START':  '#C1440E',  # informed-start robustness check (part6)
+
+        # --- train/test split tint (part6C), same metric as COL_DATA ---
+        'COL_TEST': '#7FB8DD',
     }
 
 

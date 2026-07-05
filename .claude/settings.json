@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"../.venv/Scripts/python.exe\" -m jupyter execute part2_image_predictors.ipynb --inplace --kernel_name=cmv1rsa --timeout=600)",
+      "Bash(\"../.venv/Scripts/python.exe\" -m jupyter execute part3_temporal_profile.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(\"../.venv/Scripts/python.exe\" -m jupyter execute part4_representational_geometry.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(\"../.venv/Scripts/python.exe\" -m jupyter execute part5_cell_type_dissociation.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(\"../.venv/Scripts/python.exe\" -m jupyter execute part6_ei_model.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 \"../.venv/Scripts/python.exe\" -m jupyter execute part6_ei_model.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 \"../.venv/Scripts/python.exe\" -m jupyter execute part7_controls.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 \"../.venv/Scripts/python.exe\" -m jupyter execute part8_gratings_vs_natural_scenes.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 \"../.venv/Scripts/python.exe\" -m jupyter execute part9_cross_area_hierarchy.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(ls docs/manuscript)",
+      "Bash(find docs *)",
+      "Bash(grep -n \"Supplementary Figure\\\\|\\\\\\\\\\\\\\\\subsection{Supp\\\\|figS[0-9]\" docs/manuscript.tex)",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 \"../.venv/Scripts/python.exe\" -m jupyter execute part1_data_and_consistency.ipynb --inplace --kernel_name=cmv1rsa --timeout=600)",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 \"../.venv/Scripts/python.exe\" -m jupyter execute part2_image_predictors.ipynb --inplace --kernel_name=cmv1rsa --timeout=600)",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 \"../.venv/Scripts/python.exe\" -m jupyter execute part3_temporal_profile.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 \"../.venv/Scripts/python.exe\" -m jupyter execute part4_representational_geometry.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 \"../.venv/Scripts/python.exe\" -m jupyter execute part5_cell_type_dissociation.ipynb --inplace --kernel_name=cmv1rsa --timeout=900)",
+      "Bash(python -c ' *)",
+      "Bash(python3 -c ' *)",
+      "Bash(awk '{print $6,$7,$NF}')"
+    ]
+  }
+}
