@@ -8,6 +8,7 @@ Import at the top of every part-notebook:
         compute_similarity_matrices, per_image_consistency,
         rdm_split_half_ceiling, cluster_bootstrap_ci, apply_plot_style,
         ts_ratio, print_figure_data,
+        circular_shift_pvalue, circular_shift_partial_pvalue,
     )
 
 setup_archive() must be called before window_response(); it sets the
@@ -289,6 +290,107 @@ def cluster_bootstrap_ci(
 
 
 # ---------------------------------------------------------------------------
+# Across-window correlation testing (autocorrelation-robust)
+# ---------------------------------------------------------------------------
+
+def circular_shift_pvalue(x, y, n_perm: int = 5000, seed: int = 42, corr_fn=None):
+    """
+    Autocorrelation-robust p-value for a correlation between two time series.
+
+    Sliding-window statistics (e.g. PR, consistency) computed from overlapping
+    windows are themselves autocorrelated, so the standard Spearman/Pearson
+    p-value (which assumes independent observations) understates the true
+    p-value. This builds a null distribution by circularly shifting `y`
+    relative to `x` by every possible lag-preserving roll, which destroys the
+    x-y alignment while leaving each series' own autocorrelation structure
+    intact.
+
+    Parameters
+    ----------
+    x, y    : 1-D arrays of equal length (paired observations across windows)
+    n_perm  : number of circular shifts to draw (sampled with replacement
+              from the n-1 non-trivial shifts if n_perm < n - 1, else all
+              n - 1 shifts are used)
+    seed    : random seed
+    corr_fn : callable(x, y) -> (r, p); defaults to scipy's spearmanr
+
+    Returns
+    -------
+    r_obs, p_corrected : observed correlation and the circular-shift p-value
+    """
+    from scipy.stats import spearmanr
+
+    if corr_fn is None:
+        corr_fn = lambda a, b: spearmanr(a, b)
+
+    x = np.asarray(x)
+    y = np.asarray(y)
+    n = len(x)
+    r_obs, _ = corr_fn(x, y)
+
+    shifts = np.arange(1, n)
+    if n_perm < len(shifts):
+        rng    = np.random.default_rng(seed)
+        shifts = rng.choice(shifts, size=n_perm, replace=False)
+
+    null_r = np.empty(len(shifts))
+    for i, s in enumerate(shifts):
+        r, _ = corr_fn(x, np.roll(y, s))
+        null_r[i] = r
+
+    p_corrected = (np.sum(np.abs(null_r) >= np.abs(r_obs)) + 1) / (len(shifts) + 1)
+    return float(r_obs), float(p_corrected)
+
+
+def circular_shift_partial_pvalue(x, y, z, n_perm: int = 5000, seed: int = 42):
+    """
+    Autocorrelation-robust p-value for a Spearman partial correlation
+    r_xy.z between two autocorrelated time series x, y controlling for z.
+
+    Circularly shifts `x` relative to the paired (y, z), which preserves
+    the y-z relationship (e.g. consistency's link to the response envelope)
+    while destroying any genuine x-y alignment beyond what shifted-x still
+    shares with z by chance. Uses the same partial-correlation formula as
+    the observed statistic on every shifted replicate.
+
+    Parameters
+    ----------
+    x, y, z : 1-D arrays of equal length (paired observations across windows)
+    n_perm  : number of circular shifts to draw (see circular_shift_pvalue)
+    seed    : random seed
+
+    Returns
+    -------
+    r_obs, p_corrected : observed partial correlation and its circular-shift p-value
+    """
+    from scipy.stats import spearmanr
+
+    def _partial(a, b, c):
+        r_ab, _ = spearmanr(a, b)
+        r_ac, _ = spearmanr(a, c)
+        r_bc, _ = spearmanr(b, c)
+        return (r_ab - r_ac * r_bc) / np.sqrt((1 - r_ac ** 2) * (1 - r_bc ** 2))
+
+    x = np.asarray(x)
+    y = np.asarray(y)
+    z = np.asarray(z)
+    n = len(x)
+    r_obs = _partial(x, y, z)
+
+    shifts = np.arange(1, n)
+    if n_perm < len(shifts):
+        rng    = np.random.default_rng(seed)
+        shifts = rng.choice(shifts, size=n_perm, replace=False)
+
+    null_r = np.empty(len(shifts))
+    for i, s in enumerate(shifts):
+        null_r[i] = _partial(np.roll(x, s), y, z)
+
+    p_corrected = (np.sum(np.abs(null_r) >= np.abs(r_obs)) + 1) / (len(shifts) + 1)
+    return float(r_obs), float(p_corrected)
+
+
+# ---------------------------------------------------------------------------
 # Plotting helpers
 # ---------------------------------------------------------------------------
 
@@ -336,8 +438,8 @@ def apply_plot_style():
         'COL_GR':   '#e9c716',  # gratings (natural scenes == COL_DATA)
 
         # --- cell type (part5, part6 E/I model) ---
-        'COL_RSU':    "#F55F74",  # RSU / excitatory-like
-        'COL_FSU':    "#0d7d87",  # FSU / inhibitory-like (waveform-classified)
+        'COL_RSU':    "#D03252",  # RSU / excitatory-like
+        'COL_FSU':    "#1ba8b5",  # FSU / inhibitory-like (waveform-classified)
         'COL_FSU_PV': "#8cc5e3",  # FSU optotagged PV+ validation (darker tint of COL_FSU)
 
         # --- brain area (part9) ---
@@ -362,9 +464,16 @@ def apply_plot_style():
         'COL_2ND':  '#9B6A6C',  # 2nd-order RSA (part3 / Fig S8)
 
         # --- independent subgroup accents (not shared with each other) ---
-        'COL_HIGH_FSU_FRAC':   '#50ad9f',  # high-FSU-fraction sessions (part5C)
-        'COL_LOW_FSU_FRAC':    '#bc272d',  # low-FSU-fraction sessions (part5C)
+        'COL_HIGH_FSU_FRAC':   "#59deca",  # high-FSU-fraction sessions (part5C)
+        'COL_LOW_FSU_FRAC':    "#f37c80",  # low-FSU-fraction sessions (part5C)
         'COL_INFORMED_START':  '#C1440E',  # informed-start robustness check (part6)
+
+        # --- E/I model fit-target identity (part6): which of the three curves
+        # a panel was fit to (consistency / total rate / selective amplitude).
+        # Chosen light-but-saturated so they stay visible on white backgrounds.
+        'COL_TARGET_CONSISTENCY': '#E53935',  # light red
+        'COL_TARGET_TOTAL_RATE':  '#FFB300',  # light yellow
+        'COL_TARGET_SELECTIVE':   '#66BB6A',  # light green
 
         # --- train/test split tint (part6C), same metric as COL_DATA ---
         'COL_TEST': '#7FB8DD',
@@ -439,6 +548,252 @@ def print_figure_data(title: str, **named_arrays) -> None:
                 with np.printoptions(threshold=np.inf, linewidth=200,
                                       precision=6, suppress=True):
                     print(arr)
+
+
+def unit_matched_sliding_curve(
+    tensors_by_session:   dict,
+    unit_idx_by_session:  dict,
+    target_n:             int,
+    window_centers_ms:    list,
+    window_width_ms:      float,
+    n_draws:              int   = 50,
+    seed:                 int   = 42,
+    bin_edges:            np.ndarray | None = None,
+):
+    """
+    Sliding-window consistency curve after subsampling every session's unit
+    pool down to a common `target_n`, repeated over random draws.
+
+    Controls for unit-count confounds when comparing groups (subpopulations,
+    session groups, brain areas) whose raw unit counts differ, since
+    similarity-matrix SNR (and hence raw consistency) scales with unit count.
+    Sessions whose pool is already <= target_n are skipped (too few units to
+    subsample without replacement).
+
+    Parameters
+    ----------
+    tensors_by_session  : {session_id: (n_images, n_units, n_bins) tensor}
+    unit_idx_by_session : {session_id: list of column indices into that
+                            session's tensor defining the pool to subsample from}
+    target_n            : number of units to draw per session per replicate
+    window_centers_ms   : sliding-window center times (ms)
+    window_width_ms     : window width (ms)
+    n_draws             : number of random subsample draws
+    seed                : random seed
+    bin_edges           : passed through to window_response
+
+    Returns
+    -------
+    times     : (n_windows,) array of window_centers_ms
+    mean_c    : (n_windows,) mean consistency curve across draws
+    ci_lo, ci_hi : (n_windows,) 2.5/97.5 percentile band across draws
+    ts_draws  : (n_draws,) T/S ratio computed separately for each draw
+    """
+    rng = np.random.default_rng(seed)
+
+    usable_sids = [sid for sid, idx in unit_idx_by_session.items() if len(idx) >= target_n]
+
+    times = np.asarray(window_centers_ms, dtype=float)
+    curves = np.zeros((n_draws, len(times)))
+
+    for d in range(n_draws):
+        draw_idx = {
+            sid: rng.choice(unit_idx_by_session[sid], size=target_n, replace=False)
+            for sid in usable_sids
+        }
+        for w, t_ms in enumerate(times):
+            t_lo = t_ms - window_width_ms / 2
+            t_hi = t_ms + window_width_ms / 2
+            mats = [
+                window_response(tensors_by_session[sid][:, draw_idx[sid], :], t_lo, t_hi, bin_edges)
+                for sid in usable_sids
+            ]
+            sims = compute_similarity_matrices(mats)
+            c, _, _ = per_image_consistency(sims)
+            curves[d, w] = c.mean()
+
+    mean_c = curves.mean(0)
+    ci_lo  = np.percentile(curves, 2.5,  axis=0)
+    ci_hi  = np.percentile(curves, 97.5, axis=0)
+    ts_draws = np.array([ts_ratio(curves[d], times)[0] for d in range(n_draws)])
+
+    return times, mean_c, ci_lo, ci_hi, ts_draws
+
+
+def image_matched_sliding_curve(
+    tensors_by_session:   dict,
+    target_n:             int,
+    window_centers_ms:    list,
+    window_width_ms:      float,
+    n_draws:              int   = 50,
+    seed:                 int   = 42,
+    bin_edges:            np.ndarray | None = None,
+):
+    """
+    Sliding-window consistency curve after subsampling the item (image /
+    condition) axis down to a common `target_n`, repeated over random draws.
+
+    Analogous to `unit_matched_sliding_curve`, but controls for item-count
+    confounds instead of unit-count ones: `per_image_consistency`'s Spearman
+    correlation is computed over profiles of length `n_items - 1`, so its
+    noise properties (and hence the raw consistency magnitude) depend on how
+    many items are being compared, independent of any real representational
+    difference. Subsampling one item set down to match the other's item
+    count puts both on the same statistical footing before comparing raw
+    consistency values.
+
+    Parameters
+    ----------
+    tensors_by_session : {session_id: (n_items, n_units, n_bins) tensor} —
+                          all sessions must share the same n_items and item
+                          identity/order (e.g. natural-scene tensors keyed
+                          the same way across sessions)
+    target_n            : number of items to draw per replicate (shared
+                           across sessions — the same item subset is used
+                           for every session within a draw)
+    window_centers_ms   : sliding-window center times (ms)
+    window_width_ms     : window width (ms)
+    n_draws             : number of random subsample draws
+    seed                : random seed
+    bin_edges           : passed through to window_response
+
+    Returns
+    -------
+    times     : (n_windows,) array of window_centers_ms
+    mean_c    : (n_windows,) mean consistency curve across draws
+    ci_lo, ci_hi : (n_windows,) 2.5/97.5 percentile band across draws
+    ts_draws  : (n_draws,) T/S ratio computed separately for each draw
+    """
+    rng = np.random.default_rng(seed)
+
+    sids = list(tensors_by_session.keys())
+    n_items_total = tensors_by_session[sids[0]].shape[0]
+
+    times  = np.asarray(window_centers_ms, dtype=float)
+    curves = np.zeros((n_draws, len(times)))
+
+    for d in range(n_draws):
+        item_idx = rng.choice(n_items_total, size=target_n, replace=False)
+        for w, t_ms in enumerate(times):
+            t_lo = t_ms - window_width_ms / 2
+            t_hi = t_ms + window_width_ms / 2
+            mats = [
+                window_response(tensors_by_session[sid][item_idx], t_lo, t_hi, bin_edges)
+                for sid in sids
+            ]
+            sims = compute_similarity_matrices(mats)
+            c, _, _ = per_image_consistency(sims)
+            curves[d, w] = c.mean()
+
+    mean_c = curves.mean(0)
+    ci_lo  = np.percentile(curves, 2.5,  axis=0)
+    ci_hi  = np.percentile(curves, 97.5, axis=0)
+    ts_draws = np.array([ts_ratio(curves[d], times)[0] for d in range(n_draws)])
+
+    return times, mean_c, ci_lo, ci_hi, ts_draws
+
+
+def bootstrap_ts_difference(
+    tensors_a:            dict,
+    idx_a:                dict,
+    target_n_a:           int | None,
+    tensors_b:            dict,
+    idx_b:                dict,
+    target_n_b:           int | None,
+    window_centers_ms:    list,
+    window_width_ms:      float,
+    n_unit_draws:         int   = 25,
+    n_session_boot:       int   = 40,
+    seed:                 int   = 42,
+    bin_edges:            np.ndarray | None = None,
+):
+    """
+    Significance test for a difference in T/S ratio between two groups,
+    combining two independent sources of sampling noise:
+
+    (1) which units were subsampled within each session (if `target_n_*` is
+        given, a fresh random subsample is drawn per unit-draw — this is
+        what `unit_matched_sliding_curve` alone captures), and
+    (2) which sessions/mice were sampled at all (a session-level cluster
+        bootstrap with replacement, self-pairs excluded via `mouse_ids`,
+        matching `cluster_bootstrap_ci`'s convention) — the dominant source
+        of real uncertainty with only a few dozen sessions, and the piece a
+        unit-subsampling-only control misses.
+
+    Only windows in [0, 250] ms are used since that is all `ts_ratio` reads
+    (peak search + sustained window), which keeps this tractable.
+
+    Pass `target_n_a=None` (or `target_n_b=None`) to use a group's full unit
+    pool unchanged (no subsampling), e.g. when comparing an already-small
+    reference population against a matched/subsampled comparison population.
+
+    Returns
+    -------
+    ts_a_boot, ts_b_boot : (n_unit_draws * n_session_boot,) bootstrap T/S values
+    diff_boot            : (n_unit_draws * n_session_boot,) ts_a_boot - ts_b_boot
+    p_value              : two-sided bootstrap p-value for diff_boot != 0
+                            (2x the smaller tail fraction crossing zero)
+    """
+    rng = np.random.default_rng(seed)
+
+    times = np.array([t for t in window_centers_ms if 0 <= t <= 250], dtype=float)
+
+    sids_a = [sid for sid in tensors_a
+              if target_n_a is None or len(idx_a[sid]) >= target_n_a]
+    sids_b = [sid for sid in tensors_b
+              if target_n_b is None or len(idx_b[sid]) >= target_n_b]
+    n_a, n_b = len(sids_a), len(sids_b)
+
+    ts_a_all, ts_b_all, diffs = [], [], []
+
+    for _ in range(n_unit_draws):
+        draw_idx_a = {
+            sid: (rng.choice(idx_a[sid], size=target_n_a, replace=False)
+                  if target_n_a is not None else np.asarray(idx_a[sid]))
+            for sid in sids_a
+        }
+        draw_idx_b = {
+            sid: (rng.choice(idx_b[sid], size=target_n_b, replace=False)
+                  if target_n_b is not None else np.asarray(idx_b[sid]))
+            for sid in sids_b
+        }
+
+        sims_a_by_win, sims_b_by_win = {}, {}
+        for t_ms in times:
+            t_lo, t_hi = t_ms - window_width_ms / 2, t_ms + window_width_ms / 2
+            mats_a = [window_response(tensors_a[sid][:, draw_idx_a[sid], :], t_lo, t_hi, bin_edges)
+                      for sid in sids_a]
+            sims_a_by_win[t_ms] = compute_similarity_matrices(mats_a)
+            mats_b = [window_response(tensors_b[sid][:, draw_idx_b[sid], :], t_lo, t_hi, bin_edges)
+                      for sid in sids_b]
+            sims_b_by_win[t_ms] = compute_similarity_matrices(mats_b)
+
+        for _ in range(n_session_boot):
+            resample_a = rng.integers(0, n_a, size=n_a)
+            resample_b = rng.integers(0, n_b, size=n_b)
+
+            curve_a = np.array([
+                per_image_consistency([sims_a_by_win[t_ms][i] for i in resample_a],
+                                       mouse_ids=list(resample_a))[0].mean()
+                for t_ms in times
+            ])
+            curve_b = np.array([
+                per_image_consistency([sims_b_by_win[t_ms][i] for i in resample_b],
+                                       mouse_ids=list(resample_b))[0].mean()
+                for t_ms in times
+            ])
+
+            ts_a, _, _ = ts_ratio(curve_a, times)
+            ts_b, _, _ = ts_ratio(curve_b, times)
+            ts_a_all.append(ts_a)
+            ts_b_all.append(ts_b)
+            diffs.append(ts_a - ts_b)
+
+    diffs = np.array(diffs)
+    tail = min((diffs <= 0).mean(), (diffs >= 0).mean())
+    p_value = min(2 * tail, 1.0)
+
+    return np.array(ts_a_all), np.array(ts_b_all), diffs, p_value
 
 
 def ts_ratio(

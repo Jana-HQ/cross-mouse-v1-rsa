@@ -61,12 +61,17 @@ baseline of $\approx$35.6 to $\approx$15.3 at 100~ms within individual
 mice ($\approx$108 to $\approx$31.5 in the cross-mouse-averaged
 representation). Dimensionality and
 consistency are tightly coupled across the entire post-stimulus epoch
-(Spearman $r = -0.853$, $p = 3.5 \times 10^{-6}$): the moment mice
-agree most is the moment the population code is most compressed.  This
+(Spearman $r = -0.853$ across overlapping windows; corroborated by a
+non-overlapping-window control, $r = -0.929$, $p = 4.6 \times 10^{-6}$):
+the moment mice agree most is the moment the population code is most
+compressed.  This
 transient low-dimensional state is specific to complex, naturalistic
-stimuli --- static gratings produce an immediate sustained plateau with
-no transient peak and a near-unity transient-to-sustained (T/S) ratio
---- and is highest in V1 itself (peak $r = 0.307$), with lower and
+stimuli --- static gratings produce a curve that rises and then stays
+essentially flat, with no transient peak and a near-unity
+transient-to-sustained (T/S) ratio, while a control that matches natural
+scenes to the gratings' item count confirms this shape difference is not
+an artefact of the two stimulus sets having different numbers of
+conditions --- and is highest in V1 itself (peak $r = 0.307$), with lower and
 roughly comparable peak consistency across four extrastriate areas
 (VISl $r = 0.186$, VISal $r = 0.234$, VISpm $r = 0.210$,
 VISam $r = 0.238$).
@@ -74,28 +79,44 @@ VISam $r = 0.238$).
 To explain this transient compression, we tested whether it is
 preferentially produced by fast-spiking inhibitory interneurons.
 Waveform-based dissociation of putative fast-spiking (FSU,
-narrow-waveform, $<$0.4~ms) and regular-spiking (RSU, broad-waveform)
-units shows that FSU units produce a sharper transient than RSU units
-(T/S ratio 2.30$\times$ vs.\ 1.67$\times$), and sessions with higher
-FSU fractions show correspondingly sharper population-level transients
-($\Delta$T/S $= +0.20$).  Optotagged PV$^+$ interneurons from
-Pvalb-IRES-Cre$\times$Ai32 sessions show an even sharper transient
-(T/S $= 3.59\times$) than waveform-inferred FSU units
-(T/S $= 2.30\times$), consistent with partial impurity of the waveform
-classification (3 of 18 optotagged PV$^+$ units had broad waveforms).
-A Wilson-Cowan excitatory-inhibitory (E/I) firing rate model fit
-simultaneously to RSU and FSU temporal consistency curves recovers an
-inhibition-dominated connectivity ratio
-($r_\mathrm{EI} = w_\mathrm{EE}/w_\mathrm{IE} = 0.608$, $< 1$),
-reproduces the observed temporal profiles
-($R^2_\mathrm{RSU} = 0.901$, $R^2_\mathrm{FSU} = 0.913$), and
-generalises to held-out mice in five-fold cross-validation (mean test
-$R^2 = 0.889 \pm 0.023$; $r_\mathrm{EI} < 1$ in every fold;
-mean $r_\mathrm{EI} = 0.609 \pm 0.013$).  Together, these results show
-that mouse V1 passes through a transient, inhibition-dominated
-low-dimensional state during natural image viewing, and that this state
-is precisely when representational structure is most shared across
-individuals.
+narrow-waveform) and regular-spiking (RSU, broad-waveform) units ---
+classified via a two-component Gaussian mixture fit to log waveform
+duration, with a symmetric probability-mass bound excluding both the
+ambiguous gap between the two modes and each class's own long tail,
+rather than a single hand-picked cutoff --- shows that FSU units produce
+a sharper transient than RSU units (T/S ratio 2.29$\times$ vs.\
+1.71$\times$), a difference that survives subsampling RSU sessions down
+to the FSU unit count (matched T/S $= 2.22\times$).  Sessions with
+higher FSU fractions show correspondingly sharper population-level
+transients ($\Delta$T/S $= +0.32$), and matching the low-FSU group's
+unit count down to the high-FSU group's shows that most, but not all, of
+the raw absolute-consistency gap between the groups was a similarity-matrix
+SNR artifact of unit count rather than genuine FSU-driven signal.
+Optotagged PV$^+$ interneurons from Pvalb-IRES-Cre$\times$Ai32 sessions
+show an even sharper transient (T/S $= 3.59\times$) than waveform-inferred
+FSU units (T/S $= 2.29\times$), consistent with partial impurity of the
+waveform classification (of 18 optotagged PV$^+$ units, 6 fall in the
+confidently-FSU range, 10 are excluded as ambiguous, and 2 fall in the
+confidently-RSU range).
+A Wilson-Cowan excitatory-inhibitory (E/I) firing-rate model fit directly
+to the image-selective firing-rate amplitude of RSU and FSU populations
+recovers an inhibition-dominated connectivity ratio
+($r_\mathrm{EI} = w_\mathrm{EE}/w_\mathrm{IE} = 0.646$;
+$R^2_\mathrm{RSU} = 0.901$, $R^2_\mathrm{FSU} = 0.900$) that generalises
+to held-out sessions in five-fold cross-validation (mean test
+$R^2 = 0.877 \pm 0.042$; $r_\mathrm{EI} < 1$ in every fold; mean
+$r_\mathrm{EI} = 0.647 \pm 0.010$).  An independent fit of the same
+model to cross-mouse consistency curves --- a different quantity
+entirely --- converges on a similar ratio ($r_\mathrm{EI} = 0.608$),
+whereas a fit to uncorrected total firing rate, which retains
+non-selective drive, yields a markedly different, less stable, and
+worse-fitting estimate ($r_\mathrm{EI} = 0.924$,
+$R^2_\mathrm{FSU} = 0.601$), indicating the agreement between the first
+two fits is not an artefact of curve-fitting flexibility.  Together,
+these results show that mouse V1 passes through a transient,
+inhibition-dominated low-dimensional state during natural image viewing,
+and that this state is precisely when representational structure is
+most shared across individuals.
 \end{abstract}
 
 \noindent\textbf{Keywords:} primary visual cortex; representational
@@ -173,8 +194,10 @@ temporal trajectory of cross-individual consistency, and pair it with
 participation ratio analysis to test directly whether peak consistency
 coincides with minimum dimensionality.  We then turn to mechanism:
 waveform-based cell-class dissociation, optotagged PV$^+$ recordings,
-and a Wilson-Cowan E/I firing rate model fit and cross-validated on
-held-out mice.  As mechanistic contrasts, we compare the temporal
+and a Wilson-Cowan E/I firing-rate model fit directly to firing rates,
+cross-checked against an independent fit to consistency curves, and
+cross-validated on held-out mice.  As mechanistic contrasts, we compare
+the temporal
 profiles of natural scenes with static gratings and examine how
 consistency varies across five visual areas.
 
@@ -253,39 +276,41 @@ across layers, layer~2 (512-dimensional) gave the best accuracy
 (LOO Pearson $r = -0.496$, $p = 1.1 \times 10^{-8}$) and was selected as
 the primary CNN predictor, with the final layer (1000-dimensional)
 performing comparably ($r = -0.486$, $p = 2.5 \times 10^{-8}$;
-Figure~\ref{fig:predictors}C).  Critically, this CNN-based signal was
-not subsumed by sparsity for either layer: added-variable partial
-correlation, controlling for sparsity, retained
-$r_\mathrm{partial} = -0.501$ for layer~2 and $-0.378$ for the final
-layer, and a nested regression comparison showed that adding the CNN
-prediction to a sparsity-only model ($R^2 = 0.269$) raised $R^2$ to
+Figure~\ref{fig:predictors}C).  To ask whether this CNN-based signal was
+subsumed by sparsity, we compared nested regression models: adding the
+CNN prediction to a sparsity-only model ($R^2 = 0.269$) raised $R^2$ to
 0.453 for layer~2 ($\Delta R^2 = +0.184$) and to 0.374 for the final
-layer ($\Delta R^2 = +0.105$; Figure~\ref{fig:predictors}D).  A second,
-non-parametric partialling method (rank-residualised Spearman
-correlation) gave a larger-magnitude partial correlation for both
-layers ($r_\mathrm{partial} = -0.828$, $p = 5.5\times10^{-31}$ for
-layer~2; $r_\mathrm{partial} = -0.887$, $p = 9.9\times10^{-41}$ for the
-final layer; Supplementary Figure~S2C), consistent with sparsity acting
-as a partial suppressor --- it shares variance with both consistency and
-the CNN prediction, so removing it from both sharpens their residual
-alignment.  The two partialling methods are convergent (both indicate
-the CNN prediction retains signal independent of sparsity) but differ in
-magnitude, as expected given their different assumptions (Methods).
-Response sparsity and CNN-based image complexity therefore each carry
-independent predictive signal about cross-mouse consistency, rather
-than CNN complexity acting only through its co-variation with sparsity,
-and this conclusion is robust to the specific CNN layer and partialling
-method used.  Galleries of the most and least consistently represented
-images confirm the sparsity relationship qualitatively: high-consistency
-images tend to be sparse, high-contrast, or dominated by a single
-feature, while low-consistency images are denser and more spatially
-heterogeneous (Supplementary Figure~S1).
+layer ($\Delta R^2 = +0.105$; Figure~\ref{fig:predictors}D).  This
+nested-$R^2$ comparison is the primary evidence that CNN features carry
+signal beyond sparsity, since it is a direct model-fit comparison rather
+than a residual-alignment statistic.  As a secondary check, added-variable
+partial correlation, controlling for sparsity, retained
+$r_\mathrm{partial} = -0.501$ for layer~2 and $-0.378$ for the final
+layer.  A second, non-parametric partialling method (rank-residualised
+Spearman correlation) gave a substantially larger-magnitude partial
+correlation for both layers ($r_\mathrm{partial} = -0.828$,
+$p = 5.5\times10^{-31}$ for layer~2; $r_\mathrm{partial} = -0.887$,
+$p = 9.9\times10^{-41}$ for the final layer; Supplementary
+Figure~S2C).  This magnitude jump across partialling methods is a
+signature of sparsity acting as a partial suppressor --- it shares
+variance with both consistency and the CNN prediction, so removing it
+from both can inflate residual alignment --- and is a reason for caution
+rather than confidence: we treat the partial-correlation values as
+illustrative rather than as precise effect sizes, and rely on the
+nested $\Delta R^2$ for the headline claim (Methods).  Response
+sparsity and CNN-layer features therefore each explain distinct
+variance in cross-mouse consistency, and this conclusion is robust to
+the specific CNN layer used.  Galleries of the most and least
+consistently represented images confirm the sparsity relationship
+qualitatively: high-consistency images tend to be sparse, high-contrast,
+or dominated by a single feature, while low-consistency images are
+denser and more spatially heterogeneous (Supplementary Figure~S1).
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/fig2_image_predictors.png}
-  \caption{\textbf{Response sparsity and CNN-based image complexity are
-  independent predictors of cross-mouse consistency.}
+  \caption{\textbf{Response sparsity and CNN-layer features each explain
+  distinct variance in cross-mouse consistency.}
   \textbf{(A)} Consistency vs.\ response sparsity (fraction of units
   below per-mouse median $|z|$; Spearman $r = -0.470$,
   $p = 7.8 \times 10^{-8}$).  Line: linear reference fit.
@@ -296,12 +321,14 @@ heterogeneous (Supplementary Figure~S1).
   predictor; grey: other layers).  The final
   layer performs comparably ($r = -0.486$) and is carried through
   panel~D and Supplementary Figure~S2 as a robustness check.
-  \textbf{(D)} Raw LOO $r$ vs.\ added-variable partial $r$ (sparsity~$|$~CNN
-  and CNN~$|$~sparsity) for layer~2 (purple bars) and the final layer
-  (teal bars).  Both layers retain a substantial partial correlation
-  after controlling for sparsity (layer~2: $r_\mathrm{partial} = -0.501$;
-  final: $r_\mathrm{partial} = -0.378$), with nested $R^2$ rising from a
-  sparsity-only baseline of 0.269 to 0.453 (layer~2) and 0.374 (final).}
+  \textbf{(D)} Nested $R^2$: a sparsity-only model ($R^2 = 0.269$)
+  compared against sparsity~$+$~layer~2 ($R^2 = 0.453$,
+  $\Delta R^2 = +0.184$) and sparsity~$+$~final layer ($R^2 = 0.374$,
+  $\Delta R^2 = +0.105$).  This model-comparison statistic, rather than
+  the partial-correlation coefficient, is the primary evidence that CNN
+  features add explanatory power beyond sparsity; partial-correlation
+  estimates, which vary substantially with partialling method, are
+  reported as a robustness check in Supplementary Figure~S2.}
   \label{fig:predictors}
 \end{figure}
 
@@ -331,14 +358,7 @@ V1 response arrives at approximately 290--300~ms (stimulus onset at
 are not interpreted as reflecting the sustained representation of the
 current image.
 
-A Gaussian-plus-offset model formally decomposed the temporal profile into
-a transient component (amplitude $0.162 \pm 0.035$, peak centre
-$124.7 \pm 8.1$~ms, width $\sigma = 34.2 \pm 9.2$~ms) and a sustained
-offset ($0.149 \pm 0.015$; Figure~\ref{fig:temporal}).  The fitted
-Gaussian centre lags the empirical peak (100~ms) by $\sim$25~ms because
-the transient rises faster than it decays, an asymmetry a symmetric
-Gaussian cannot capture exactly; we report the empirical 100~ms peak
-elsewhere in the text as the more direct descriptive statistic.  A coarser
+A coarser
 comparison of early (0--75~ms) and late (75--250~ms) windows confirmed
 that late-window consistency substantially exceeds early-window
 consistency (mean $r = 0.084$ vs.\ $0.320$; Wilcoxon signed-rank
@@ -359,11 +379,7 @@ Figure~S7).
   band and dashed horizontal line).  Vertical dashed line: stimulus onset
   (0~ms); dotted line: stimulus offset (250~ms), beyond which
   back-to-back presentation creates contamination risk from the next
-  image's V1 response ($\sim$290--300~ms onset).  Overlaid curve
-  (green): Gaussian-plus-offset model fit decomposing the response
-  into a transient component (amplitude $0.162 \pm 0.035$, peak
-  $124.7 \pm 8.1$~ms, $\sigma = 34.2 \pm 9.2$~ms) and a sustained
-  offset ($0.149 \pm 0.015$).}
+  image's V1 response ($\sim$290--300~ms onset).}
   \label{fig:temporal}
 \end{figure}
 
@@ -404,6 +420,45 @@ essentially as strongly, for the less-confounded per-mouse PR
 cross-mouse agreement is precisely the moment of maximal representational
 compression, and this holds even when the compression is measured
 entirely within individual mice.
+
+Because these post-stimulus windows overlap by up to 60\% of their width
+(25~ms windows stepped by 10~ms), the $n \approx 19$ points entering this
+correlation are not independent, and the analytic $p$-values above
+understate the true $p$-value (as similarly noted for Supplementary
+Figure~S7B). We assessed this two ways (Methods). First, a circular-shift
+permutation test, which preserves each series' own autocorrelation while
+destroying only their mutual alignment, gave $p = 0.053$ for both the
+averaged-matrix and per-mouse correlations --- the observed $r$ was more
+extreme than every one of the 18 possible shifts, so this is the floor
+$p$-value achievable with this few independent windows, not evidence of a
+weak effect. Second, we recomputed the correlation on windows spaced
+30~ms apart (one window-width, so no window shares spike-count bins with
+its neighbour): this fully independent, 13-point version gave
+$r = -0.929$, $p = 4.6 \times 10^{-6}$, confirming the coupling under a
+conventional test that needs no autocorrelation correction.
+
+Because PR and consistency are both computed from the same response
+matrices, and both are plausibly driven by the stimulus-evoked response
+envelope (weak pre-stimulus and late, strong near the transient peak), we
+tested whether this coupling is better explained as a shared dependence on
+overall response magnitude (Methods). The
+envelope --- mean raw population response per window, independent of the
+per-window z-scoring used for RSA --- itself correlated with both
+consistency ($r = 0.525$, analytic $p = 0.021$, circular-shift
+$p = 0.211$) and PR (avg-matrix: $r = -0.711$, analytic
+$p = 6.5\times10^{-4}$, circular-shift $p = 0.053$; per-mouse:
+$r = -0.653$, analytic $p = 2.5\times10^{-3}$, circular-shift $p = 0.053$).
+Under the autocorrelation-robust test, the envelope--consistency
+correlation is no longer distinguishable from chance, while the
+PR--envelope correlations remain at the floor $p$-value achievable given
+$n \approx 19$ independent windows (Methods); if anything, this weakens
+rather than strengthens a common-cause account of the PR--consistency
+coupling. The PR--consistency coupling itself survived partialling out
+the envelope nearly unchanged (avg-matrix: partial $r = -0.801$, analytic
+$p = 6.5\times10^{-5}$, circular-shift $p = 0.053$; per-mouse: partial
+$r = -0.718$, analytic $p = 8.0\times10^{-4}$, circular-shift $p = 0.053$,
+vs.\ raw $r = -0.805$), indicating that PR tracks consistency well beyond
+what the response envelope predicts on its own.
 
 Eigendecomposition of the average similarity matrix at 100~ms revealed
 that the top 8 eigenvectors account for 35.2\% of variance, with a
@@ -458,36 +513,78 @@ the shared attractor}
 
 To test whether the transient and sustained components of cross-mouse
 consistency are differentially produced by distinct cell classes, we
-classified VISp units by waveform trough-to-peak duration: units with
-duration $< 0.4$~ms were classified as putative fast-spiking (FSU;
-19.6\% of QC-passing units, mean 12.9 units per session) and units with
-duration $\geq 0.4$~ms as regular-spiking (RSU; mean 53.1 units per
-session).  We then computed cross-mouse consistency separately for each
-subpopulation at each sliding-window time point (minimum 8 units per
-session per class; FSU: 27/32 sessions; RSU: 32/32 sessions).
+classified VISp units by waveform trough-to-peak duration.  Rather than a
+single hand-picked cutoff, we fit a 2-component Gaussian mixture model
+(GMM) to log waveform duration across all 3,694 QC-passing VISp units
+(fitting in log-space prevents a small tail of long-duration units,
+$\sim$1--2.2~ms, likely triphasic/artifact waveforms, from being fit as
+its own spurious component instead of the true narrow/broad structure).
+The fit recovered component means of 0.263~ms (narrow) and 0.627~ms
+(broad).  A unit was classified as putative fast-spiking (FSU) or
+regular-spiking (RSU) only if (a) its posterior probability of component
+membership exceeded 0.9, excluding the ambiguous gap between the two
+modes, and (b) it fell within a symmetric interval capturing 60\% of that
+component's own probability mass around its mean (0.84 standard
+deviations in log-space), excluding the long tail from being swept into
+RSU merely for being broader than FSU.  This yielded an FSU range of
+0.218--0.316~ms and an RSU range of 0.549--0.728~ms (mean 8.0 and 39.4
+units per session, respectively; 28.2\% of units fell in the excluded
+ambiguous/outlier band).  We then computed cross-mouse consistency
+separately for each subpopulation at each sliding-window time point
+(minimum 8 units per session per class; FSU: 15/32 sessions; RSU: 31/32
+sessions).
 
 \subsubsection{Waveform-based dissociation}
 
 RSU and FSU subpopulations rose with identical onset latency ($\sim$40~ms),
 ruling out a temporal-precedence account of the cell-class difference
 (Figure~\ref{fig:celltypes}A).  FSU units showed a higher transient peak
-($r = 0.273$) than RSU units ($r = 0.246$) and a lower sustained floor
-($r = 0.119$ vs.\ $0.147$), yielding a substantially sharper T/S ratio:
-$2.30\times$ for FSU vs.\ $1.67\times$ for RSU (Figure~\ref{fig:celltypes}B).
+($r = 0.245$) than RSU units ($r = 0.217$) and a lower sustained floor
+($r = 0.107$ vs.\ $0.127$), yielding a substantially sharper T/S ratio:
+$2.29\times$ for FSU vs.\ $1.71\times$ for RSU (Figure~\ref{fig:celltypes}B).
 When all units were combined, cross-mouse consistency exceeded either
 subpopulation alone at the peak, suggesting superadditive contributions
 from the two cell classes encoding complementary image dimensions.
+
+\subsubsection{Unit-count-matched control}
+
+RSU sessions have roughly five times as many units as FSU sessions
+(mean 39.4 vs.\ 8.0), which inflates similarity-matrix signal-to-noise
+ratio, and hence raw consistency, independently of any genuine cell-type
+effect.  To isolate the cell-type contribution from this confound, we
+randomly subsampled each RSU session's unit pool down to 8 units
+(matching the mean FSU count) over 50 draws and recomputed the sliding
+consistency curve and T/S ratio on each matched draw.  The unit-matched
+RSU T/S ratio ($2.22\times$; draws: mean $2.23\times$, 95\% range
+$1.99$--$2.56\times$) remained below the FSU T/S ratio ($2.29\times$),
+confirming that the FSU/RSU T/S difference is not simply an artifact of
+RSU sessions having more units, though the matched control also narrows
+the gap relative to the raw comparison ($1.71\times$), indicating unit
+count does contribute part of the raw effect size.
 
 \subsubsection{Session-level FSU fraction}
 
 To test whether between-session variation in FSU abundance predicted the
 sharpness of the population-level transient, we split sessions at the
-median FSU fraction into high (mean fraction 0.285, $n = 16$) and low
-(mean fraction 0.166, $n = 16$) groups (Figure~\ref{fig:celltypes}C).
-The high-FSU group showed a T/S ratio of $1.81\times$ vs.\ $1.61\times$
-for the low-FSU group (difference $+0.20$), with the high-FSU group
+median FSU fraction into high (mean fraction 0.255, $n = 16$) and low
+(mean fraction 0.135, $n = 16$) groups (Figure~\ref{fig:celltypes}C).
+The high-FSU group showed a T/S ratio of $1.88\times$ vs.\ $1.57\times$
+for the low-FSU group (difference $+0.32$), with the high-FSU group
 peaking more sharply and decaying faster, consistent with FSU units being
 the primary driver of the transient component.
+
+Because low-FSU sessions mechanically have more total (mostly RSU) units
+--- FSU count is roughly stable while the denominator shrinks --- the
+low-FSU group also has a similarity-matrix SNR advantage, which produced
+a higher raw absolute consistency for the low-FSU group (mean $0.212$ vs.\
+$0.155$ for high-FSU over the 0--250~ms window, a gap of $+0.057$) that is
+not itself evidence against the FSU-driven transient account.  Subsampling
+the low-FSU group's unit pool down to the high-FSU group's mean unit
+count (55/session) reduced this gap to $+0.043$ ($0.198$ vs.\ $0.155$),
+showing that roughly a quarter of the raw absolute-consistency gap is an
+SNR artifact of unit count rather than a genuine FSU effect, while a
+residual gap remains; the T/S ordering (high-FSU $> $ low-FSU) held on the
+matched groups as well ($1.88\times$ vs.\ $1.62\times$).
 
 \subsubsection{\texorpdfstring{Optotagged PV$^+$ validation and the limits of waveform
 classification}{Optotagged PV+ validation and the limits of waveform classification}}
@@ -509,21 +606,27 @@ PV$^+$ units respectively) and were included in the cross-mouse RSA;
 two sessions contributed only one unit each and were excluded.
 
 A critical complication emerged from the waveform durations of the
-optotagged units: while 15 of 18 had trough-to-peak durations $< 0.4$~ms,
-three units had durations of 0.536, 0.577, and 0.618~ms (two from session
-760345702 and one from session 773418906), all above the FSU threshold.
-Session 773418906 contributed only this one optotagged unit and was
-excluded from the cross-mouse RSA (see below), so it does not appear in
-the optotagged temporal curves; its unit is counted here only for the
-waveform-duration tally.  This indicates that the 0.4~ms threshold is
-not a pure separator: the waveform-inferred FSU category is enriched for,
-but not identical to, the confirmed PV$^+$ population.  Quantitatively,
-this contamination deflates the FSU T/S ratio (by including broad-waveform
-PV$^+$ cells in the RSU category) and inflates the RSU T/S ratio.
+optotagged units, and the two-threshold GMM classification (above)
+resolves it more informatively than a single cutoff would.  Under the
+GMM's confidently-classified ranges (FSU: 0.218--0.316~ms; RSU:
+0.549--0.728~ms), only 6 of the 18 optotagged units fall in the
+confidently-FSU range, 2 fall in the confidently-RSU range (durations
+0.577 and 0.618~ms, both from session 760345702), and the remaining 10
+fall in the excluded ambiguous/outlier band --- i.e., most optotagged
+PV$^+$ units have waveform durations too close to the narrow/broad
+boundary to be confidently classified either way, rather than being
+cleanly but wrongly assigned to RSU.  This is a more accurate picture
+than the single-threshold analysis it replaces (which forced 15 of 18
+into FSU and 3 into RSU) and indicates that the waveform-inferred FSU
+category, even under a principled two-threshold rule, is enriched for
+but not identical to the confirmed PV$^+$ population.  Quantitatively,
+this residual contamination deflates the FSU T/S ratio slightly (by
+excluding some genuine PV$^+$ cells to the ambiguous band, or in two
+cases assigning them to RSU) relative to the true PV$^+$ T/S ratio.
 
 This prediction is borne out: confirmed PV$^+$ units show a sharper
 transient (T/S $= 3.59\times$) than waveform-inferred FSU units
-(T/S $= 2.30\times$; Figure~\ref{fig:celltypes}D--E).  The direction
+(T/S $= 2.29\times$; Figure~\ref{fig:celltypes}D--E).  The direction
 and magnitude of the effect are conserved and strengthened when the
 cell-type attribution is made by genetics rather than waveform, even with
 only three sessions contributing to the optotagged analysis.  The absolute
@@ -539,39 +642,51 @@ of the normalised curve and is unaffected by overall signal level.
   \textbf{(A)} Temporal consistency curves for RSU (pink), FSU (teal),
   and all units (dashed grey).  RSU and FSU rise with identical onset
   latency ($\sim$40~ms; annotated arrow) but diverge in T/S ratio
-  (FSU: 2.30$\times$; RSU: 1.67$\times$).  Triangle markers: peak;
+  (FSU: 2.29$\times$; RSU: 1.71$\times$).  Triangle markers: peak;
   dashed horizontal lines: sustained floor for each class.
   \textbf{(B)} T/S ratio bar chart per cell class.  Paired bars: peak
   (opaque) and sustained floor (semi-transparent); T/S ratio annotated
   above each pair.
   \textbf{(C)} Sessions split at median FSU fraction.  High FSU
-  ($n = 16$, mean fraction $= 0.285$, T/S $= 1.81\times$, teal-green) vs.\
-  low FSU ($n = 16$, mean fraction $= 0.166$, T/S $= 1.61\times$, dark red;
-  $\Delta$T/S $= +0.20$).  Dashed grey: all sessions.
-  \textbf{(D)} Temporal curves for waveform-inferred FSU ($n = 27$
+  ($n = 16$, mean fraction $= 0.255$, T/S $= 1.88\times$, teal-green) vs.\
+  low FSU ($n = 16$, mean fraction $= 0.135$, T/S $= 1.57\times$, dark red;
+  $\Delta$T/S $= +0.32$).  Dashed grey: all sessions.
+  \textbf{(D)} Temporal curves for waveform-inferred FSU ($n = 15$
   sessions, teal) and optotagged PV$^+$ units (light blue dashed,
   $n = 3$ sessions, 18 confirmed units).  Lower absolute consistency in
   the optotagged analysis reflects fewer units per session; T/S is a
   shape property unaffected by signal level.
   \textbf{(E)} T/S ratio comparison: optotagged PV$^+$ $= 3.59\times$
-  vs.\ waveform FSU $= 2.30\times$, consistent with partial impurity of
-  the waveform classification (3/18 optotagged PV$^+$ units had broad
-  waveforms, deflating the waveform FSU T/S estimate).
+  vs.\ waveform FSU $= 2.29\times$, consistent with partial impurity of
+  the waveform classification (of 18 optotagged PV$^+$ units, 6 fall in
+  the confidently-FSU range, 10 are excluded as ambiguous, and 2 fall in
+  the confidently-RSU range).
   \textbf{(F)} Waveform duration distribution across all 3,694
-  QC-passing VISp units.  Dashed line: 0.4~ms FSU/RSU threshold
-  (FSU fraction: 19.6\%).}
+  QC-passing VISp units, colored by classification: FSU (teal), RSU
+  (pink), and excluded ambiguous/outlier units (grey).  Classes were
+  assigned by a 2-component Gaussian mixture fit to log waveform duration
+  with a symmetric per-component probability-mass bound (FSU range:
+  0.218--0.316~ms; RSU range: 0.549--0.728~ms; 28.2\% of units excluded).}
   \label{fig:celltypes}
 \end{figure}
 
-\subsection{A Wilson-Cowan E/I model with inhibition-dominated connectivity
-reproduces the temporal profiles and generalises to held-out mice}
+\subsection{A Wilson-Cowan E/I model fit to firing rates converges with
+an independent fit to consistency curves on inhibition-dominated
+connectivity}
 
-To test whether the observed temporal dynamics are consistent with a
-minimal E/I circuit model, we fit a two-population Wilson-Cowan firing
-rate model \citep{wilson1972} to the RSU (E population) and FSU
-(I population) temporal consistency curves simultaneously.  Both
-populations receive a shared gamma-shaped thalamic drive (onset $\sim$40~ms;
-shape fixed to match the observed response latency).
+Every fit described so far treats cross-mouse consistency as the target
+of interest, but consistency is an agreement statistic, not a firing
+rate. A rate model's success in reproducing consistency curves does not,
+on its own, establish that a rate model's E/I dynamics track anything
+about actual population activity. To test this directly, we fit a
+two-population Wilson-Cowan firing-rate model \citep{wilson1972} to
+three different targets in turn: the image-selective firing-rate
+amplitude of the RSU (E population) and FSU (I population) pools
+(computed directly from the raw spike-count tensors), the same
+populations' uncorrected total firing rate, and the RSU/FSU temporal
+consistency curves used throughout the paper. Both populations receive a
+shared gamma-shaped thalamic drive (onset $\sim$40~ms; shape fixed to
+match the observed response latency).
 
 The model is described by:
 \begin{align}
@@ -593,37 +708,67 @@ recurrence-dominated dynamics.  The absolute scale of $w_\mathrm{IE}$
 is a nuisance parameter not well-determined by the data; $r_\mathrm{EI}$
 is the primary inference target.
 
-Optimisation yielded $r_\mathrm{EI} = 0.608$ (not at any parameter bound;
-$R^2_\mathrm{RSU} = 0.901$, $R^2_\mathrm{FSU} = 0.913$;
-Figure~\ref{fig:eimodel}A).  We note that $w_\mathrm{II}$ converged to
-its upper bound (8.0) in all fits; the absolute value of this parameter
-is not interpretable, but $r_\mathrm{EI}$ is stable across widened
-$w_\mathrm{II}$ bounds (Supplementary Figure~S9B).  Across 10 random
-initialisations, 9 converged to the same inhibition-dominated solution
-($r_\mathrm{EI} \approx 0.608$) while one escaped to a competing,
-recurrence-dominated basin near $r_\mathrm{EI} \approx 1.01$
-(mean $r_\mathrm{EI} = 0.648 \pm 0.120$ across all 10;
-Supplementary Figure~S9A).  This bimodality means the inhibition-dominated
-fit is the dominant but not the only attractor of the optimisation
-landscape.  Sensitivity analysis confirmed that T/S
-ratios $> 1$ require $r_\mathrm{EI} < 1$: increasing $r_\mathrm{EI}$
-above 1 flattens the transient and produces a sustained plateau
-inconsistent with the data (Figure~\ref{fig:eimodel}B).
+Total firing rate mixes image-selective, stimulus-driven modulation with
+non-selective drive shared identically across all images (e.g.\ a broad
+contrast/onset transient). The latter is exactly what per-unit z-scoring
+removes before consistency is computed (Methods), so total rate and
+consistency are not measuring the same thing even in principle. We
+therefore also computed an image-selective firing-rate amplitude for
+each pool: the per-unit standard deviation of firing rate across images,
+averaged over the pool, in the same sliding windows used for the
+consistency curves. A non-selective burst identical across images
+contributes $\approx 0$ to this quantity, mirroring the z-scoring step,
+while remaining a rate-derived measurement rather than a cross-mouse
+agreement statistic.
 
-To test whether the inhibition-dominance conclusion generalises to mice
-not used in fitting, we performed five-fold cross-validation over sessions
-(Figure~\ref{fig:eimodel}C).  In each fold, RSU and FSU consistency
-curves were computed from the $\sim$80\% training sessions and the model
-was fit using three warm starts near the full-data solution; the fitted
-parameters were then used to predict curves from the held-out
-$\sim$20\%.  Results: mean train $R^2 = 0.899 \pm 0.005$; mean test
-$R^2 = 0.889 \pm 0.023$; $r_\mathrm{EI} = 0.609 \pm 0.013$;
-$r_\mathrm{EI} < 1$ in every fold (fold-level values: 0.627, 0.614,
-0.605, 0.592, 0.609).  The inhibition-dominance conclusion is robust even
-in the worst-performing fold (test $R^2 = 0.871$,
-$r_\mathrm{EI} = 0.592$).  Because each fold is fit with warm starts near
-the full-data solution, this cross-validation demonstrates that the fit
-\textit{quality} generalises to held-out mice; it does not by itself
+Fit directly to this image-selective amplitude, optimisation yielded
+$r_\mathrm{EI} = 0.646$ ($R^2_\mathrm{RSU} = 0.901$,
+$R^2_\mathrm{FSU} = 0.900$; Figure~\ref{fig:eimodel}A), with the fit
+essentially uniquely identified across 10 random initialisations
+(mean $r_\mathrm{EI} = 0.646$, SD $< 0.001$). Fit independently to the
+cross-mouse consistency curves, the same model converged on a similar
+ratio ($r_\mathrm{EI} = 0.608$, $R^2_\mathrm{RSU} = 0.901$,
+$R^2_\mathrm{FSU} = 0.913$), though with more restart-to-restart
+variability: across 10 random initialisations, 9 converged to the same
+inhibition-dominated solution ($r_\mathrm{EI} \approx 0.608$) while one
+escaped to a competing, recurrence-dominated basin near
+$r_\mathrm{EI} \approx 1.01$ (mean $r_\mathrm{EI} = 0.648 \pm 0.120$
+across all 10; Supplementary Figure~S9C). Because these two fits target
+different quantities computed from largely non-overlapping information
+--- a rate amplitude and a cross-mouse agreement statistic --- their
+agreement is convergent evidence rather than a restatement of the same
+result.
+
+As a specificity check, fitting the same model to \textit{uncorrected}
+total firing rate, which retains the non-selective drive component,
+yielded a markedly different, less stable, and worse-fitting estimate
+($r_\mathrm{EI} = 0.924$; $R^2_\mathrm{RSU} = 0.805$,
+$R^2_\mathrm{FSU} = 0.601$; mean across restarts
+$= 0.926 \pm 0.006$; Supplementary Figure~S9B, D). This confirms that
+the agreement between the selective-amplitude and consistency fits is
+not simply an artefact of a five-parameter model's flexibility to match
+any pair of smooth curves: fitting the wrong signal produces a visibly
+worse and quantitatively different answer. Sensitivity analysis
+confirmed that T/S ratios $> 1$ require $r_\mathrm{EI} < 1$ within this
+model family: increasing $r_\mathrm{EI}$ above 1 flattens the transient
+and produces a sustained plateau inconsistent with the data
+(Figure~\ref{fig:eimodel}B).
+
+To test whether the inhibition-dominance conclusion generalises to
+sessions not used in fitting, we performed five-fold cross-validation
+over sessions on the selective-amplitude fit (Figure~\ref{fig:eimodel}C).
+In each fold, RSU and FSU selective-amplitude curves were computed from
+the $\sim$80\% training sessions and the model was fit using three warm
+starts near the full-data solution; the fitted parameters were then used
+to predict curves from the held-out $\sim$20\%.  Results: mean train
+$R^2 = 0.899 \pm 0.006$; mean test $R^2 = 0.877 \pm 0.042$;
+$r_\mathrm{EI} = 0.647 \pm 0.010$; $r_\mathrm{EI} < 1$ in every fold
+(fold-level values: 0.635, 0.649, 0.660, 0.653, 0.640).  The
+inhibition-dominance conclusion is robust even in the worst-performing
+fold (test $R^2 = 0.804$, $r_\mathrm{EI} = 0.653$).  Because each fold is
+fit with warm starts near the full-data solution, this cross-validation
+demonstrates that the fit \textit{quality} generalises to held-out
+sessions; it does not by itself
 demonstrate that $r_\mathrm{EI}$ is basin-independent within each fold ---
 that evidence comes instead from the 10-random-initialisation stability
 analysis above.
@@ -631,24 +776,32 @@ analysis above.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/fig6_ei_model.png}
-  \caption{\textbf{An inhibition-dominated Wilson-Cowan model reproduces
-  the dynamics and generalises to held-out mice.}
-  \textbf{(A)} Model fit (dashed) vs.\ data (solid) for RSU
-  ($R^2 = 0.901$, pink) and FSU ($R^2 = 0.913$, teal) curves.
-  $r_\mathrm{EI} = 0.608$ (inhibition-dominated; $r_\mathrm{EI} < 1$).
-  Note: $w_\mathrm{II}$ converges to its upper bound; see Supplementary
-  Figure~S9.
+  \caption{\textbf{A Wilson-Cowan model fit directly to image-selective
+  firing rates recovers inhibition-dominated connectivity and
+  generalises to held-out sessions.}
+  \textbf{(A)} Model fit (dashed) vs.\ data (solid) for RSU and FSU
+  image-selective firing-rate amplitude ($R^2_\mathrm{RSU} = 0.901$,
+  $R^2_\mathrm{FSU} = 0.900$). $r_\mathrm{EI} = 0.646$.
   \textbf{(B)} T/S ratio sensitivity as a function of $r_\mathrm{EI}$
-  (x-axis) and $w_\mathrm{IE}$ (y-axis).  Star: fitted parameters.
+  (x-axis) and $w_\mathrm{IE}$ (y-axis), other parameters fixed at the
+  selective-amplitude fit's values.  Star: fitted parameters.
   White dashed line: $r_\mathrm{EI} = 1$ (balance point between
   recurrent excitation and lateral inhibition).  High T/S ratios
   require $r_\mathrm{EI} < 1$ (left of balance line).
-  \textbf{(C)} Five-fold cross-validation over sessions.  Bars (left
-  axis): train $R^2$ (blue) and test $R^2$ (light blue) per fold; dashed
-  light blue: mean test $R^2 = 0.889$.  Points (right axis, dark red):
-  $r_\mathrm{EI}$ per fold; dashed dark red: mean $= 0.609 \pm 0.013$;
-  reference at $r_\mathrm{EI} = 1$.  Inhibition dominates in all five
-  held-out subsets.}
+  \textbf{(C)} Five-fold cross-validation of the selective-amplitude fit
+  over sessions.  Bars (left axis): train $R^2$ and test $R^2$ per fold;
+  mean test $R^2 = 0.877 \pm 0.042$.  Points (right axis):
+  $r_\mathrm{EI}$ per fold; mean $= 0.647 \pm 0.010$; reference at
+  $r_\mathrm{EI} = 1$.  $r_\mathrm{EI} < 1$ in all five held-out subsets.
+  \textbf{(D)} $r_\mathrm{EI}$ recovered from three independent fit
+  targets --- cross-mouse consistency, uncorrected total firing rate,
+  and image-selective firing-rate amplitude --- with error bars showing
+  SD across 10 random restarts.  The selective-amplitude and consistency
+  fits converge on similar values despite being computed from different
+  quantities; the total-rate fit, which retains non-selective drive,
+  gives a markedly different and less stable estimate.  See
+  Supplementary Figure~S9 for the consistency and total-rate fit curves
+  and the $w_\mathrm{II}$-bound sensitivity of all three fits.}
   \label{fig:eimodel}
 \end{figure}
 
@@ -709,7 +862,7 @@ evidence of no relationship.
 \end{figure}
 
 \subsection{The transient is specific to natural scenes: gratings produce
-an immediate sustained plateau}
+a flat, still-rising response rather than a transient peak}
 
 Static gratings produced substantially higher absolute consistency than
 natural scenes (mean $r = 0.720$ vs.\ $r = 0.183$ for natural scenes in
@@ -727,6 +880,25 @@ transient-plus-sustained structure (peak $r = 0.307$ at 100~ms,
 T/S $= 1.68\times$).  We restrict quantitative comparisons to the
 0--250~ms window for the same contamination reason as natural scenes.
 
+The raw-magnitude gap above is not directly comparable, however: gratings
+have 30 conditions (29-dimensional similarity profiles) while natural
+scenes have 118 images (117-dimensional profiles), and the per-item
+Spearman consistency measure's noise properties depend on this
+dimensionality independently of any real representational difference. To
+control for this, we recomputed natural-scenes consistency after
+subsampling the same 30 images per random draw (50 draws, matching the
+gratings condition count exactly; Figure~\ref{fig:gratings}, light blue).
+This raised the fixed-window estimate from $r = 0.183$ to
+$r = 0.303$ (95\% range across draws: $[0.258, 0.354]$) --- confirming
+that part of the raw magnitude gap was a dimensionality artefact --- but
+the item-count-matched value remains far below gratings ($r = 0.720$), and
+the T/S ratio is essentially unchanged under matching ($1.66\times$ vs.\
+$1.68\times$ unmatched).  The shape comparison between stimulus classes,
+which is unaffected by item count, is therefore the more reliable
+evidence for a genuine difference; the magnitude comparison should be
+read as directionally consistent with it but partially inflated by the
+dimensionality mismatch.
+
 This comparison is consistent with the view that feedforward responses
 to simple, low-complexity stimuli are sufficient to produce stable shared
 representations in V1, while the complex stimulus-specific inhibitory
@@ -738,15 +910,23 @@ broader, less stereotyped neural population.
   \includegraphics[width=\textwidth]{figures/fig8_gratings_vs_natural_scenes.png}
   \caption{\textbf{Static gratings produce a weaker and less transient
   cross-mouse consistency than natural scenes.}
-  Raw mean cross-mouse consistency over time for natural scenes (blue,
-  peak $r = 0.307$ at 100~ms, T/S $= 1.68\times$) and static gratings
-  (gold, rises by $\sim$60~ms then stays flat, T/S $\approx 1.00\times$).
+  Raw mean cross-mouse consistency over time for natural scenes (dark
+  blue, peak $r = 0.307$ at 100~ms, T/S $= 1.68\times$) and static
+  gratings (gold, rises by $\sim$60~ms then stays flat,
+  T/S $\approx 1.00\times$).  Light blue: natural-scenes consistency
+  recomputed after subsampling to 30 images per draw (50 draws, shaded
+  band = 95\% range across draws), matching the gratings condition count
+  to control for the item-count confound in the raw-magnitude comparison
+  (peak $r = 0.291$, T/S $= 1.66\times$) --- closely tracking the
+  full-118-image curve in shape while confirming that some of the raw
+  magnitude gap reflects dimensionality rather than stimulus identity.
   Gratings rise to a near-immediate plateau; natural scenes show the
-  transient-plus-sustained structure.  Dotted vertical line: stimulus
-  offset (250~ms); data beyond this point risk contamination from the
-  next stimulus.  Both conditions have similarly high within-mouse
-  response reliability (gratings $= 0.992$, natural scenes $= 0.978$),
-  so the shape difference is not a reliability artefact.}
+  transient-plus-sustained structure regardless of item count.  Dotted
+  vertical line: stimulus offset (250~ms); data beyond this point risk
+  contamination from the next stimulus.  Both conditions have similarly
+  high within-mouse response reliability (gratings $= 0.992$, natural
+  scenes $= 0.978$), so the shape difference is not a reliability
+  artefact.}
   \label{fig:gratings}
 \end{figure}
 
@@ -769,6 +949,23 @@ than differential reliability.  The transient-plus-sustained temporal
 structure was qualitatively present in all areas.  Between-area
 comparisons are reported descriptively; areas share sessions, and a
 formal test would require a mixed model accounting for this dependence.
+
+The five areas also differ in mean per-session unit count (VISp 63.0,
+VISl 38.9, VISal 67.1, VISpm 44.0, VISam 57.9), which inflates
+similarity-matrix SNR and hence raw T/S ratio independently of any
+genuine areal difference.  To control for this, we randomly subsampled
+every area's unit pool down to 39 units/session (VISl's mean, the
+smallest of the five) over 20 draws and recomputed T/S on each matched
+draw.  Matched T/S ratios were uniformly higher than raw (e.g.\ VISp:
+$1.68\times \to 1.81\times$; VISl: $2.03\times \to 2.13\times$; full
+values in Methods), and the ranking was preserved for three of the five
+areas (VISl $>$ VISam $>$ VISal, both raw and matched), but VISp and
+VISpm swapped order: VISpm was marginally higher than VISp under the raw
+comparison ($1.74\times$ vs.\ $1.68\times$) but marginally lower under
+the matched comparison ($1.79\times$ vs.\ $1.81\times$).  This pair is
+therefore not distinguishable once unit count is controlled, and the
+overall cross-area ranking should be read as robust except for the
+VISp/VISpm comparison specifically.
 
 \begin{figure}[htbp]
   \centering
@@ -813,7 +1010,9 @@ coincides precisely with a collapse of the shared representational geometry
 to its minimum dimensionality (PR~$= 31.5$ at 100~ms, vs.\ a pre-stimulus
 baseline of $\approx 108$, for the cross-mouse-averaged similarity
 matrix), and PR and consistency are tightly coupled across the entire
-post-stimulus epoch (Spearman $r = -0.853$).  The same coupling holds,
+post-stimulus epoch (Spearman $r = -0.853$; confirmed by a
+non-overlapping-window control on independent windows, $r = -0.929$,
+$p = 4.6\times10^{-6}$; Methods).  The same coupling holds,
 essentially as strongly, when PR is computed independently within each
 mouse and only then averaged (per-mouse PR: pre-stimulus $\approx 35.6 \to$
 peak 15.3; Spearman $r = -0.805$), which rules out the concern that the
@@ -821,29 +1020,57 @@ averaged-matrix result is merely a restatement of consistency itself.
 These two
 findings are measured directly from the same similarity matrices and are,
 in effect, two views of a single underlying phenomenon: cross-individual
-agreement is high exactly when, and because, the population code is
-compressed into a small number of stereotyped dimensions.  This coupling
+agreement is high exactly when the population code is compressed into a
+small number of stereotyped dimensions. Because both quantities are also
+plausibly driven by the shared stimulus-evoked response envelope, we
+tested this coupling against a common-cause account by partialling out a
+response-envelope proxy (mean raw population response per window); the
+coupling was essentially unchanged (avg-matrix: partial
+$r = -0.801$ vs.\ raw $-0.853$; per-mouse: partial $r = -0.718$ vs.\ raw
+$-0.805$, both $p < 10^{-3}$), indicating that PR tracks consistency
+beyond what shared response magnitude predicts on its own. Under an
+autocorrelation-robust circular-shift test (Methods), the raw
+envelope--consistency correlation was no longer distinguishable from
+chance ($p = 0.211$), weakening rather than strengthening a common-cause
+interpretation, while the PR--consistency coupling itself is confirmed
+by a fully independent, non-overlapping-window control ($r = -0.929$,
+$p = 4.6\times10^{-6}$). This coupling
 is the strongest and most direct result in the paper, and it does not
 depend on any of the mechanistic claims that follow.
 
 The remaining results address \textit{why} this compression occurs.
 Third, FSU units produce a sharper transient than RSU units despite
-identical onset latency, and sessions with more FSU units show
-correspondingly sharper population-level transients.  Fourth, genetically
-confirmed PV$^+$ units show an even sharper transient
-(T/S $= 3.59\times$) than waveform-inferred FSU units
-(T/S $= 2.30\times$), strengthening the cell-type attribution while
+identical onset latency, a difference that survives a unit-count-matched
+subsampling control (matched RSU T/S $= 2.22\times$, still below FSU's
+$2.29\times$), and sessions with more FSU units show correspondingly
+sharper population-level transients, a difference that likewise survives
+matching the two session groups' unit counts (though roughly a quarter of
+the raw absolute-consistency gap between them is attributable to a
+similarity-matrix SNR advantage from unit count rather than a genuine FSU
+effect).  Fourth, genetically confirmed PV$^+$ units show an even
+sharper transient (T/S $= 3.59\times$) than waveform-inferred FSU units
+(T/S $= 2.29\times$), strengthening the cell-type attribution while
 revealing an impurity in the waveform classification.  Fifth, a
-five-parameter Wilson-Cowan E/I model fit to training sessions generalises
-to held-out mice with mean test $R^2 = 0.889$ and recovers an
-inhibition-dominated ratio ($r_\mathrm{EI} = 0.609 \pm 0.013$) stable
-across all five cross-validation folds.
+five-parameter Wilson-Cowan E/I model fit directly to the image-selective
+firing-rate amplitude of training sessions generalises to held-out
+sessions with mean test $R^2 = 0.877$ and recovers an inhibition-dominated
+ratio ($r_\mathrm{EI} = 0.647 \pm 0.010$) stable across all five
+cross-validation folds; an independent fit of the same model to
+cross-mouse consistency curves converges on a similar ratio
+($r_\mathrm{EI} = 0.608$), while a fit to uncorrected total firing rate
+gives a markedly different, less stable estimate
+($r_\mathrm{EI} = 0.924$), indicating the first two fits' agreement
+reflects a real property of the data rather than curve-fitting
+flexibility.
 
 Among the mechanistic evidence, the cross-validated E/I model is the
-strongest single piece: a minimal circuit description fit to $\sim$26
-sessions reproduces the temporal dynamics of the remaining $\sim$6 with
-test $R^2 > 0.87$ in every fold, and the inhibition-dominance conclusion
-is robust even in the worst fold.  The optotagging result, despite the
+strongest single piece, precisely because it does not rest on consistency
+alone: fit directly to real, image-selective firing rates, a minimal
+circuit description trained on $\sim$26 sessions reproduces the temporal
+dynamics of the remaining $\sim$6 with test $R^2 > 0.80$ in every fold,
+the inhibition-dominance conclusion is robust even in the worst fold, and
+an independently-computed cross-mouse consistency curve is fit by the
+same model to a similar ratio. The optotagging result, despite the
 small sample ($n = 3$ usable sessions), is the most direct evidence for
 the PV$^+$ attribution specifically.  We emphasise, however, that the
 central empirical claim --- the existence and timing of the transient
@@ -891,16 +1118,23 @@ contributions shaped by individual experience and circuit variation.
 
 \subsection{The optotagging complication and its interpretation}
 
-The finding that 3 of 18 optotagged PV$^+$ units had waveform durations
-at or above the canonical 0.4~ms threshold is an important caveat for
-waveform-based cell-type inference.  This result is not unprecedented:
-prior work has noted that a subset of PV$^+$ cells express intermediate
-waveform widths, particularly in superficial cortical layers
-\citep{bartho2004,mccormick1985}.  The practical consequence for our
-analysis is quantifiable: contamination of the RSU pool by misclassified
-PV$^+$ cells inflates the RSU T/S ratio slightly and deflates the FSU
-T/S ratio, producing exactly the pattern we observe
-(optotagged T/S $3.59\times$ $>$ waveform FSU T/S $2.30\times$).  The
+The finding that only 6 of 18 optotagged PV$^+$ units fall within a
+confidently-classified FSU waveform range, with 10 in an excluded
+ambiguous band and 2 in the confidently-classified RSU range, is an
+important caveat for waveform-based cell-type inference.  This result is
+not unprecedented: prior work has noted that a subset of PV$^+$ cells
+express intermediate waveform widths, particularly in superficial
+cortical layers \citep{bartho2004,mccormick1985}.  Replacing a single
+hand-picked 0.4~ms threshold with a two-component Gaussian mixture and a
+symmetric per-component probability-mass bound (Methods) makes this
+ambiguity explicit rather than hiding it: most borderline optotagged
+units are now correctly excluded as ambiguous rather than being forced
+into a bin, and only 2 of 18 are actively misclassified as RSU (versus 3
+of 18 under the single-threshold rule).  The practical consequence for
+our analysis is quantifiable: residual contamination of the RSU pool by
+misclassified PV$^+$ cells inflates the RSU T/S ratio slightly and
+deflates the FSU T/S ratio, producing exactly the pattern we observe
+(optotagged T/S $3.59\times$ $>$ waveform FSU T/S $2.29\times$).  The
 optotagging result therefore not only validates the direction of the
 waveform-based finding but also provides a corrected, higher estimate of
 the true PV$^+$ T/S ratio.  Our main conclusions are
@@ -910,19 +1144,34 @@ the true PV$^+$ T/S ratio.  Our main conclusions are
 
 \paragraph{E/I model identifiability.}
 The Wilson-Cowan model is a phenomenological description, not a
-mechanistic claim.  The $w_\mathrm{II}$ parameter converged to its upper
-bound in all fits, indicating that self-inhibition among FSU units is
-poorly determined by these data; its absolute value should not be
-interpreted.  The key inference target $r_\mathrm{EI}$ is not at any
-bound and is stable across wider parameter ranges
-(Supplementary Figure~S9B).  The 10-random-initialisation stability check
+mechanistic claim.  An earlier concern with this analysis was that the
+model was fit only to cross-mouse consistency curves, an agreement
+statistic rather than a firing rate, leaving open whether the recovered
+$r_\mathrm{EI}$ reflected anything about actual population dynamics
+rather than a five-parameter model's ability to match any pair of smooth
+curves. We addressed this directly by fitting the same model to the
+image-selective firing-rate amplitude of the RSU/FSU pools, computed
+independently from the raw spike-count tensors; this fit converges on a
+similar $r_\mathrm{EI}$ ($0.646$ vs.\ $0.608$ from consistency) and is, if
+anything, better identified (SD $< 0.001$ across restarts vs.\ $0.120$
+for the consistency fit; Supplementary Figure~S9C). A fit to uncorrected
+total firing rate, which retains non-selective drive that the
+selective-amplitude and consistency computations both exclude, gives a
+markedly different and less stable estimate ($r_\mathrm{EI} = 0.924$),
+showing that the model does discriminate between fit targets rather than
+absorbing any input into the same answer. Some identifiability concerns remain specific to individual fits: the
+$w_\mathrm{II}$ parameter converged to its upper bound in the consistency
+fit, so its absolute value should not be interpreted there; $r_\mathrm{EI}$
+itself is stable across widened $w_\mathrm{II}$ bounds for all three fit
+targets (Supplementary Figure~S9D).  The 10-random-initialisation stability check
 also reveals a competing, recurrence-dominated optimum
-($r_\mathrm{EI} \approx 1.01$) that one of ten restarts converges to; the
-inhibition-dominated solution is the dominant basin (9/10 restarts) but
-not the only one, so this should be read as a strong majority result
-rather than a globally unique optimum.  More constrained inference would
-require single-trial data or perturbational experiments that
-independently vary E and I drive.
+($r_\mathrm{EI} \approx 1.01$) that one of ten restarts converges to for
+the consistency fit specifically; the inhibition-dominated solution is
+the dominant basin there (9/10 restarts) but not the only one, so that
+particular fit should be read as a strong majority result rather than a
+globally unique optimum. More constrained inference would require
+single-trial data or perturbational experiments that independently vary
+E and I drive.
 
 \paragraph{Sustained floor interpretation.}
 The sustained component ($r = 0.182$, 220--250~ms) is estimated from a
@@ -938,13 +1187,33 @@ The optotagged PV$^+$ analysis rests on only three sessions contributing
 treated as directional support for the waveform-based finding, not as a
 precise quantitative estimate of the true PV$^+$ T/S ratio.
 
+\paragraph{Residual unit-count confound.}
+FSU, RSU, and the high-/low-FSU-fraction session groups all differ in
+unit count, which inflates similarity-matrix SNR and hence raw
+consistency independently of any genuine cell-type effect.
+Unit-count-matched subsampling controls (Results) show that the FSU/RSU
+T/S difference and the high-/low-FSU T/S difference both survive
+matching, but they also show the confound is only partially, not fully,
+resolved: the matched RSU T/S ($2.22\times$) sits closer to the FSU T/S
+($2.29\times$) than the raw comparison suggests, and roughly a quarter of
+the raw absolute-consistency gap between high- and low-FSU-fraction
+sessions is attributable to unit count rather than FSU abundance itself.
+The T/S metric's within-curve normalisation limits, but does not
+eliminate, this confound, since unit count also affects the curve's
+overall noise floor and hence, to a lesser degree, its shape.
+
 \paragraph{Cross-area comparisons.}
 Areas share sessions, so between-area comparisons of consistency levels
 are not statistically independent.  The observed pattern --- highest in
 VISp, lower and roughly comparable across the four extrastriate areas
 --- is consistent with known hierarchical properties of the mouse visual
 system but should be interpreted descriptively pending a formal
-mixed-model analysis.
+mixed-model analysis.  Areas also differ in mean per-session unit count,
+which we addressed with a unit-count-matched subsampling control
+(Results); the T/S ranking was preserved for three of the five areas but
+VISp and VISpm swapped order between the raw and matched comparisons,
+indicating that pair specifically is not distinguishable once unit count
+is controlled.
 
 \paragraph{Attractor geometry and image content.}
 The two dominant attractor dimensions account for only 19.3\% of the
@@ -1007,7 +1276,18 @@ $> 0.9$, and ISI violation rate $< 0.5$.  Sessions were included in the
 analysis of a given area only if they contributed at least 10 QC-passing
 units in that area.  All 32 sessions contributed at least 10 VISp units
 (range: 14--110).  Session counts for other areas were: VISl 24,
-VISal 23, VISpm 20, VISam 26.
+VISal 23, VISpm 20, VISam 26.  Mean units/session were: VISp 63.0,
+VISl 38.9, VISal 67.1, VISpm 44.0, VISam 57.9.  To control for the
+resulting SNR confound in cross-area T/S comparisons (Results), each
+area's unit pool was randomly subsampled down to 39 units/session (VISl's
+mean, the smallest of the five) over 20 draws, and the sliding
+consistency curve and T/S ratio were recomputed on each matched draw.
+Raw vs.\ matched T/S ratios were: VISp $1.68\times \to 1.81\times$
+(95\% range across draws $1.73$--$1.89\times$), VISl
+$2.03\times \to 2.13\times$ ($1.97$--$2.30\times$), VISal
+$1.84\times \to 1.92\times$ ($1.84$--$2.00\times$), VISpm
+$1.74\times \to 1.79\times$ ($1.72$--$1.87\times$), VISam
+$2.00\times \to 2.10\times$ ($1.99$--$2.23\times$).
 
 \subsection{Preprocessing and response matrix construction}
 
@@ -1081,20 +1361,27 @@ feature dimension (256--2048) greatly exceeds the number of images.
 Layer~2 (512-dimensional) was selected as the primary CNN predictor on
 the basis of LOO accuracy across layers (Figure~\ref{fig:predictors}C);
 the final layer (1000-dimensional), which performed comparably, was
-carried through the same independence-from-sparsity analysis as a
+carried through the same sparsity-comparison analysis as a
 robustness check (Figure~\ref{fig:predictors}D, Supplementary
 Figure~\ref{fig:S2}).
 
-Independence from sparsity was assessed with two partialling methods.
-(1)~\textit{Added-variable (OLS) partial correlation}, the primary
-method reported in the main text: consistency, sparsity, and the
-full-model CNN LOO prediction were each residualised by ordinary
-least-squares regression on the other predictor, and the Pearson
-correlation of the residuals gives the partial correlation in each
-direction (sparsity~$|$~CNN and CNN~$|$~sparsity).  This is also the
-basis of the nested $R^2$ comparison ($R^2$ for
-consistency~$\sim$~sparsity alone vs.\
-consistency~$\sim$~sparsity~$+$~CNN).
+Whether the CNN-based signal added explanatory power beyond sparsity
+was assessed primarily by a nested $R^2$ comparison: $R^2$ for
+consistency~$\sim$~sparsity alone was compared against
+consistency~$\sim$~sparsity~$+$~CNN, where the CNN term was the
+full-model ridge LOO prediction (Figure~\ref{fig:predictors}D). This
+model-comparison statistic was treated as the headline evidence because,
+unlike a partial correlation, it does not require residualising a
+fitted, cross-validated prediction against the variable it was fit to
+predict.
+
+Two partialling methods were additionally computed as a secondary,
+robustness check, reported in Supplementary Figure~\ref{fig:S2}.
+(1)~\textit{Added-variable (OLS) partial correlation}: consistency,
+sparsity, and the full-model CNN LOO prediction were each residualised
+by ordinary least-squares regression on the other predictor, and the
+Pearson correlation of the residuals gives the partial correlation in
+each direction (sparsity~$|$~CNN and CNN~$|$~sparsity).
 (2)~\textit{Rank-residualised (Spearman) partial correlation}, an
 independent, non-parametric check reported in Supplementary
 Figure~\ref{fig:S2}C: both variables were rank-transformed, the linear
@@ -1102,8 +1389,12 @@ effect of the rank-transformed covariate was regressed out, and the
 Spearman correlation of the residuals was computed.  In both cases, the
 CNN quantity partialled was the full ridge LOO prediction from the
 512-dimensional layer~2 (or 1000-dimensional final-layer) embedding, not
-a scalar summary of the embedding, since it is the full-model prediction
-that carries the predictive signal being tested for independence.
+a scalar summary of the embedding.  Because these partial-correlation
+estimates residualise a prediction that was itself cross-validated
+against consistency, and because their magnitude varied substantially
+between the two partialling methods (Results), they are reported as
+illustrative robustness detail rather than as the primary test of
+independence.
 
 \subsection{Sliding-window temporal analysis}
 
@@ -1123,14 +1414,78 @@ $\lambda_i \geq 0$ is $\mathrm{PR}(\mathbf{M}) =
 the average similarity matrix was formed by summing per-session cosine
 similarity matrices and dividing by the number of sessions.
 
+\subsection{Response-envelope control}
+
+Because both PR and cross-mouse consistency are computed from the same
+per-window response matrices, we tested whether their covariation across
+time is attributable to a shared response envelope rather than a specific
+link between dimensionality and agreement. The envelope was defined as the
+mean raw (pre-z-score) population response --- summed spike count per unit
+per image within each window, averaged over units, images, and mice ---
+computed upstream of the per-window z-scoring used for RSA, since that
+normalisation removes each window's overall response magnitude by
+construction. Given this envelope $z$, the relationship between consistency
+$x$ and PR $y$ was re-assessed with the Spearman partial correlation
+\begin{equation}
+  r_{xy \cdot z} = \frac{r_{xy} - r_{xz} \, r_{yz}}
+  {\sqrt{(1 - r_{xz}^2)(1 - r_{yz}^2)}},
+  \label{eq:partial}
+\end{equation}
+with significance assessed via a $t$-test on $n - 3$ degrees of freedom.
+
+\subsection{Autocorrelation-robust significance for sliding-window correlations}
+
+Because the sliding windows overlap (25~ms windows stepped by 10~ms, or
+20~ms as subsampled for the PR analysis), correlations computed across
+post-stimulus windows do not have $n$ independent observations, and the
+analytic $p$-values reported alongside them understate the true
+$p$-value. We assessed the PR--consistency and envelope correlations
+with two additional, assumption-appropriate tests.
+
+First, a circular-shift permutation test: the null distribution was built
+by circularly shifting one series relative to the other by every one of
+the $n-1$ non-trivial lags, which preserves each series' own
+autocorrelation structure while destroying only their mutual alignment;
+the $p$-value is the fraction of shifted correlations at least as extreme
+as the observed one. For the partial correlations, consistency was
+shifted relative to the paired (PR, envelope), so the PR--envelope
+relationship was preserved under the null. With $n = 19$ post-stimulus
+windows this test has only 18 possible shifts, giving a resolution floor
+of $p \approx 1/19 = 0.053$; several of our correlations were more
+extreme than all 18 shifts and are reported at this floor rather than as
+non-significant.
+
+Second, a non-overlapping-window control: PR and consistency were
+recomputed at windows spaced one full window-width (30~ms) apart, so no
+two windows share any spike-count bins and the resulting points are
+independent by construction. This yields fewer points (13 post-stimulus
+windows) but permits a conventional analytic significance test with no
+autocorrelation correction.
+
 \subsection{Waveform-based cell class classification}
 
-Units were classified as FSU (fast-spiking, putative PV$^+$) if their
-trough-to-peak waveform duration was $< 0.4$~ms, and as RSU
-(regular-spiking, putative pyramidal/excitatory) otherwise, using the
-canonical threshold \citep{bartho2004,mccormick1985}.  Sessions with
-fewer than 8 QC-passing units of a given class were excluded from that
-class's analysis (FSU: 27/32 sessions retained; RSU: 32/32).
+Units were classified as FSU (fast-spiking, putative PV$^+$) or RSU
+(regular-spiking, putative pyramidal/excitatory) using trough-to-peak
+waveform duration, following the canonical narrow/broad distinction
+\citep{bartho2004,mccormick1985}, but via a two-threshold rule rather
+than the single hand-picked cutoff used in that convention.  A
+2-component Gaussian mixture model was fit to log waveform duration
+across all 3,694 QC-passing VISp units (log-space fitting prevents a
+small tail of long-duration, likely triphasic/artifact units from being
+fit as a spurious third mode).  A unit was assigned to a class only if
+(i)~its posterior probability of membership in the corresponding
+component exceeded 0.9, and (ii)~it fell within a symmetric interval
+capturing 60\% of that component's own probability mass around its mean
+(0.84 standard deviations in log-space); units failing either criterion
+were labelled ambiguous and excluded from both classes.  This yielded an
+FSU range of 0.218--0.316~ms and an RSU range of 0.549--0.728~ms
+(28.2\% of units excluded as ambiguous).  Sessions with fewer than 8
+QC-passing units of a given class were excluded from that class's
+analysis (FSU: 15/32 sessions retained; RSU: 31/32).  To control for the
+resulting unit-count difference between classes, RSU sessions were also
+subsampled down to the mean FSU unit count (8/session) over 50 random
+draws, and the sliding consistency curve and T/S ratio were recomputed
+on each matched draw (Results).
 
 \subsection{Optotagging validation}
 
@@ -1159,19 +1514,30 @@ w_\mathrm{II}, I_\mathrm{amp}\}$ with bounds $r_\mathrm{EI} \in
 $w_\mathrm{EI} \in [0.1, 15.0]$, $w_\mathrm{II} \in [0.0, 8.0]$,
 $I_\mathrm{amp} \in [0.5, 20.0]$.  The model was integrated with
 \texttt{scipy.integrate.odeint} (rtol $= 10^{-6}$, atol $= 10^{-8}$)
-and fit by minimising the sum of mean squared errors between normalised
-model outputs and normalised RSU/FSU consistency curves simultaneously
-using L-BFGS-B.  Sensitivity to the $w_\mathrm{II}$ upper bound is shown
-in Supplementary Figure~S9B.
+and fit by minimising the sum of mean squared errors between
+normalised model outputs and normalised RSU/FSU curves simultaneously
+using L-BFGS-B, with ten initialisations (one informed, nine random) per
+fit target.  The model was fit independently to three targets: (i)
+cross-mouse consistency curves, (ii) uncorrected total firing rate ---
+the mean per-unit, per-image spike rate (Hz) in each sliding window,
+summed across the pool --- and (iii) image-selective firing-rate
+amplitude, the per-unit standard deviation of firing rate across images
+(Hz), averaged over the pool, in the same sliding windows.  Rate curves
+(ii) and (iii) were computed directly from the raw spike-count tensors
+using the same RSU/FSU unit classification, sessions, and window grid as
+the consistency curves.  Sensitivity to the $w_\mathrm{II}$ upper bound,
+shown separately for all three fit targets, is in Supplementary
+Figure~S9D.
 
 \subsection{Cross-validation}
 
-Five-fold cross-validation was performed over sessions.  In each fold,
-RSU and FSU temporal consistency curves were computed from the
-$\sim$80\% training sessions; the model was fit using three warm starts
-near the full-data solution.  The fitted parameters were then used to
-predict curves from the $\sim$20\% held-out sessions.  Train and test
-$R^2$ were computed on amplitude-normalised curves.
+Five-fold cross-validation was performed over sessions, for the
+selective-amplitude fit.  In each fold, RSU and FSU selective-amplitude
+curves were computed from the $\sim$80\% training sessions; the model was
+fit using three warm starts near the full-data solution.  The fitted
+parameters were then used to predict curves from the $\sim$20\% held-out
+sessions.  Train and test $R^2$ were computed on amplitude-normalised
+curves.
 
 \subsection{Grating response matrices}
 
@@ -1229,26 +1595,27 @@ The author declares no competing interests.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/figS2_cnn_detail.png}
-  \caption{\textbf{Partial-correlation robustness detail, layer~2 and the
-  final ResNet50 layer.}  Layer~2 (purple circles) and the
-  final layer (teal circles) are shown together in every
-  panel to confirm the independence-from-sparsity result is not specific
-  to one layer.
-  \textbf{(A)} Added-variable residual scatter, sparsity~$|$~CNN --- the
-  point clouds underlying Figure~\ref{fig:predictors}D's bars (layer~2:
-  partial $r = -0.523$; final: partial $r = -0.424$).
+  \caption{\textbf{Partial-correlation robustness checks for the
+  CNN--sparsity relationship, layer~2 and the final ResNet50 layer ---
+  see Figure~\ref{fig:predictors}D for the headline nested-$R^2$
+  result.}  Layer~2 (purple circles) and the final layer (teal circles)
+  are shown together in every panel to confirm the pattern is not
+  specific to one layer.
+  \textbf{(A)} Added-variable residual scatter, sparsity~$|$~CNN
+  (layer~2: partial $r = -0.523$; final: partial $r = -0.424$).
   \textbf{(B)} Added-variable residual scatter, CNN~$|$~sparsity
   (layer~2: partial $r = -0.501$; final: partial $r = -0.378$).
   \textbf{(C)} Rank-based (Spearman) partial correlation, CNN~$|$~sparsity
   (layer~2: $r = -0.828$, $p = 5.5\times10^{-31}$; final: $r = -0.887$,
-  $p = 9.9\times10^{-41}$) --- a larger-magnitude partial correlation than
-  the added-variable estimates in (A)--(B), consistent with sparsity
-  acting as a partial suppressor: it shares variance with both
-  consistency and the CNN prediction, so removing it from both sharpens
-  their residual alignment.  This is convergent with the main-text result
-  (the CNN prediction carries signal independent of sparsity) but not
-  identical in magnitude, reflecting the different assumptions of the two
-  partialling methods.
+  $p = 9.9\times10^{-41}$) --- a substantially larger-magnitude partial
+  correlation than the added-variable estimates in (A)--(B) and than the
+  raw LOO $r$, a signature of sparsity acting as a partial suppressor: it
+  shares variance with both consistency and the CNN prediction, so
+  removing it from both can inflate residual alignment.  Directionally
+  consistent with (A)--(B), but the magnitude swing across methods means
+  this value should be read as illustrative rather than as a precise
+  effect size (Methods; Figure~\ref{fig:predictors}D reports the robust
+  nested-$R^2$ estimate).
   \textbf{(D)} Nested-$R^2$/partial-$r$ summary table comparing the
   added-variable (OLS) and rank-residualisation (Spearman) methods side
   by side, for both layers.}
@@ -1276,11 +1643,15 @@ The author declares no competing interests.
   \caption{\textbf{Waveform-based FSU classification under-detects
   genetically confirmed PV$^+$ interneurons.}
   \textbf{(A)} Strip plot of optotagged PV$^+$ unit waveform durations by
-  PV-Cre session ($n = 5$ sessions, 18 optotagged units total).  Dashed
-  line: 0.4~ms threshold.  Three units fall above the threshold.
-  \textbf{(B)} Confusion matrix: optotagging outcome vs.\ waveform-inferred
-  class (PV-Cre sessions only).  Sensitivity (PV$^+$ $\to$ FSU) $= 83\%$;
-  precision (FSU $\to$ PV$^+$) $= 26\%$.}
+  PV-Cre session ($n = 5$ sessions, 18 optotagged units total).  Shaded
+  band and dashed lines: GMM narrow/broad boundaries (0.316~ms and
+  0.549~ms).  Two units fall above the broad boundary (confidently-RSU);
+  ten fall in the excluded ambiguous band.
+  \textbf{(B)} Confusion matrix: optotagging outcome vs.\ GMM-inferred
+  class --- FSU, ambiguous, RSU --- (PV-Cre sessions only).  Sensitivity
+  (PV$^+$ $\to$ GMM FSU) $= 33\%$; precision (GMM FSU $\to$ PV$^+$)
+  $= 19\%$; most optotagged units (10/18) fall in the excluded ambiguous
+  band rather than being confidently but wrongly classified.}
   \label{fig:S4}
 \end{figure}
 
@@ -1321,7 +1692,9 @@ The author declares no competing interests.
   \textbf{(B)} Rolling Spearman correlation of per-image consistency at
   each sliding window vs.\ the 100~ms reference.  Significance coding
   (filled marker: $p < 0.05$, hollow marker: n.s.) uses uncorrected
-  $p$-values for illustration; 43 overlapping windows are not independent.}
+  $p$-values for illustration; 43 overlapping windows are not independent.
+  See Methods for an autocorrelation-robust reassessment of an analogous
+  overlapping-window correlation.}
   \label{fig:S7}
 \end{figure}
 
@@ -1348,23 +1721,26 @@ The author declares no competing interests.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{figures/figS9_ei_robustness.png}
-  \caption{\textbf{E/I model robustness checks.}
-  \textbf{(A)} $r_\mathrm{EI}$ across 10 random initialisations
-  (0 = informed start, 1--9 = random).
-  Nine of ten restarts converge to the inhibition-dominated solution
-  ($r_\mathrm{EI} \approx 0.608$); one escapes to a competing,
-  recurrence-dominated basin near $r_\mathrm{EI} \approx 1.01$.
-  Mean across all 10 $= 0.648$, SD $= 0.120$.
-  \textbf{(B)} Sensitivity of fitted $r_\mathrm{EI}$ to the upper bound
-  on $w_\mathrm{II}$ (bounds tested: 6, 8, 10, 12, 15): $r_\mathrm{EI}$
-  remains below 0.62 across all bounds, confirming the
-  inhibition-dominance conclusion is not an artefact of the
-  $w_\mathrm{II}$ constraint.
-  \textbf{(C)} Original parameterisation ($w_\mathrm{EE}$ and
-  $w_\mathrm{IE}$ as separate parameters) recovers the same ratio
-  $w_\mathrm{EE}/w_\mathrm{IE} = 0.608$ as the reparameterised model,
-  confirming internal consistency.}
+  \includegraphics[width=\textwidth]{figures/figS9.png}
+  \caption{\textbf{E/I model fit-target comparison and robustness checks.}
+  \textbf{(A)} Model fit (dashed) vs.\ data (solid) for RSU
+  ($R^2 = 0.901$) and FSU ($R^2 = 0.913$) consistency curves.
+  $r_\mathrm{EI} = 0.608$.
+  \textbf{(B)} Model fit vs.\ data for RSU ($R^2 = 0.805$) and FSU
+  ($R^2 = 0.601$) uncorrected total firing rate. $r_\mathrm{EI} = 0.924$.
+  \textbf{(C)} $r_\mathrm{EI}$ at convergence across 10 random
+  initialisations, for each of the three fit targets. The
+  selective-amplitude fit is essentially uniquely identified
+  (SD $< 0.001$); the consistency fit is bimodal (9/10 restarts converge
+  to $r_\mathrm{EI} \approx 0.608$, one to a competing basin near
+  $r_\mathrm{EI} \approx 1.01$; mean $= 0.648$, SD $= 0.120$); the
+  total-rate fit clusters near $r_\mathrm{EI} \approx 0.92$--$0.93$
+  (mean $= 0.926$, SD $= 0.006$).
+  \textbf{(D)} Sensitivity of fitted $r_\mathrm{EI}$ to the upper bound
+  on $w_\mathrm{II}$ (bounds tested: 6, 8, 10, 12, 15), shown separately
+  for all three fit targets: $r_\mathrm{EI}$ is stable across this range
+  for each target, confirming the inhibition-dominance conclusion (where
+  applicable) is not an artefact of the $w_\mathrm{II}$ constraint.}
   \label{fig:S9}
 \end{figure}
 
