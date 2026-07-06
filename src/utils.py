@@ -553,7 +553,7 @@ def print_figure_data(title: str, **named_arrays) -> None:
 def unit_matched_sliding_curve(
     tensors_by_session:   dict,
     unit_idx_by_session:  dict,
-    target_n:             int,
+    target_n:             int | dict,
     window_centers_ms:    list,
     window_width_ms:      float,
     n_draws:              int   = 50,
@@ -562,7 +562,7 @@ def unit_matched_sliding_curve(
 ):
     """
     Sliding-window consistency curve after subsampling every session's unit
-    pool down to a common `target_n`, repeated over random draws.
+    pool down to `target_n`, repeated over random draws.
 
     Controls for unit-count confounds when comparing groups (subpopulations,
     session groups, brain areas) whose raw unit counts differ, since
@@ -575,7 +575,11 @@ def unit_matched_sliding_curve(
     tensors_by_session  : {session_id: (n_images, n_units, n_bins) tensor}
     unit_idx_by_session : {session_id: list of column indices into that
                             session's tensor defining the pool to subsample from}
-    target_n            : number of units to draw per session per replicate
+    target_n            : number of units to draw per session per replicate.
+                           Either a single int applied uniformly to every
+                           session, or a {session_id: int} dict giving each
+                           session its own target (e.g. that session's count
+                           in the class it's being matched against).
     window_centers_ms   : sliding-window center times (ms)
     window_width_ms     : window width (ms)
     n_draws             : number of random subsample draws
@@ -591,14 +595,18 @@ def unit_matched_sliding_curve(
     """
     rng = np.random.default_rng(seed)
 
-    usable_sids = [sid for sid, idx in unit_idx_by_session.items() if len(idx) >= target_n]
+    target_n_by_sid = target_n if isinstance(target_n, dict) else {
+        sid: target_n for sid in unit_idx_by_session
+    }
+    usable_sids = [sid for sid, idx in unit_idx_by_session.items()
+                   if len(idx) >= target_n_by_sid[sid]]
 
     times = np.asarray(window_centers_ms, dtype=float)
     curves = np.zeros((n_draws, len(times)))
 
     for d in range(n_draws):
         draw_idx = {
-            sid: rng.choice(unit_idx_by_session[sid], size=target_n, replace=False)
+            sid: rng.choice(unit_idx_by_session[sid], size=target_n_by_sid[sid], replace=False)
             for sid in usable_sids
         }
         for w, t_ms in enumerate(times):
