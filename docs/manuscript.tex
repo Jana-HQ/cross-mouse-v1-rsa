@@ -876,13 +876,14 @@ evidence of no relationship.
 a flat, still-rising response rather than a transient peak}
 
 Static gratings produced substantially higher absolute consistency than
-natural scenes (mean $r = 0.720$ vs.\ $r = 0.183$ for natural scenes in
-the fixed 0--250~ms window; Figure~\ref{fig:gratings}), but the temporal
-structure differed qualitatively.  Both stimulus classes have similarly
-high within-mouse response reliability (gratings mean $= 0.992$, natural
-scenes mean $= 0.978$; Methods), so this comparison is not confounded by
-differential reliability between conditions.  Gratings rose by
-$\sim$60~ms and then remained flat for the rest of the 0--250~ms epoch
+natural scenes (mean $r = 0.720$ vs.\ $r = 0.314$ for natural scenes in
+the fixed 0--250~ms window, both computed with the same single-window RSA
+pipeline; Figure~\ref{fig:gratings}A), but the temporal structure differed
+qualitatively.  Both stimulus classes have similarly high within-mouse
+response reliability (gratings mean $= 0.992$, natural scenes mean $=
+0.978$; Figure~\ref{fig:gratings}B; Methods), so this comparison is not
+confounded by differential reliability between conditions.  Gratings rose
+by $\sim$60~ms and then remained flat for the rest of the 0--250~ms epoch
 rather than resolving into a clear plateau-then-hold: the quoted peak
 ($r = 0.680$) falls at the 250~ms window edge, where the curve is still
 drifting slightly upward, giving a near-unity T/S ratio (approximately
@@ -891,24 +892,24 @@ transient-plus-sustained structure (peak $r = 0.307$ at 100~ms,
 T/S $= 1.68\times$).  We restrict quantitative comparisons to the
 0--250~ms window for the same contamination reason as natural scenes.
 
-The raw-magnitude gap above is not directly comparable, however: gratings
-have 30 conditions (29-dimensional similarity profiles) while natural
-scenes have 118 images (117-dimensional profiles), and the per-item
-Spearman consistency measure's noise properties depend on this
-dimensionality independently of any real representational difference. To
-control for this, we recomputed natural-scenes consistency after
-subsampling the same 30 images per random draw (50 draws, matching the
-gratings condition count exactly; Figure~\ref{fig:gratings}, light blue).
-This raised the fixed-window estimate from $r = 0.183$ to
-$r = 0.303$ (95\% range across draws: $[0.258, 0.354]$) --- confirming
-that part of the raw magnitude gap was a dimensionality artefact --- but
-the item-count-matched value remains far below gratings ($r = 0.720$), and
-the T/S ratio is essentially unchanged under matching ($1.66\times$ vs.\
-$1.68\times$ unmatched).  The shape comparison between stimulus classes,
-which is unaffected by item count, is therefore the more reliable
-evidence for a genuine difference; the magnitude comparison should be
-read as directionally consistent with it but partially inflated by the
-dimensionality mismatch.
+The raw-magnitude gap above could in principle reflect a dimensionality
+artefact rather than a genuine representational difference: gratings have
+30 conditions (29-dimensional similarity profiles) while natural scenes
+have 118 images (117-dimensional profiles), and the per-item Spearman
+consistency measure's noise properties depend on this dimensionality
+independently of any real representational difference. To control for
+this, we recomputed natural-scenes consistency after subsampling the same
+30 images per random draw (50 draws, matching the gratings condition
+count exactly; Figure~\ref{fig:gratings}C). This left the fixed-window
+estimate essentially unchanged, $r = 0.303$ (95\% range across draws:
+$[0.258, 0.354]$), against $r = 0.314$ for the full 118-image sample ---
+indicating that the raw-magnitude gap is \emph{not} a dimensionality
+artefact --- and the item-count-matched value remains far below gratings
+($r = 0.720$), with the T/S ratio essentially unchanged under matching
+($1.66\times$ vs.\ $1.68\times$ unmatched).  Both the magnitude and shape
+comparisons between stimulus classes therefore point to the same
+conclusion: the gap reflects a genuine representational difference
+between stimulus classes, not an artefact of the unequal item counts.
 
 This comparison is consistent with the view that feedforward responses
 to simple, low-complexity stimuli are sufficient to produce stable shared
@@ -921,23 +922,33 @@ broader, less stereotyped neural population.
   \includegraphics[width=\textwidth]{figures/fig8_gratings_vs_natural_scenes.png}
   \caption{\textbf{Static gratings produce a weaker and less transient
   cross-mouse consistency than natural scenes.}
-  Raw mean cross-mouse consistency over time for natural scenes (dark
-  blue, peak $r = 0.307$ at 100~ms, T/S $= 1.68\times$) and static
-  gratings (gold, rises by $\sim$60~ms then stays flat,
+  \textbf{(A)} Raw mean cross-mouse consistency over time for natural
+  scenes (dark blue, peak $r = 0.307$ at 100~ms, T/S $= 1.68\times$) and
+  static gratings (gold, rises by $\sim$60~ms then stays flat,
   T/S $\approx 1.00\times$).  Light blue: natural-scenes consistency
   recomputed after subsampling to 30 images per draw (50 draws, shaded
   band = 95\% range across draws), matching the gratings condition count
-  to control for the item-count confound in the raw-magnitude comparison
   (peak $r = 0.291$, T/S $= 1.66\times$) --- closely tracking the
-  full-118-image curve in shape while confirming that some of the raw
-  magnitude gap reflects dimensionality rather than stimulus identity.
-  Gratings rise to a near-immediate plateau; natural scenes show the
-  transient-plus-sustained structure regardless of item count.  Dotted
-  vertical line: stimulus offset (250~ms); data beyond this point risk
-  contamination from the next stimulus.  Both conditions have similarly
-  high within-mouse response reliability (gratings $= 0.992$, natural
-  scenes $= 0.978$), so the shape difference is not a reliability
-  artefact.}
+  full-118-image curve in shape.  Gratings rise to a near-immediate
+  plateau; natural scenes show the transient-plus-sustained structure
+  regardless of item count.  Dotted vertical line: stimulus offset
+  (250~ms); data beyond this point risk contamination from the next
+  stimulus.
+  \textbf{(B)} Within-mouse response reliability distributions for
+  natural scenes (dark blue, mean $= 0.978$, $n = 118$ images) and
+  gratings (gold, mean $= 0.992$, $n = 30$ conditions): both near ceiling
+  and comparably reliable, so the consistency gap in (A) and (C) is not a
+  reliability artefact.
+  \textbf{(C)} Sorted per-item consistency in the fixed 0--250~ms window,
+  plotted against rank fraction to place the unequal item counts on a
+  common scale: natural scenes, full 118 images (dark blue, mean
+  $r = 0.314$); static gratings, 30 conditions (gold, mean $r = 0.720$);
+  natural scenes subsampled to 30 images per draw (light blue, mean of
+  sorted curves $= 0.303$, shaded band = 95\% range across draws).
+  Matching item count leaves the natural-scenes estimate essentially
+  unchanged (0.314 vs.\ 0.303), confirming that the gap to gratings
+  reflects a genuine representational difference rather than a
+  dimensionality artefact.}
   \label{fig:gratings}
 \end{figure}
 
