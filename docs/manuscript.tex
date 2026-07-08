@@ -45,84 +45,34 @@ The American University in Cairo}
 
 % ── Abstract ──────────────────────────────────────────────────────────────────
 \begin{abstract}
-When different mice view the same natural image, their primary visual
-cortex (V1) population responses share a measurable fraction of
-representational structure.  Using millisecond-resolution representational
-similarity analysis (RSA) applied to Neuropixels recordings from all
-32 \textit{brain\_observatory\_1.1} sessions in the Allen Brain
-Observatory, we show that this cross-individual consistency is not
-static: it follows a stereotyped two-component temporal trajectory,
-rising to a transient peak at approximately 100~ms post-stimulus onset
-(Spearman $r = 0.307$) before decaying to a lower sustained floor
-($r = 0.182$, 220--250~ms window).  This transient peak coincides
-precisely with a collapse in the effective dimensionality of the shared
-representation: the participation ratio drops from a pre-stimulus
-baseline of $\approx$35.6 to $\approx$15.3 at 100~ms within individual
-mice ($\approx$108 to $\approx$31.5 in the cross-mouse-averaged
-representation).  Dimensionality and
-consistency are tightly coupled across the entire post-stimulus epoch
-(Spearman $r = -0.853$ across overlapping windows; corroborated by a
-non-overlapping-window control, $r = -0.929$, $p = 4.6 \times 10^{-6}$):
-the moment mice agree most is the moment the population code is most
-compressed.  This
-transient low-dimensional state is specific to complex, naturalistic
-stimuli --- static gratings produce a curve that rises and then stays
-essentially flat, with no transient peak and a near-unity
-transient-to-sustained (T/S) ratio, while a control that matches natural
-scenes to the gratings' item count confirms this shape difference is not
-an artefact of the two stimulus sets having different numbers of
-conditions --- and is highest in V1 itself (peak $r = 0.307$), with lower and
-roughly comparable peak consistency across four extrastriate areas
-(VISl $r = 0.186$, VISal $r = 0.234$, VISpm $r = 0.210$,
-VISam $r = 0.238$).
+When different mice view the same natural image, their primary visual cortex (V1) population 
+responses share a measurable fraction of representational structure. Using 
+millisecond-resolution representational similarity analysis (RSA) on Neuropixels recordings 
+from all 32 brain_observatory_1.1 sessions of the Allen Brain Observatory, we show that this 
+cross-individual consistency is not static. It follows a stereotyped two-component trajectory, 
+rising to a transient peak near 100 ms post-onset (Spearman r = 0.31) before decaying to a 
+lower sustained floor (r = 0.18). This peak coincides with a collapse in the effective 
+dimensionality of the shared representation — the participation ratio drops roughly 
+two-fold within individual mice at the moment of maximal agreement — and dimensionality 
+and consistency remain tightly coupled across the post-stimulus epoch, a relationship 
+that survives controlling for overall response magnitude. The transient is specific to 
+naturalistic stimuli: static gratings rise and stay flat rather than peaking, a difference 
+that is not an artefact of the two stimulus sets having different numbers of conditions. 
+It is also most pronounced in V1, with lower and roughly comparable peaks across four 
+extrastriate areas.
 
-To explain this transient compression, we tested whether it is
-preferentially produced by fast-spiking inhibitory interneurons.
-Waveform-based dissociation of putative fast-spiking (FSU,
-narrow-waveform) and regular-spiking (RSU, broad-waveform) units ---
-classified via a two-component Gaussian mixture fit to log waveform
-duration, with a symmetric probability-mass bound excluding both the
-ambiguous gap between the two modes and each class's own long tail,
-rather than a single hand-picked cutoff --- shows that individual FSU
-units carry roughly $1.9\times$ the cross-mouse-consistent signal of
-individual RSU units, scored one neuron at a time with no population
-pooling or unit-count confound (median $0.087$ vs.\ $0.046$; $n = 368$
-vs.\ $1{,}499$; Mann-Whitney $p = 1.4\times10^{-45}$), an advantage that
-persists after controlling for the substantial raw magnitude and
-sparsity differences between the two classes (partial $r = 0.116$,
-$p = 5.4\times10^{-7}$) and that includes a sharper single-unit transient
-shape (T/S $3.62\times$ vs.\ $2.65\times$).  A smaller,
-unit-count-confounded pooled-population comparison points in the same
-direction (T/S $2.12\times$ vs.\ $1.60\times$; matched-count RSU
-$2.02\times$).  Optotagged PV$^+$ interneurons from
-Pvalb-IRES-Cre$\times$Ai32 sessions, scored individually with the same
-method, fall at the 66th percentile of the FSU distribution, and their
-pooled-population curve shows an even sharper transient (T/S
-$= 3.59\times$) than waveform-inferred FSU (T/S $= 2.12\times$), consistent
-with a small residual impurity in the waveform classification (of 18
-optotagged PV$^+$ units, 14 fall in the confidently-FSU range under the
-current threshold).
-Within a phenomenological Wilson-Cowan excitatory-inhibitory (E/I)
-firing-rate model fit directly to image-selective firing-rate amplitude,
-with RSU subsampled to each session's own FSU count, the RSU/FSU dynamics
-are best captured by a below-unity connectivity ratio
-($r_\mathrm{EI} = w_\mathrm{EE}/w_\mathrm{IE} = 0.620$;
-$R^2_\mathrm{RSU} = 0.900$, $R^2_\mathrm{FSU} = 0.887$), the regime the
-model uses to produce a transient rather than a sustained plateau; this
-estimate generalises to held-out sessions in five-fold cross-validation
-(mean test $R^2 = 0.828 \pm 0.041$; $r_\mathrm{EI} < 1$ in every fold;
-mean $r_\mathrm{EI} = 0.621 \pm 0.028$).  A fit to uncorrected total
-firing rate, which retains non-selective drive, yields a markedly
-different, above-unity estimate ($r_\mathrm{EI} = 1.112$), showing the
-model discriminates between fit targets rather than absorbing any input
-into the same answer; fitting the same model to the cross-mouse
-consistency curves reaches a similar ratio ($r_\mathrm{EI} = 0.641$;
-Supplementary Material), a small additional validation.  Together, these
-results show that mouse V1 passes through a transient low-dimensional
-state during natural image viewing --- one that a minimal circuit model
-reproduces only in an inhibition-dominated regime --- and that this
-state is precisely when representational structure is most shared across
-individuals.
+We then ask what produces this transient compression. Individual fast-spiking (putative 
+inhibitory) units carry more cross-mouse-consistent signal per neuron than regular-spiking 
+units and show a sharper transient; this cell-type advantage is modest but significant 
+after controlling for the classes' large differences in firing magnitude and sparsity, 
+and optotagged PV⁺ interneurons behave consistently with it. A minimal Wilson-Cowan circuit 
+model fit directly to image-selective firing rates reproduces the RSU/FSU dynamics in an 
+inhibition-dominated regime and generalises to held-out mice; a control fit to total firing 
+rate returns a different regime, indicating the model discriminates between inputs rather 
+than absorbing any signal into the same answer. Together these results identify a transient, 
+low-dimensional window during natural viewing when V1's representational structure is most 
+shared across individuals, and offer a candidate inhibitory mechanism for it.
+
 \end{abstract}
 
 \noindent\textbf{Keywords:} primary visual cortex; representational
@@ -807,14 +757,17 @@ rather than a high-powered generalisation test.
   Points (right axis): $r_\mathrm{EI}$ per fold; mean
   $= 0.621 \pm 0.028$; reference at $r_\mathrm{EI} = 1$.
   $r_\mathrm{EI} < 1$ in all five held-out subsets.
-  \textbf{(D)} $r_\mathrm{EI}$ recovered from three independent
-  matched-count fit targets --- cross-mouse consistency, uncorrected
-  total firing rate, and image-selective firing-rate amplitude --- with
-  error bars showing SD across 10 random restarts.  The
-  selective-amplitude and consistency fits converge on similar values
-  despite being computed from different quantities; the total-rate fit,
+  \textbf{(D)} $r_\mathrm{EI}$ recovered from three matched-count fit
+  targets --- image-selective firing-rate amplitude (the primary target),
+  uncorrected total firing rate, and cross-mouse consistency --- with
+  error bars showing SD across 10 random restarts.  The total-rate fit,
   which retains non-selective drive, gives a markedly different
-  (recurrence-dominated) estimate.  See Supplementary Figure~\ref{fig:S9}
+  (above-unity, recurrence-dominated) estimate, showing the model
+  discriminates between fit targets rather than returning the same value
+  for any input.  The consistency fit reaches a value close to the
+  selective-amplitude fit, a minor consistency check rather than
+  independent corroboration, since the two targets share temporal shape.
+  See Supplementary Figure~\ref{fig:S9}
   for the full-pool (unsubsampled) validation fits, the matched-vs-full
   comparison, and the $w_\mathrm{II}$-bound sensitivity of all three
   matched fits.}
