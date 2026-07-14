@@ -10,11 +10,16 @@ Core finding: V1 passes through a transient low-dimensional state ~100 ms post-s
 ## Repository structure
 
 ```
-preprocessed_data.zip          ← download this first (see below)
+preprocessed_data.zip
 preprocessed_data/             ← auto-extracted by any notebook on first run
+|
+docs/
+|   preprocessing_readme.md    ← documentation for preprocessing notebook
+|   manuscript/                ← manuscript pdf and LaTeX source   
 │
 src/
 │   utils.py                   ← shared functions (imported by all notebooks)
+|   preprocessing_cross_mouse_v1_rsa.ipynb
 │   requirements.txt           ← pip-installable dependencies
 │
 │   part1_data_and_consistency.ipynb
