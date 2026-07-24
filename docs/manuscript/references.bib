@@ -488,6 +488,16 @@
   abstract = {To understand the neural basis of behavior, it is essential to sensitively and accurately measure neural activity at single-neuron and single-spike resolution. Extracellular electrophysiology delivers this, but it has biases in the neurons it detects and it imperfectly resolves their action potentials. To minimize these limitations, we developed a silicon probe with much smaller and denser recording sites than previous designs, called Neuropixels Ultra (NP Ultra). Using NP Ultra, neuronal yield in mouse visual cortex recordings increased by more than 2-fold. With ultra-high spatial resolution, we discovered that a feature of extracellular waveforms, the spatial extent or ``footprint,'' distinguished axonal from somatic recordings. In addition, three genetically identified cortical cell types could be discriminated from one another with ~80\% accuracy and from other neurons with ~85\% accuracy. NP Ultra improves yield, detection of subcellular compartments, and cell type identification to enable a more powerful dissection of neural circuit activity during behavior.}
 }
 
+% ============================================================================
+% NEW REFERENCES for the revised Discussion section
+% ----------------------------------------------------------------------------
+% All 11 entries below were verified against the primary source (abstract,
+% full text, and/or publisher/PubMed record) before being cited -- not taken
+% on trust from a title or a secondary citation. Merge this file with the
+% existing references.bib, e.g.:
+%   \bibliography{references,new_references}
+% ============================================================================
+
 @article{vinje2000,
   author   = {Vinje, William E. and Gallant, Jack L.},
   title    = {Sparse Coding and Decorrelation in Primary Visual Cortex during Natural Vision},
@@ -592,19 +602,15 @@
   abstract = {The activity of ensembles of simultaneously recorded neurons can be represented as a set of points in the space of firing rates. Even though the dimension of this space is equal to the ensemble size, neural activity can be effectively localized on smaller subspaces. The dimensionality of the neural space is an important determinant of the computational tasks supported by the neural activity. Here, we investigate the dimensionality of neural ensembles from the sensory cortex of alert rats during periods of ongoing (inter-trial) and stimulus-evoked activity. We find that dimensionality grows linearly with ensemble size, and grows significantly faster during ongoing activity compared to evoked activity.}
 }
 
-@article{ahmadian2021,
-  author   = {Ahmadian, Yashar and Miller, Kenneth D.},
-  title    = {What is the dynamical regime of cerebral cortex?},
-  journal  = {Neuron},
-  year     = {2021},
-  volume   = {109},
-  number   = {21},
-  pages    = {3373--3391},
-  issn     = {0896-6273},
-  doi      = {10.1016/j.neuron.2021.07.031},
-  url      = {https://doi.org/10.1016/j.neuron.2021.07.031},
-  pmid     = {34464597},
-  abstract = {Many studies have shown that the excitation and inhibition received by cortical neurons remain roughly balanced across many conditions. A key question for understanding the dynamical regime of cortex is the nature of this balancing. Theorists have shown that network dynamics can yield systematic cancellation of most of a neuron's excitatory input by inhibition, and that this cancellation can be tight or loose, with distinct implications for cortical computation, including the possibility of an inhibition-stabilized network regime in which recurrent excitation alone would be dynamically unstable.}
+@article{pospisil2024,
+  author   = {Pospisil, Dean A. and Pillow, Jonathan W.},
+  title    = {Revisiting the high-dimensional geometry of population responses in visual cortex},
+  journal  = {bioRxiv},
+  year     = {2024},
+  doi      = {10.1101/2024.02.16.580726},
+  url      = {https://www.biorxiv.org/content/10.1101/2024.02.16.580726v1},
+  note     = {Preprint, posted 21 February 2024; not yet peer reviewed},
+  abstract = {Recent advances in large-scale recording technology have spurred exciting new inquiries into the high-dimensional geometry of the neural code. However, characterizing this geometry from noisy neural responses, particularly in datasets with more neurons than trials, poses major statistical challenges. We address this problem by developing new tools for the accurate estimation of high-dimensional signal geometry. We apply these tools to investigate the geometry of representations in mouse primary visual cortex. Previous work has argued that these representations exhibit a power law, in which the n'th principal component falls off as 1/n. Here we show that response geometry in V1 is better described by a broken power law, in which two different exponents govern the falloff of early and late modes of population activity. Our analysis reveals that later modes decay more rapidly than previously suggested, resulting in a substantially larger fraction of signal variance contained in the early modes of population activity. We examined the signal representations of the early population modes and found them to have higher fidelity than even the most reliable neurons. Intriguingly there are many population modes not captured by classic models of primary visual cortex indicating there is highly redundant yet poorly characterized tuning across neurons. Furthermore, inhibitory neurons tend to co-activate in response to stimuli that drive the early modes consistent with a role in sharpening population level tuning. Overall, our novel and broadly applicable approach overturns prior results and reveals striking structure in a population sensory representation.}
 }
 
 @article{cichy2014,
@@ -620,32 +626,4 @@
   url      = {https://doi.org/10.1038/nn.3635},
   pmid     = {24464044},
   abstract = {A comprehensive picture of object processing in the human brain requires combining both spatial and temporal information about brain activity. Here we acquired human magnetoencephalography (MEG) and functional magnetic resonance imaging (fMRI) responses to 92 object images. Using representational similarity analysis, we combined human fMRI and MEG to show content-specific correspondence between early MEG responses and primary visual cortex (V1), and later MEG responses and inferior temporal (IT) cortex. We identified transient and persistent neural activities during object processing with sources in V1 and IT. Finally, we correlated human MEG signals to single-unit responses in monkey IT. Together, our findings provide an integrated space- and time-resolved view of human object categorization during the first few hundred milliseconds of vision.}
-}
-
-@article{montijn2016,
-  author   = {Montijn, Jorrit S. and Meijer, Guido T. and Lansink, Carien S. and Pennartz, Cyriel M. A.},
-  title    = {Population-Level Neural Codes Are Robust to Single-Neuron Variability from a Multidimensional Coding Perspective},
-  journal  = {Cell Reports},
-  year     = {2016},
-  volume   = {16},
-  number   = {9},
-  pages    = {2486--2498},
-  issn     = {2211-1247},
-  doi      = {10.1016/j.celrep.2016.07.065},
-  url      = {https://doi.org/10.1016/j.celrep.2016.07.065},
-  abstract = {Sensory neurons are often tuned to particular stimulus features, but their responses to repeated presentation of the same stimulus can vary over subsequent trials. This presents a problem for understanding the functioning of the brain, because downstream neuronal populations ought to construct accurate stimulus representations, even upon singular exposure. To study how trial-by-trial fluctuations (i.e., noise) in activity influence cortical representations of sensory input, we performed chronic calcium imaging of GCaMP6-expressing populations in mouse V1. We observed that high-dimensional response correlations can be used to predict single-trial, single-neuron noise, such that variability in the response of single neurons is relatively harmless for the encoding of stimulus information at the population level. We propose that multidimensional coding may represent a canonical principle of cortical circuits.}
-}
-
-@article{deitch2021,
-  author   = {Deitch, Daniel and Rubin, Alon and Ziv, Yaniv},
-  title    = {Representational drift in the mouse visual cortex},
-  journal  = {Current Biology},
-  year     = {2021},
-  volume   = {31},
-  number   = {19},
-  pages    = {4327--4339.e6},
-  issn     = {0960-9822},
-  doi      = {10.1016/j.cub.2021.07.062},
-  url      = {https://doi.org/10.1016/j.cub.2021.07.062},
-  abstract = {Recent studies have shown that neuronal representations gradually change over time despite no changes in the stimulus, environment, or behavior. However, such representational drift has been assumed to be a property of high-level brain structures, whereas earlier circuits, such as sensory cortices, have been assumed to stably encode information over time. Here, we analyzed large-scale optical and electrophysiological recordings (including the Allen Brain Observatory Neuropixels dataset) from six visual cortical areas in behaving mice that were repeatedly presented with the same natural movies. Contrary to the prevailing notion, we found representational drift over timescales spanning minutes to days across multiple visual areas, cortical layers, and cell types. Notably, neural-code stability did not reflect the hierarchy of information flow across areas.}
 }

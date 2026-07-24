@@ -1,4 +1,4 @@
-\begin{thebibliography}{39}
+\begin{thebibliography}{40}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -192,6 +192,14 @@ D.~A. McCormick, B.~W. Connors, J.~W. Lighthall, and D.~A. Prince.
 \newblock ISSN 0022-3077.
 \newblock \doi{10.1152/jn.1985.54.4.782}.
 \newblock URL \url{https://doi.org/10.1152/jn.1985.54.4.782}.
+
+\bibitem[Pospisil and Pillow(2024)]{pospisil2024}
+Dean~A. Pospisil and Jonathan~W. Pillow.
+\newblock Revisiting the high-dimensional geometry of population responses in visual cortex.
+\newblock \emph{bioRxiv}, 2024.
+\newblock \doi{10.1101/2024.02.16.580726}.
+\newblock URL \url{https://www.biorxiv.org/content/10.1101/2024.02.16.580726v1}.
+\newblock Preprint, posted 21 February 2024; not yet peer reviewed.
 
 \bibitem[Runyan et~al.(2010)Runyan, Schummers, Van~Wart, Kuhlman, Wilson, Huang, and Sur]{runyan2010}
 Caroline~A. Runyan, James Schummers, Audra Van~Wart, Sandra~J. Kuhlman, Nathan~R. Wilson, Z.~Josh Huang, and Mriganka Sur.

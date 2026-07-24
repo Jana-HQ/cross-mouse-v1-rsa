@@ -960,7 +960,7 @@ VISp/VISpm comparison specifically.
 % ── Discussion ────────────────────────────────────────────────────────────────
 
 \section{Discussion}
-
+ 
 We have shown that mouse V1 does not represent natural images with a
 constant degree of cross-individual agreement. Instead, it passes through a
 transient, low-dimensional population state --- peaking at $\sim$100~ms
@@ -987,7 +987,7 @@ dimensionality of evoked, relative to spontaneous, ensemble activity has been
 reported in rodent gustatory cortex \citep{mazzucato2016}, suggesting this may
 be a general cortical phenomenon of which the cross-mouse consistency peak
 reported here is a particularly interpretable instance.
-
+ 
 Three features of this coupling make it robust rather than definitional. First,
 it holds essentially as strongly when the participation ratio is computed
 independently within each mouse and only then averaged (per-mouse PR:
@@ -1005,7 +1005,7 @@ under a conventional test ($r = -0.929$, $p = 4.6 \times 10^{-6}$). The
 existence and timing of this transient low-dimensional state, and its coupling
 to cross-individual consistency, is therefore secure independently of any of
 the mechanistic claims that follow.
-
+ 
 The remaining results address why this compression occurs, and converge on
 fast-spiking inhibition. Scored one neuron at a time with no population pooling
 or unit-count confound, individual FSU units carry roughly $1.9\times$ the
@@ -1025,14 +1025,18 @@ than the private tuning of any single one of those inputs. Separately,
 parvalbumin cells impose a largely divisive, gain-like transformation on
 pyramidal output while only modestly reshaping its tuning
 \citep{atallah2012}, consistent with the iceberg-style sharpening already
-invoked to explain the transient's shape \citep{shapiro2022, troyer1998}, and
-their fast recruitment relative to the initial $\sim$40--45~ms feedforward
-volley \citep{lamme2000, kirchberger2023} is compatible with a compression that
-peaks some 50--60~ms later, once local recurrent drive onto interneurons has
-had time to build --- feedback inhibition, recruited only once local principal
-neurons begin firing, necessarily lags the earliest monosynaptic feedforward
-inhibition \citep{isaacson2011}, though our data cannot adjudicate between
-these circuit-level possibilities. The pooled-population analysis points in the
+invoked to explain the transient's shape \citep{shapiro2022, troyer1998}. The
+timing of the compression is also informative: it peaks $\sim$100~ms after
+stimulus onset, some 50--60~ms after the initial $\sim$40--45~ms feedforward
+volley \citep{lamme2000, kirchberger2023} --- closer to the timescale of
+feedback inhibition, which is recruited only once local principal neurons
+begin firing and so necessarily lags the earliest monosynaptic feedforward
+inhibition \citep{isaacson2011}, than to that earliest feedforward wave
+itself, though our data cannot adjudicate between these circuit-level
+possibilities.
+ 
+This single-unit dissociation is corroborated by several further, largely
+independent lines of evidence. The pooled-population analysis points in the
 same direction (raw T/S $2.12\times$ vs.\ $1.60\times$; matched-count RSU
 $2.02\times$) but rests on only 9 sessions and should be read as corroborating
 rather than confirming the single-unit result. Genetically confirmed PV$^+$
@@ -1064,7 +1068,7 @@ rates rather than to consistency, and the optotagging result --- despite its
 small sample --- is the most direct evidence for the PV$^+$ attribution
 specifically. We emphasise, however, that the central empirical claim does
 not depend on the correctness of any circuit-level interpretation.
-
+ 
 Our findings extend, rather than contradict, existing accounts of V1
 population geometry. The high-dimensional spontaneous state we observe
 (pre-stimulus per-mouse PR $\approx 35.6$) is consistent with the
@@ -1072,9 +1076,29 @@ high-dimensional power-law eigenspectrum reported by \citet{stringer2019}; the
 per-mouse PR, not the cross-mouse-averaged PR of $\approx 108$, is the
 quantity comparable to their within-animal measurements, since averaging
 similarity matrices across mice inflates apparent dimensionality by washing
-out cross-mouse disagreement. Our contribution is to show that stimulus onset
-drives a rapid, shared collapse in both measures, and that the transient is
-when individuals agree most. This mirrors a broader lesson from time-resolved
+out cross-mouse disagreement. A recent preprint re-analysing the Stringer
+\textit{et al.} dataset itself revises their eigenspectrum characterisation:
+using a bias-corrected estimator, \citet{pospisil2024} report that V1 population
+responses follow a broken power law with roughly ten dominant modes carrying
+$\sim$30\% of signal variance. Their eigendecomposition is of a single-mouse
+neuron-covariance matrix, not our cross-mouse-averaged image-similarity
+matrix, so the two percentages are not directly comparable, but it is a useful
+cross-check that both land on a similarly small number of dominant dimensions
+--- ten there, versus the 8 eigenvectors accounting for 35.2\% of variance we
+recover at the consistency peak here. More strikingly, they also report that
+putative inhibitory neurons load onto these dominant modes more strongly and
+more uniformly in sign than excitatory neurons, which they interpret as a
+population-level analogue of single-neuron inhibitory sharpening. That result
+comes from single-session tuning curves with no notion of cross-animal
+agreement or millisecond-scale dynamics, so it cannot speak to our central
+claim directly, but it is an independent, population-geometry-level echo of
+our FSU/RSU dissociation: in two different datasets and analysis frameworks,
+inhibitory activity is disproportionately aligned with whichever dimensions of
+the V1 code are most robust.
+ 
+Our contribution is to show that stimulus onset drives a rapid, shared
+collapse in both measures, and that the transient is when individuals agree
+most. This mirrors a broader lesson from time-resolved
 representational similarity analysis in human MEG, where an early, transient
 representational component and a later, more persistent one map onto distinct
 anatomical sources along the ventral stream \citep{cichy2014}; our approach
@@ -1093,7 +1117,7 @@ within the early feedforward epoch, and its being the moment of maximal
 cross-mouse agreement is consistent with shared thalamic-driven tuning being
 more stereotyped across individuals than recurrent contributions shaped by
 individual experience.
-
+ 
 The transient's absence for static gratings fits a broader literature showing
 that sparsification and decorrelation in V1 are engaged by natural-scene
 statistics specifically, rather than by visual stimulation generically. In
@@ -1110,9 +1134,9 @@ likely underpowered behavioural-state controls (Results): a between-mouse
 difference in overall engagement, rather than an image-by-image difference in
 arousal, could still modulate how strongly the natural-scene-specific
 transient is expressed in any one session.
-
+ 
 \subsection{Limitations}
-
+ 
 The Wilson-Cowan model is phenomenological rather than mechanistic: within this
 model family, the fitted connectivity ratio and the empirical T/S ratio move in
 near-lockstep, so ``inhibition-dominated'' is close to a model-based
@@ -1144,7 +1168,7 @@ ordering specifically is not distinguishable once per-session unit count is
 matched. Finally, the two dominant attractor dimensions explain only 19.3\% of
 the shared variance, and the remainder is not accounted for by the image
 statistics examined here.
-
+ 
 Taken together, these findings establish the transient compression of the V1
 population code as a measurable, reproducible, and --- in our data ---
 mechanistically interpretable property of the visual response. The
