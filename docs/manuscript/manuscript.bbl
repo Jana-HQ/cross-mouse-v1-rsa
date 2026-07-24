@@ -193,13 +193,14 @@ D.~A. McCormick, B.~W. Connors, J.~W. Lighthall, and D.~A. Prince.
 \newblock \doi{10.1152/jn.1985.54.4.782}.
 \newblock URL \url{https://doi.org/10.1152/jn.1985.54.4.782}.
 
-\bibitem[Pospisil and Pillow(2024)]{pospisil2024}
+\bibitem[Pospisil and Pillow(2025)]{pospisil2025}
 Dean~A. Pospisil and Jonathan~W. Pillow.
-\newblock Revisiting the high-dimensional geometry of population responses in visual cortex.
-\newblock \emph{bioRxiv}, 2024.
-\newblock \doi{10.1101/2024.02.16.580726}.
-\newblock URL \url{https://www.biorxiv.org/content/10.1101/2024.02.16.580726v1}.
-\newblock Preprint, posted 21 February 2024; not yet peer reviewed.
+\newblock Revisiting the high-dimensional geometry of population responses in the visual cortex.
+\newblock \emph{Proceedings of the National Academy of Sciences of the United States of America}, 122\penalty0 (45):\penalty0 e2506535122, 2025.
+\newblock ISSN 0027-8424.
+\newblock \doi{10.1073/pnas.2506535122}.
+\newblock URL \url{https://doi.org/10.1073/pnas.2506535122}.
+\newblock Received 21 March 2025; accepted 6 September 2025; published 5 November 2025. Originally posted as a bioRxiv preprint, doi:10.1101/2024.02.16.580726 (21 February 2024). IMPORTANT: the preprint's analysis of GABAergic (tdTomato-labeled) interneurons' eigenmode loadings (preprint Fig. 5C-D and Discussion subsection "Inhibitory neurons distinct participation in sensory representation") does NOT appear in the published PNAS version -- confirmed by full-text inspection, including that the published Methods section's description of mouse lines omits the preprint's tdTomato/inhibitory-neuron sentence entirely. Only the eigenspectrum/broken-power-law/dimensionality findings should be attributed to the published paper; do not cite it for the inhibitory-neuron finding. A separate, content-unrelated correction was issued 12 December 2025 (PNAS 122(50), e2533074122) concerning only the data-availability statement and a GitHub accession number.
 
 \bibitem[Runyan et~al.(2010)Runyan, Schummers, Van~Wart, Kuhlman, Wilson, Huang, and Sur]{runyan2010}
 Caroline~A. Runyan, James Schummers, Audra Van~Wart, Sandra~J. Kuhlman, Nathan~R. Wilson, Z.~Josh Huang, and Mriganka Sur.
