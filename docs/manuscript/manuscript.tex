@@ -1113,83 +1113,37 @@ transient is expressed in any one session.
 
 \subsection{Limitations}
 
-Several limitations bound the mechanistic interpretation. The Wilson-Cowan model is
-phenomenological, not mechanistic, in two senses. First, although it is well
-identified for a given target --- the selective-amplitude fit is essentially
-unique across 10 random restarts (SD $< 0.001$) and stable across widened
-$w_\mathrm{II}$ bounds (Supplementary Figure~\ref{fig:S9}D), and it returns a
-different answer for total rate than for selective amplitude --- within this
-model family the connectivity ratio and the empirical T/S ratio are in
+The Wilson-Cowan model is phenomenological rather than mechanistic: within this
+model family, the fitted connectivity ratio and the empirical T/S ratio move in
 near-lockstep, so ``inhibition-dominated'' is close to a model-based
 restatement of ``a transient exists'' rather than an independent measurement of
-synaptic weights. We also use ``inhibition-dominated'' descriptively, in the
-specific sense of our $r_\mathrm{EI} = w_\mathrm{EE}/w_\mathrm{IE}$
-reparameterisation, rather than in the more formal sense of an
-inhibition-stabilized network in which recurrent excitation alone would be
-dynamically unstable \citep{ahmadian2021}; establishing the latter would
-require perturbational experiments --- for instance, testing for the
-paradoxical suppression of inhibitory firing under direct optogenetic drive ---
-that this dataset cannot provide. More constrained inference would require
-single-trial data or perturbational experiments that independently vary E and I
-drive. The consistency fit reaching a similar ratio ($r_\mathrm{EI} = 0.641$) is
-a minor internal check rather than independent corroboration, since that target
-shares its temporal shape with the selective-amplitude curve. Second, the
-model rests on only 9 sessions meeting the unit-count threshold for both
-classes, so each cross-validation fold holds out only 1--2 sessions and the
-procedure is a consistency check on fit quality rather than a high-powered
-generalisation test. The optotagged PV$^+$ analysis is similarly limited,
-resting on three sessions contributing 3, 3, and 10 confirmed units; its T/S
-estimate should be read as directional support for the waveform-based finding,
-not a precise estimate of the true PV$^+$ ratio.
-
-The cell-type statistics carry their own caveats. The single-unit tests treat
-1,867 FSU/RSU units as independent, but units are nested within 32 sessions and
-both class proportions and consistency have session-level structure; the
-reported significance ($p = 1.4 \times 10^{-45}$; partial-correlation
-$p = 5.4 \times 10^{-7}$) is large enough to survive substantial deflation from
-this clustering, but a session-stratified test or mixed model would be needed
-for an exact $p$-value, and the reported precision should be read as an upper
-bound. The pooled-population FSU/RSU comparison additionally suffers a residual
-unit-count confound: FSU, RSU, and the FSU-fraction session groups all differ
-in unit count, which inflates similarity-matrix SNR independently of any
-cell-type effect. Unit-count-matched subsampling shows the T/S difference
-survives (matched RSU $2.02\times$ vs.\ FSU $2.12\times$), but only partially
-resolves the confound, which is why we rely on the confound-free single-unit
-analysis as the primary test. That single-unit measure is itself coarser than
-the pooled statistic: with one unit as the entire ``population,'' the underlying
-similarity matrix reduces to a binary sign comparison between images, and each
-unit is scored against the pooled profile of every other session rather than
-against a neuron-to-neuron match, so the measure indexes agreement with typical
-multi-unit population structure rather than direct correspondence. The
-magnitude/sparsity control removes two specific, measurable response properties
-but cannot exhaustively rule out some other correlated firing property
-contributing to the residual FSU/RSU difference.
-
-Two features of the study design further constrain interpretation. The
-sustained floor ($r = 0.182$, 220--250~ms) is estimated from a narrow window
-forced by the back-to-back presentation protocol, so whether it reflects a
-genuine attractor state, residual stimulus-driven activity, or early
-contributions from the subsequent image cannot be resolved without a design
-using variable inter-stimulus intervals. And the cross-area comparisons are not
-statistically independent, since areas share sessions; the observed pattern ---
-highest in VISp, lower and roughly comparable across the four extrastriate areas
---- should be read descriptively pending a formal mixed-model analysis, and the
-VISp/VISpm pair specifically is not distinguishable once per-session unit count
-is matched. Finally, the two dominant attractor dimensions account for only
-19.3\% of the shared variance; the remaining structure is not explained by the
-low-level image statistics and CNN features examined here and may reflect
-higher-level image properties or individual-animal variation our measure does
-not capture. Some of that unexplained variance may not reflect stable,
-animal-level idiosyncrasy at all: single-neuron responses in mouse visual
-cortex, including within the Allen Brain Observatory dataset used here, are
-known to drift over minutes to days even to physically identical repeated
-stimuli \citep{deitch2021}, and population-level codes can remain mutually
-comparable even as the individual neurons carrying them are considerably less
-stable \citep{montijn2016}. Our design cannot separate a genuinely
-animal-specific representational idiosyncrasy from ordinary within-session or
-across-time instability of this kind; either would lower cross-mouse
-consistency below within-mouse reliability without altering our central
-conclusion about its relationship to dimensionality.
+synaptic weights. It also rests on only 9 sessions with enough units of both
+classes, so each cross-validation fold holds out just 1--2 sessions, and the
+optotagged PV$^+$ analysis is smaller still (three sessions, contributing 3, 3,
+and 10 confirmed units). Both should be read as directional support for the
+FSU/RSU dissociation rather than as precise, independently verified estimates.
+ 
+The cell-type statistics carry a related caveat: the single-unit tests treat
+1,867 FSU/RSU units as independent even though they are nested within 32
+sessions, so the reported $p$-values, while large enough to survive substantial
+deflation from this clustering, are better read as upper bounds on precision
+than exact values. The pooled-population FSU/RSU comparison is only partially
+resolved for the residual unit-count confound between classes, which is why we
+treat the confound-free single-unit measure --- itself coarser, since it
+compares one unit against another session's full population profile rather
+than a matched neuron --- as the primary evidence. And controlling for response
+magnitude and sparsity, as we do, cannot exhaustively rule out some other
+correlated firing property behind the residual FSU/RSU difference.
+ 
+Two features of the design further bound interpretation. The sustained floor
+($r = 0.182$, 220--250~ms) comes from a narrow window forced by the
+back-to-back presentation protocol, so we cannot fully rule out early
+contamination from the next image. And the cross-area comparisons share
+sessions and are therefore not statistically independent; the VISp/VISpm
+ordering specifically is not distinguishable once per-session unit count is
+matched. Finally, the two dominant attractor dimensions explain only 19.3\% of
+the shared variance, and the remainder is not accounted for by the image
+statistics examined here.
 
 Taken together, these findings establish the transient compression of the V1
 population code as a measurable, reproducible, and --- in our data ---

@@ -1,17 +1,9 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{39}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-
-\bibitem[Ahmadian and Miller(2021)]{ahmadian2021}
-Yashar Ahmadian and Kenneth~D. Miller.
-\newblock What is the dynamical regime of cerebral cortex?
-\newblock \emph{Neuron}, 109\penalty0 (21):\penalty0 3373--3391, 2021.
-\newblock ISSN 0896-6273.
-\newblock \doi{10.1016/j.neuron.2021.07.031}.
-\newblock URL \url{https://doi.org/10.1016/j.neuron.2021.07.031}.
 
 \bibitem[Atallah et~al.(2012)Atallah, Bruns, Carandini, and Scanziani]{atallah2012}
 Bassam~V. Atallah, William Bruns, Matteo Carandini, and Massimo Scanziani.
@@ -85,14 +77,6 @@ Scott~J. Cruikshank, Timothy~J. Lewis, and Barry~W. Connors.
 \newblock ISSN 1097-6256.
 \newblock \doi{10.1038/nn1861}.
 \newblock URL \url{https://doi.org/10.1038/nn1861}.
-
-\bibitem[Deitch et~al.(2021)Deitch, Rubin, and Ziv]{deitch2021}
-Daniel Deitch, Alon Rubin, and Yaniv Ziv.
-\newblock Representational drift in the mouse visual cortex.
-\newblock \emph{Current Biology}, 31\penalty0 (19):\penalty0 4327--4339.e6, 2021.
-\newblock ISSN 0960-9822.
-\newblock \doi{10.1016/j.cub.2021.07.062}.
-\newblock URL \url{https://doi.org/10.1016/j.cub.2021.07.062}.
 
 \bibitem[Deng et~al.(2009)Deng, Dong, Socher, Li, Li, and Fei-Fei]{deng2009}
 Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li~Fei-Fei.
@@ -208,14 +192,6 @@ D.~A. McCormick, B.~W. Connors, J.~W. Lighthall, and D.~A. Prince.
 \newblock ISSN 0022-3077.
 \newblock \doi{10.1152/jn.1985.54.4.782}.
 \newblock URL \url{https://doi.org/10.1152/jn.1985.54.4.782}.
-
-\bibitem[Montijn et~al.(2016)Montijn, Meijer, Lansink, and Pennartz]{montijn2016}
-Jorrit~S. Montijn, Guido~T. Meijer, Carien~S. Lansink, and Cyriel M.~A. Pennartz.
-\newblock Population-level neural codes are robust to single-neuron variability from a multidimensional coding perspective.
-\newblock \emph{Cell Reports}, 16\penalty0 (9):\penalty0 2486--2498, 2016.
-\newblock ISSN 2211-1247.
-\newblock \doi{10.1016/j.celrep.2016.07.065}.
-\newblock URL \url{https://doi.org/10.1016/j.celrep.2016.07.065}.
 
 \bibitem[Runyan et~al.(2010)Runyan, Schummers, Van~Wart, Kuhlman, Wilson, Huang, and Sur]{runyan2010}
 Caroline~A. Runyan, James Schummers, Audra Van~Wart, Sandra~J. Kuhlman, Nathan~R. Wilson, Z.~Josh Huang, and Mriganka Sur.
