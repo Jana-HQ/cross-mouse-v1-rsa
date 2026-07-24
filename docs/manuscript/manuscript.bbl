@@ -1,0 +1,319 @@
+\begin{thebibliography}{42}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ahmadian and Miller(2021)]{ahmadian2021}
+Yashar Ahmadian and Kenneth~D. Miller.
+\newblock What is the dynamical regime of cerebral cortex?
+\newblock \emph{Neuron}, 109\penalty0 (21):\penalty0 3373--3391, 2021.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2021.07.031}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2021.07.031}.
+
+\bibitem[Atallah et~al.(2012)Atallah, Bruns, Carandini, and Scanziani]{atallah2012}
+Bassam~V. Atallah, William Bruns, Matteo Carandini, and Massimo Scanziani.
+\newblock Parvalbumin-expressing interneurons linearly transform cortical responses to visual stimuli.
+\newblock \emph{Neuron}, 73\penalty0 (1):\penalty0 159--170, 2012.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2011.12.013}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2011.12.013}.
+
+\bibitem[Barth{\'o} et~al.(2004)Barth{\'o}, Hirase, Monconduit, Zugaro, Harris, and Buzs{\'a}ki]{bartho2004}
+P{\'e}ter Barth{\'o}, Hajime Hirase, Lena{\"i}c Monconduit, Michael Zugaro, Kenneth~D. Harris, and Gy{\"o}rgy Buzs{\'a}ki.
+\newblock Characterization of neocortical principal cells and interneurons by network interactions and extracellular features.
+\newblock \emph{Journal of Neurophysiology}, 92\penalty0 (1):\penalty0 600--608, 2004.
+\newblock ISSN 0022-3077.
+\newblock \doi{10.1152/jn.01170.2003}.
+\newblock URL \url{https://doi.org/10.1152/jn.01170.2003}.
+
+\bibitem[Bereshpolova et~al.(2020)Bereshpolova, Hei, Alonso, and Swadlow]{bereshpolova2020}
+Yulia Bereshpolova, Xiaojuan Hei, Jose-Manuel Alonso, and Harvey~A. Swadlow.
+\newblock Three rules govern thalamocortical connectivity of fast-spike inhibitory interneurons in the visual cortex.
+\newblock \emph{eLife}, 9:\penalty0 e60102, 2020.
+\newblock ISSN 2050-084X.
+\newblock \doi{10.7554/eLife.60102}.
+\newblock URL \url{https://doi.org/10.7554/eLife.60102}.
+
+\bibitem[Brown(1910)]{brown1910}
+William Brown.
+\newblock Some experimental results in the correlation of mental abilities.
+\newblock \emph{British Journal of Psychology}, 3\penalty0 (3):\penalty0 296--322, 1910.
+\newblock \doi{10.1111/j.2044-8295.1910.tb00207.x}.
+
+\bibitem[Byrd et~al.(1995)Byrd, Lu, Nocedal, and Zhu]{byrd1995}
+Richard~H. Byrd, Peihuang Lu, Jorge Nocedal, and Ciyou Zhu.
+\newblock A limited memory algorithm for bound constrained optimization.
+\newblock \emph{SIAM Journal on Scientific Computing}, 16\penalty0 (5):\penalty0 1190--1208, 1995.
+\newblock \doi{10.1137/0916069}.
+
+\bibitem[Cadena et~al.(2019)Cadena, Denfield, Walker, Gatys, Tolias, Bethge, and Ecker]{cadena2019}
+Santiago~A. Cadena, George~H. Denfield, Edgar~Y. Walker, Leon~A. Gatys, Andreas~S. Tolias, Matthias Bethge, and Alexander~S. Ecker.
+\newblock Deep convolutional models improve predictions of macaque v1 responses to natural images.
+\newblock \emph{PLOS Computational Biology}, 15\penalty0 (4):\penalty0 1--27, 04 2019.
+\newblock \doi{10.1371/journal.pcbi.1006897}.
+\newblock URL \url{https://doi.org/10.1371/journal.pcbi.1006897}.
+
+\bibitem[Cardin et~al.(2010)Cardin, Carl{\'e}n, Meletis, Knoblich, Zhang, Deisseroth, Tsai, and Moore]{cardin2010}
+Jessica~A. Cardin, Marie Carl{\'e}n, Konstantinos Meletis, Ulf Knoblich, Feng Zhang, Karl Deisseroth, Li-Huei Tsai, and Christopher~I. Moore.
+\newblock Targeted optogenetic stimulation and recording of neurons in vivo using cell-type-specific expression of channelrhodopsin-2.
+\newblock \emph{Nature Protocols}, 5\penalty0 (2):\penalty0 247--254, 2010.
+\newblock \doi{10.1038/nprot.2009.228}.
+
+\bibitem[Chung and Abbott(2021)]{chung2021}
+SueYeon Chung and L.~F. Abbott.
+\newblock Neural population geometry: An approach for understanding biological and artificial neural networks.
+\newblock \emph{Current Opinion in Neurobiology}, 70:\penalty0 137--144, 2021.
+\newblock ISSN 0959-4388.
+\newblock \doi{10.1016/j.conb.2021.10.010}.
+\newblock URL \url{https://doi.org/10.1016/j.conb.2021.10.010}.
+
+\bibitem[Cichy et~al.(2014)Cichy, Pantazis, and Oliva]{cichy2014}
+Radoslaw~Martin Cichy, Dimitrios Pantazis, and Aude Oliva.
+\newblock Resolving human object recognition in space and time.
+\newblock \emph{Nature Neuroscience}, 17\penalty0 (3):\penalty0 455--462, 2014.
+\newblock ISSN 1097-6256.
+\newblock \doi{10.1038/nn.3635}.
+\newblock URL \url{https://doi.org/10.1038/nn.3635}.
+
+\bibitem[Cruikshank et~al.(2007)Cruikshank, Lewis, and Connors]{cruikshank2007}
+Scott~J. Cruikshank, Timothy~J. Lewis, and Barry~W. Connors.
+\newblock Synaptic basis for intense thalamocortical activation of feedforward inhibitory cells in neocortex.
+\newblock \emph{Nature Neuroscience}, 10\penalty0 (4):\penalty0 462--468, 2007.
+\newblock ISSN 1097-6256.
+\newblock \doi{10.1038/nn1861}.
+\newblock URL \url{https://doi.org/10.1038/nn1861}.
+
+\bibitem[Deitch et~al.(2021)Deitch, Rubin, and Ziv]{deitch2021}
+Daniel Deitch, Alon Rubin, and Yaniv Ziv.
+\newblock Representational drift in the mouse visual cortex.
+\newblock \emph{Current Biology}, 31\penalty0 (19):\penalty0 4327--4339.e6, 2021.
+\newblock ISSN 0960-9822.
+\newblock \doi{10.1016/j.cub.2021.07.062}.
+\newblock URL \url{https://doi.org/10.1016/j.cub.2021.07.062}.
+
+\bibitem[Deng et~al.(2009)Deng, Dong, Socher, Li, Li, and Fei-Fei]{deng2009}
+Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li~Fei-Fei.
+\newblock {ImageNet}: A large-scale hierarchical image database.
+\newblock In \emph{2009 IEEE Conference on Computer Vision and Pattern Recognition}, pages 248--255, 2009.
+\newblock \doi{10.1109/CVPR.2009.5206848}.
+
+\bibitem[Freund and Katona(2007)]{freund2007}
+Tam{\'a}s~F. Freund and Istv{\'a}n Katona.
+\newblock Perisomatic inhibition.
+\newblock \emph{Neuron}, 56\penalty0 (1):\penalty0 33--42, 2007.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2007.09.012}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2007.09.012}.
+
+\bibitem[Froudarakis et~al.(2014)Froudarakis, Berens, Ecker, Cotton, Sinz, Yatsenko, Saggau, Bethge, and Tolias]{froudarakis2014}
+Emmanouil Froudarakis, Philipp Berens, Alexander~S. Ecker, R.~James Cotton, Fabian~H. Sinz, Dimitri Yatsenko, Peter Saggau, Matthias Bethge, and Andreas~S. Tolias.
+\newblock Population code in mouse {V1} facilitates readout of natural scenes through increased sparseness.
+\newblock \emph{Nature Neuroscience}, 17\penalty0 (6):\penalty0 851--857, 2014.
+\newblock ISSN 1097-6256.
+\newblock \doi{10.1038/nn.3707}.
+\newblock URL \url{https://doi.org/10.1038/nn.3707}.
+
+\bibitem[Gao et~al.(2017)Gao, Trautmann, Yu, Santhanam, Ryu, Shenoy, and Ganguli]{gao2017}
+Peiran Gao, Eric Trautmann, Byron~M. Yu, Gopal Santhanam, Stephen~I. Ryu, Krishna~V. Shenoy, and Surya Ganguli.
+\newblock A theory of multineuronal dimensionality, dynamics and measurement.
+\newblock \emph{bioRxiv}, 2017.
+\newblock \doi{10.1101/214262}.
+
+\bibitem[Haxby et~al.(2011)Haxby, Guntupalli, Connolly, Halchenko, Conroy, Gobbini, Hanke, and Ramadge]{haxby2011}
+James~V. Haxby, J.~Swaroop Guntupalli, Andrew~C. Connolly, Yaroslav~O. Halchenko, Bryan~R. Conroy, M.~Ida Gobbini, Michael Hanke, and Peter~J. Ramadge.
+\newblock A common, high-dimensional model of the representational space in human ventral temporal cortex.
+\newblock \emph{Neuron}, 72\penalty0 (2):\penalty0 404--416, 2011.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2011.08.026}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2011.08.026}.
+
+\bibitem[He et~al.(2016)He, Zhang, Ren, and Sun]{he2016}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 770--778, 2016.
+\newblock \doi{10.1109/CVPR.2016.90}.
+
+\bibitem[Hoerl and Kennard(1970)]{hoerl1970}
+Arthur~E. Hoerl and Robert~W. Kennard.
+\newblock Ridge regression: Biased estimation for nonorthogonal problems.
+\newblock \emph{Technometrics}, 12\penalty0 (1):\penalty0 55--67, 1970.
+\newblock \doi{10.1080/00401706.1970.10488634}.
+
+\bibitem[Isaacson and Scanziani(2011)]{isaacson2011}
+Jeffry~S. Isaacson and Massimo Scanziani.
+\newblock How inhibition shapes cortical activity.
+\newblock \emph{Neuron}, 72\penalty0 (2):\penalty0 231--243, 2011.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2011.09.027}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2011.09.027}.
+
+\bibitem[Kerlin et~al.(2010)Kerlin, Andermann, Berezovskii, and Reid]{kerlin2010}
+Aaron~M. Kerlin, Mark~L. Andermann, Vladimir~K. Berezovskii, and R.~Clay Reid.
+\newblock Broadly tuned response properties of diverse inhibitory neuron subtypes in mouse visual cortex.
+\newblock \emph{Neuron}, 67\penalty0 (5):\penalty0 858--871, 2010.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2010.08.002}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2010.08.002}.
+
+\bibitem[Kirchberger et~al.(2023)Kirchberger, Mukherjee, Self, and Roelfsema]{kirchberger2023}
+Lisa Kirchberger, Sreedeep Mukherjee, Matthew~W. Self, and Pieter~R. Roelfsema.
+\newblock Contextual drive of neuronal responses in mouse v1 in the absence of feedforward input.
+\newblock \emph{Science Advances}, 9\penalty0 (3):\penalty0 eadd2498, 2023.
+\newblock ISSN 2375-2548.
+\newblock \doi{10.1126/sciadv.add2498}.
+\newblock URL \url{https://doi.org/10.1126/sciadv.add2498}.
+
+\bibitem[Kriegeskorte et~al.(2008)Kriegeskorte, Mur, and Bandettini]{kriegeskorte2008}
+Nikolaus Kriegeskorte, Marieke Mur, and Peter~A. Bandettini.
+\newblock Representational similarity analysis - connecting the branches of systems neuroscience.
+\newblock \emph{Frontiers in Systems Neuroscience}, Volume 2 - 2008, 2008.
+\newblock ISSN 1662-5137.
+\newblock \doi{10.3389/neuro.06.004.2008}.
+\newblock URL \url{https://www.frontiersin.org/journals/systems-neuroscience/articles/10.3389/neuro.06.004.2008}.
+
+\bibitem[Lamme and Roelfsema(2000)]{lamme2000}
+Victor~A.F. Lamme and Pieter~R. Roelfsema.
+\newblock The distinct modes of vision offered by feedforward and recurrent processing.
+\newblock \emph{Trends in Neurosciences}, 23\penalty0 (11):\penalty0 571--579, 2000.
+\newblock ISSN 0166-2236.
+\newblock \doi{https://doi.org/10.1016/S0166-2236(00)01657-X}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/S016622360001657X}.
+
+\bibitem[Lima et~al.(2009)Lima, Hrom{\'a}dka, Znamenskiy, and Zador]{lima2009}
+Susana~Q. Lima, Tom{\'a}{\v s} Hrom{\'a}dka, Petr Znamenskiy, and Anthony~M. Zador.
+\newblock {PINP}: A new method of tagging neuronal populations for identification during in vivo electrophysiological recording.
+\newblock \emph{PLoS ONE}, 4\penalty0 (7):\penalty0 e6099, 2009.
+\newblock \doi{10.1371/journal.pone.0006099}.
+
+\bibitem[Madisen et~al.(2012)Madisen, Mao, Koch, Zhuo, Berenyi, Fujisawa, Hsu, Garcia, Gu, Zanella, Kidney, Gu, Mao, Hooks, Boyden, Buzs{\'a}ki, Ramirez, Jones, Svoboda, Han, Turner, and Zeng]{madisen2012}
+Linda Madisen, Tianyi Mao, Henner Koch, Jia-Min Zhuo, Antal Berenyi, Shigeyoshi Fujisawa, Yun-Wei~A. Hsu, Alfredo~J. Garcia, Xuan Gu, Sebastien Zanella, Jolene Kidney, Hong Gu, Yimei Mao, Bryan~M. Hooks, Edward~S. Boyden, Gy{\"o}rgy Buzs{\'a}ki, Jan~Marino Ramirez, Allan~R. Jones, Karel Svoboda, Xue Han, Eric~E. Turner, and Hongkui Zeng.
+\newblock A toolbox of cre-dependent optogenetic transgenic mice for light-induced activation and silencing.
+\newblock \emph{Nature Neuroscience}, 15\penalty0 (5):\penalty0 793--802, 2012.
+\newblock \doi{10.1038/nn.3078}.
+
+\bibitem[Mazzucato et~al.(2016)Mazzucato, Fontanini, and La~Camera]{mazzucato2016}
+Luca Mazzucato, Alfredo Fontanini, and Giancarlo La~Camera.
+\newblock Stimuli reduce the dimensionality of cortical activity.
+\newblock \emph{Frontiers in Systems Neuroscience}, 10:\penalty0 11, 2016.
+\newblock \doi{10.3389/fnsys.2016.00011}.
+\newblock URL \url{https://doi.org/10.3389/fnsys.2016.00011}.
+
+\bibitem[McCormick et~al.(1985)McCormick, Connors, Lighthall, and Prince]{mccormick1985}
+D.~A. McCormick, B.~W. Connors, J.~W. Lighthall, and D.~A. Prince.
+\newblock Comparative electrophysiology of pyramidal and sparsely spiny stellate neurons of the neocortex.
+\newblock \emph{Journal of Neurophysiology}, 54\penalty0 (4):\penalty0 782--806, 1985.
+\newblock ISSN 0022-3077.
+\newblock \doi{10.1152/jn.1985.54.4.782}.
+\newblock URL \url{https://doi.org/10.1152/jn.1985.54.4.782}.
+
+\bibitem[Montijn et~al.(2016)Montijn, Meijer, Lansink, and Pennartz]{montijn2016}
+Jorrit~S. Montijn, Guido~T. Meijer, Carien~S. Lansink, and Cyriel M.~A. Pennartz.
+\newblock Population-level neural codes are robust to single-neuron variability from a multidimensional coding perspective.
+\newblock \emph{Cell Reports}, 16\penalty0 (9):\penalty0 2486--2498, 2016.
+\newblock ISSN 2211-1247.
+\newblock \doi{10.1016/j.celrep.2016.07.065}.
+\newblock URL \url{https://doi.org/10.1016/j.celrep.2016.07.065}.
+
+\bibitem[Runyan et~al.(2010)Runyan, Schummers, Van~Wart, Kuhlman, Wilson, Huang, and Sur]{runyan2010}
+Caroline~A. Runyan, James Schummers, Audra Van~Wart, Sandra~J. Kuhlman, Nathan~R. Wilson, Z.~Josh Huang, and Mriganka Sur.
+\newblock Response features of parvalbumin-expressing interneurons suggest precise roles for subtypes of inhibition in visual cortex.
+\newblock \emph{Neuron}, 67\penalty0 (5):\penalty0 847--857, 2010.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2010.08.006}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2010.08.006}.
+
+\bibitem[Shapiro et~al.(2022)Shapiro, Gosselin, Michaud, and Crowder]{shapiro2022}
+Jared~T. Shapiro, Emily A.~R. Gosselin, Nicole~M. Michaud, and Nathan~A. Crowder.
+\newblock Activating parvalbumin-expressing interneurons produces iceberg effects in mouse primary visual cortex neurons.
+\newblock \emph{Neuroscience Letters}, 786:\penalty0 136804, 2022.
+\newblock ISSN 0304-3940.
+\newblock \doi{10.1016/j.neulet.2022.136804}.
+\newblock URL \url{https://doi.org/10.1016/j.neulet.2022.136804}.
+
+\bibitem[Siegle et~al.(2021)Siegle, Jia, Durand, Gale, Bennett, Graddis, Heller, Ramirez, Choi, Luviano, Groblewski, Ahmed, Arkhipov, Bernard, Billeh, Brown, Buice, Cain, Caldejon, Casal, Cho, Chvilicek, Cox, Dai, Denman, de~Vries, Dietzman, Esposito, Farrell, Feng, Galbraith, Garrett, Gelfand, Hancock, Harris, Howard, Hu, Hytnen, Iyer, Jessett, Johnson, Kato, Kiggins, Lambert, Lecoq, Ledochowitsch, Lee, Leon, Li, Liang, Long, Mace, Melchior, Millman, Mollenkopf, Nayan, Ng, Ngo, Nguyen, Nicovich, North, Ocker, Ollerenshaw, Oliver, Pachitariu, Perkins, Reding, Reid, Robertson, Ronellenfitch, Seid, Slaughterbeck, Stoecklin, Sullivan, Sutton, Swapp, Thompson, Turner, Wakeman, Whitesell, Williams, Williford, Young, Zeng, Naylor, Phillips, Reid, Mihalas, Olsen, and Koch]{siegle2021}
+Joshua~H. Siegle, Xiaoxuan Jia, S{\'e}verine Durand, Sam Gale, Corbett Bennett, Nile Graddis, Greggory Heller, Tamina~K. Ramirez, Hannah Choi, Jennifer~A. Luviano, Peter~A. Groblewski, Ruweida Ahmed, Anton Arkhipov, Amy Bernard, Yazan~N. Billeh, Dillan Brown, Michael~A. Buice, Nicolas Cain, Shiella Caldejon, Linzy Casal, Andrew Cho, Maggie Chvilicek, Timothy~C. Cox, Kael Dai, Daniel~J. Denman, Saskia E.~J. de~Vries, Roald Dietzman, Luke Esposito, Colin Farrell, David Feng, John Galbraith, Marina Garrett, Emily~C. Gelfand, Nicole Hancock, Julie~A. Harris, Robert Howard, Brian Hu, Ross Hytnen, Ramakrishnan Iyer, Erika Jessett, Katelyn Johnson, India Kato, Justin Kiggins, Sophie Lambert, Jerome Lecoq, Peter Ledochowitsch, Jung~Hoon Lee, Arielle Leon, Yang Li, Elizabeth Liang, Fuhui Long, Kyla Mace, Jose Melchior, Daniel Millman, Tyler Mollenkopf, Chelsea Nayan, Lydia Ng, Kiet Ngo, Thuyahn Nguyen, Philip~R. Nicovich, Kat North, Gabriel~Koch Ocker, Doug Ollerenshaw, Michael Oliver, Marius Pachitariu, Jed Perkins, Melissa Reding, David Reid, Miranda Robertson, Kara Ronellenfitch, Sam Seid, Cliff Slaughterbeck, Michelle Stoecklin, David Sullivan, Ben Sutton, Jackie Swapp, Carol Thompson, Kristen Turner, Wayne Wakeman, Jennifer~D. Whitesell, Derric Williams, Ali Williford, Rob Young, Hongkui Zeng, Sarah Naylor, John~W. Phillips, R.~Clay Reid, Stefan Mihalas, Shawn~R. Olsen, and Christof Koch.
+\newblock Survey of spiking in the mouse visual system reveals functional hierarchy.
+\newblock \emph{Nature}, 592\penalty0 (7852):\penalty0 86--92, 2021.
+\newblock ISSN 1476-4687.
+\newblock \doi{10.1038/s41586-020-03171-x}.
+\newblock URL \url{https://doi.org/10.1038/s41586-020-03171-x}.
+
+\bibitem[Spearman(1910)]{spearman1910}
+Charles Spearman.
+\newblock Correlation calculated from faulty data.
+\newblock \emph{British Journal of Psychology}, 3\penalty0 (3):\penalty0 271--295, 1910.
+\newblock \doi{10.1111/j.2044-8295.1910.tb00206.x}.
+
+\bibitem[Stringer et~al.(2019)Stringer, Pachitariu, Steinmetz, Carandini, and Harris]{stringer2019}
+Carsen Stringer, Marius Pachitariu, Nicholas Steinmetz, Matteo Carandini, and Kenneth~D. Harris.
+\newblock High-dimensional geometry of population responses in visual cortex.
+\newblock \emph{Nature}, 571\penalty0 (7765):\penalty0 361--365, 2019.
+\newblock ISSN 1476-4687.
+\newblock \doi{10.1038/s41586-019-1346-5}.
+\newblock URL \url{https://doi.org/10.1038/s41586-019-1346-5}.
+
+\bibitem[Trainito et~al.(2019)Trainito, von Nicolai, Miller, and Siegel]{trainito2019}
+Caterina Trainito, Constantin von Nicolai, Earl~K. Miller, and Markus Siegel.
+\newblock Extracellular spike waveform dissociates four functionally distinct cell classes in primate cortex.
+\newblock \emph{Current Biology}, 29\penalty0 (18):\penalty0 2973--2982.e5, 2019.
+\newblock \doi{10.1016/j.cub.2019.07.051}.
+
+\bibitem[Troyer et~al.(1998)Troyer, Krukowski, Priebe, and Miller]{troyer1998}
+T.~W. Troyer, A.~E. Krukowski, N.~J. Priebe, and K.~D. Miller.
+\newblock Contrast-invariant orientation tuning in cat visual cortex: thalamocortical input tuning and correlation-based intracortical connectivity.
+\newblock \emph{Journal of Neuroscience}, 18\penalty0 (15):\penalty0 5908--5927, 1998.
+\newblock ISSN 0270-6474.
+\newblock \doi{10.1523/JNEUROSCI.18-15-05908.1998}.
+\newblock URL \url{https://doi.org/10.1523/JNEUROSCI.18-15-05908.1998}.
+
+\bibitem[Vinje and Gallant(2000)]{vinje2000}
+William~E. Vinje and Jack~L. Gallant.
+\newblock Sparse coding and decorrelation in primary visual cortex during natural vision.
+\newblock \emph{Science}, 287\penalty0 (5456):\penalty0 1273--1276, 2000.
+\newblock ISSN 0036-8075.
+\newblock \doi{10.1126/science.287.5456.1273}.
+\newblock URL \url{https://doi.org/10.1126/science.287.5456.1273}.
+
+\bibitem[Williams et~al.(2021)Williams, Kunz, Kornblith, and Linderman]{williams2021}
+Alex~H. Williams, Erin Kunz, Simon Kornblith, and Scott~W. Linderman.
+\newblock Generalized shape metrics on neural representations.
+\newblock \emph{Advances in Neural Information Processing Systems}, 34:\penalty0 4738--4750, 2021.
+\newblock ISSN 1049-5258.
+\newblock URL \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10760997/}.
+
+\bibitem[Wilson and Cowan(1972)]{wilson1972}
+Hugh~R. Wilson and Jack~D. Cowan.
+\newblock Excitatory and inhibitory interactions in localized populations of model neurons.
+\newblock \emph{Biophysical Journal}, 12\penalty0 (1):\penalty0 1--24, 1972.
+\newblock ISSN 0006-3495.
+\newblock \doi{10.1016/S0006-3495(72)86068-5}.
+\newblock URL \url{https://www.sciencedirect.com/science/article/pii/S0006349572860685}.
+
+\bibitem[Yamins and DiCarlo(2016)]{yamins2016}
+Daniel L.~K. Yamins and James~J. DiCarlo.
+\newblock Using goal-driven deep learning models to understand sensory cortex.
+\newblock \emph{Nature Neuroscience}, 19\penalty0 (3):\penalty0 356--365, 2016.
+\newblock ISSN 1546-1726.
+\newblock \doi{10.1038/nn.4244}.
+\newblock URL \url{https://doi.org/10.1038/nn.4244}.
+
+\bibitem[Ye et~al.(2025)Ye, Shelton, Shaker, Boussard, Colonell, Birman, Manavi, Chen, Windolf, Hurwitz, Yu, Namima, Pedraja, Weiss, Raducanu, Ness, Jia, Mastroberardino, Rossi, Carandini, H{\"a}usser, Einevoll, Laurent, Sawtell, Bair, Pasupathy, Mora~Lopez, Dutta, Paninski, Siegle, Koch, Olsen, Harris, and Steinmetz]{ye2025}
+Zhiwen Ye, Andrew~M. Shelton, Jordan~R. Shaker, Julien Boussard, Jennifer Colonell, Daniel Birman, Sahar Manavi, Susu Chen, Charlie Windolf, Cole Hurwitz, Han Yu, Tomoyuki Namima, Federico Pedraja, Shahaf Weiss, Bogdan~C. Raducanu, Torbj{\o}rn~V. Ness, Xiaoxuan Jia, Giulia Mastroberardino, L.~Federico Rossi, Matteo Carandini, Michael H{\"a}usser, Gaute~T. Einevoll, Gilles Laurent, Nathaniel~B. Sawtell, Wyeth Bair, Anitha Pasupathy, Carolina Mora~Lopez, Barundeb Dutta, Liam Paninski, Joshua~H. Siegle, Christof Koch, Shawn~R. Olsen, Timothy~D. Harris, and Nicholas~A. Steinmetz.
+\newblock Ultra-high-density neuropixels probes improve detection and identification in neuronal recordings.
+\newblock \emph{Neuron}, 113\penalty0 (23):\penalty0 3966--3982.e12, 2025.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2025.08.030}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2025.08.030}.
+
+\bibitem[Zhuang et~al.(2013)Zhuang, Stoelzel, Bereshpolova, Huff, Hei, Alonso, and Swadlow]{zhuang2013}
+Jun Zhuang, Carl~R. Stoelzel, Yulia Bereshpolova, Joseph~M. Huff, Xiaojuan Hei, Jose-Manuel Alonso, and Harvey~A. Swadlow.
+\newblock Layer 4 in primary visual cortex of the awake rabbit: Contrasting properties of simple cells and putative feedforward inhibitory interneurons.
+\newblock \emph{Journal of Neuroscience}, 33\penalty0 (28):\penalty0 11372--11389, 2013.
+\newblock ISSN 0270-6474.
+\newblock \doi{10.1523/JNEUROSCI.0863-13.2013}.
+\newblock URL \url{https://www.jneurosci.org/content/33/28/11372}.
+
+\end{thebibliography}
