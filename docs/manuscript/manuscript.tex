@@ -967,215 +967,185 @@ transient, low-dimensional population state --- peaking at $\sim$100~ms
 post-stimulus and visible directly in the participation ratio of the shared
 representation --- and this transient state is precisely the moment at which
 different animals' representations are most alike. This is the strongest and
-most direct result in the paper, and it requires no cell-type classification,
-no circuit model, and no auxiliary assumptions. The temporal profile of
-consistency follows a stereotyped transient-plus-sustained shape that is
-incompatible with either purely feedforward tuning (which would produce a
-step function) or purely recurrent attractor dynamics (which would maintain a
-plateau), and its peak coincides with a collapse of the shared representational
-geometry to its minimum dimensionality (participation ratio $= 31.5$ at 100~ms
-for the cross-mouse-averaged similarity matrix, against a pre-stimulus baseline
-of $\approx 108$). Because both quantities are measured directly from the same
-similarity matrices, they are in effect two views of a single phenomenon:
+most direct result in the paper, requiring no cell-type classification,
+circuit model, or auxiliary assumptions: the temporal profile is incompatible
+with either purely feedforward tuning (a step function) or purely recurrent
+attractor dynamics (a sustained plateau), and its peak coincides with a
+collapse of the shared geometry to its minimum dimensionality (participation
+ratio $= 31.5$ at 100~ms, against a pre-stimulus baseline of $\approx 108$).
+Because both quantities come from the same similarity matrices,
 cross-individual agreement is high exactly when the population code is
-compressed into a small number of stereotyped dimensions. In the language of
-neural population geometry \citep{chung2021}, stimulus onset does not add a
-new, image-specific direction to an otherwise stable representational space so
-much as transiently contract the space itself. Such stimulus-triggered
-dimensionality collapse is not specific to vision: a comparable fall in the
-dimensionality of evoked, relative to spontaneous, ensemble activity has been
-reported in rodent gustatory cortex \citep{mazzucato2016}, suggesting this may
-be a general cortical phenomenon of which the cross-mouse consistency peak
-reported here is a particularly interpretable instance.
+compressed into a small number of stereotyped dimensions --- in the language
+of neural population geometry \citep{chung2021}, stimulus onset transiently
+contracts the representational space rather than adding a new, image-specific
+direction to it. Such contraction is not specific to vision or to this
+particular statistic: comparable stimulus-triggered reductions in the
+dimensionality or trial-to-trial variability of population activity have been
+reported across cortical areas, species, and recording modalities
+\citep{churchland2010, mazzucato2016}.
  
-Three features of this coupling make it robust rather than definitional. First,
-it holds essentially as strongly when the participation ratio is computed
-independently within each mouse and only then averaged (per-mouse PR:
-pre-stimulus $\approx 35.6 \to$ peak 15.3; Spearman $r = -0.805$), which rules
-out the concern that the averaged-matrix result merely restates consistency
-itself. Second, because both quantities are also plausibly driven by the shared
-stimulus-evoked response envelope, we partialled out a response-envelope proxy
-and found the coupling essentially unchanged (avg-matrix partial $r = -0.801$;
-per-mouse partial $r = -0.718$); under an autocorrelation-robust circular-shift
-test the raw envelope--consistency correlation was no longer distinguishable
-from chance, weakening rather than strengthening a common-cause account. Third,
-recomputing the correlation on non-overlapping windows that share no
-spike-count bins --- independent by construction --- confirms the coupling
-under a conventional test ($r = -0.929$, $p = 4.6 \times 10^{-6}$). The
-existence and timing of this transient low-dimensional state, and its coupling
-to cross-individual consistency, is therefore secure independently of any of
+Three features make this coupling robust rather than definitional. It holds
+when the participation ratio is computed independently within each mouse and
+only then averaged (per-mouse PR: pre-stimulus $\approx 35.6 \to$ peak 15.3;
+Spearman $r = -0.805$), ruling out the concern that the averaged-matrix result
+simply restates consistency. It survives partialling out a proxy for the
+shared stimulus-evoked response envelope (partial $r = -0.801$ avg-matrix,
+$-0.718$ per-mouse), even as the raw envelope--consistency link itself fails
+to survive an autocorrelation-robust test. And it holds on non-overlapping
+windows that share no spike-count bins, independent by construction ($r =
+-0.929$, $p = 4.6 \times 10^{-6}$). The existence and timing of this transient
+state, and its coupling to consistency, is therefore secure independently of
 the mechanistic claims that follow.
  
 The remaining results address why this compression occurs, and converge on
-fast-spiking inhibition. Scored one neuron at a time with no population pooling
-or unit-count confound, individual FSU units carry roughly $1.9\times$ the
-cross-mouse-consistent signal of RSU units (median $0.087$ vs.\ $0.046$;
-Mann-Whitney $p = 1.4 \times 10^{-45}$), an advantage that survives controlling
-for the substantial raw magnitude and sparsity differences between the two
-classes (partial $r = 0.116$, $p = 5.4 \times 10^{-7}$) and that includes a
-sharper single-unit transient shape (T/S $3.62\times$ vs.\ $2.65\times$).
-Interneuron physiology offers converging reasons to expect this pattern from
-fast-spiking units specifically. Parvalbumin-expressing interneurons pool
-broadly across the local excitatory population, and their stimulus preference
-has been shown to track the net orientation and spatial-frequency bias of their
-surrounding pyramidal neighbours rather than a sharp, private receptive field
-\citep{kerlin2010}; a signal that is, by construction, an average over many
-locally sampled excitatory inputs should by default vary less across animals
-than the private tuning of any single one of those inputs. Separately,
-parvalbumin cells impose a largely divisive, gain-like transformation on
-pyramidal output while only modestly reshaping its tuning
-\citep{atallah2012}, consistent with the iceberg-style sharpening already
-invoked to explain the transient's shape \citep{shapiro2022, troyer1998}. The
-timing of the compression is also informative: it peaks $\sim$100~ms after
-stimulus onset, some 50--60~ms after the initial $\sim$40--45~ms feedforward
-volley \citep{lamme2000, kirchberger2023} --- closer to the timescale of
-feedback inhibition, which is recruited only once local principal neurons
-begin firing and so necessarily lags the earliest monosynaptic feedforward
-inhibition \citep{isaacson2011}, than to that earliest feedforward wave
-itself, though our data cannot adjudicate between these circuit-level
-possibilities.
+fast-spiking inhibition. Scored one neuron at a time, individual FSU units
+carry roughly $1.9\times$ the cross-mouse-consistent signal of RSU units
+(median $0.087$ vs.\ $0.046$; Mann-Whitney $p = 1.4 \times 10^{-45}$),
+surviving controls for raw magnitude and sparsity (partial $r = 0.116$,
+$p = 5.4 \times 10^{-7}$) and including a sharper single-unit transient shape
+(T/S $3.62\times$ vs.\ $2.65\times$). Interneuron physiology offers converging
+reasons to expect exactly this pattern: parvalbumin-expressing interneurons
+pool broadly across the local excitatory population, tracking the net tuning
+bias of their neighbours rather than a sharp, private receptive field, so an
+averaged signal should by default vary less across animals; they impose a
+largely divisive, gain-like transformation on pyramidal output, consistent
+with the iceberg-style sharpening already invoked to explain the transient's
+shape; and their recruitment, some 50--60~ms after the initial
+$\sim$40--45~ms feedforward volley, is closer to the timescale of feedback
+inhibition --- recruited only once local principal neurons begin firing ---
+than to that earliest feedforward wave itself \citep{kerlin2010, atallah2012,
+shapiro2022, troyer1998, lamme2000, kirchberger2023, isaacson2011}. A recent
+preprint applying an analogous consistency logic to the same 118-image
+natural-scenes stimulus set, recorded via two-photon imaging across
+genetically-defined Cre lines, similarly finds inhibitory (PV, SST, VIP)
+population geometry clustering by cell-type identity almost independent of
+visual area, unlike excitatory geometry \citep{toosi2025}.
  
-This single-unit dissociation is corroborated by several further, largely
-independent lines of evidence. The pooled-population analysis points in the
-same direction (raw T/S $2.12\times$ vs.\ $1.60\times$; matched-count RSU
-$2.02\times$) but rests on only 9 sessions and should be read as corroborating
-rather than confirming the single-unit result. Genetically confirmed PV$^+$
+Within our own data, this dissociation is corroborated by pooled-population
+and optotagging analyses: raw pooled T/S is $2.12\times$ (FSU) vs.\ $1.60\times$
+(RSU, $2.02\times$ matched for unit count), and genetically confirmed PV$^+$
 units, scored individually, fall at the 66th percentile of the
-waveform-inferred FSU distribution, and their pooled-population curve shows an
-even sharper transient (T/S $3.59\times$) than waveform-inferred FSU. This last
-point also exposes the one weakness in the cell-type attribution: the
-waveform classifier's agreement with optotagging is good but imperfect (14 of
-18 optotagged units in the confidently-FSU range, 1 ambiguous, 3 in the
-confidently-RSU range; sensitivity $78\%$), consistent with reports that
-extracellular waveform shape only imperfectly tracks genetically defined
-interneuron identity --- ground-truth optotagging shows that duration-based
-classification alone misidentifies roughly one in nine genetically confirmed
-PV$^+$ neurons \citep{ye2025}. Residual contamination of the RSU pool by the 3
-misclassified units would inflate the RSU pooled T/S and deflate the FSU
-pooled T/S, exactly the pattern observed. Crucially, the single-unit analysis
-scores each optotagged unit on its own regardless of its waveform label and so
-sidesteps this impurity entirely, independently placing optotagged units
-within the FSU range. Finally, a Wilson-Cowan E/I model fit directly to
-matched-count image-selective firing-rate amplitude generalises to held-out
-sessions (mean test $R^2 = 0.828 \pm 0.041$) and recovers a below-unity,
-inhibition-dominated connectivity ratio ($r_\mathrm{EI} = 0.621 \pm 0.028$;
-$< 1$ in every fold). That the model returns a markedly different, above-unity
-estimate when fit to uncorrected total firing rate ($r_\mathrm{EI} = 1.112$)
-shows it discriminates between fit targets rather than absorbing any input
-into the same answer. Among the mechanistic evidence, the cross-validated
-model is the strongest single piece precisely because it is fit to firing
-rates rather than to consistency, and the optotagging result --- despite its
-small sample --- is the most direct evidence for the PV$^+$ attribution
-specifically. We emphasise, however, that the central empirical claim does
-not depend on the correctness of any circuit-level interpretation.
+waveform-inferred FSU distribution with an even sharper pooled transient (T/S
+$3.59\times$) --- consistent with the waveform classifier's known, imperfect
+agreement with optotagging (sensitivity $78\%$), itself typical of
+duration-based interneuron classification generally \citep{ye2025}. Finally,
+because cross-mouse consistency is an agreement statistic and not a firing
+rate, we fit a Wilson-Cowan E/I model directly to firing rates. Fit to
+matched-count image-selective firing-rate amplitude, the model generalises to
+held-out sessions (five-fold cross-validation, mean test $R^2 = 0.828 \pm
+0.041$) and recovers a below-unity, inhibition-dominated connectivity ratio
+($r_\mathrm{EI} = w_\mathrm{EE}/w_\mathrm{IE} = 0.621 \pm 0.028$, below 1 in
+every fold); fit instead to uncorrected total firing rate, which retains the
+non-selective drive that z-scoring removes before consistency is computed,
+the same model returns a markedly worse, recurrence-dominated estimate
+($r_\mathrm{EI} = 1.112$), and within this model family the T/S ratio itself
+requires $r_\mathrm{EI} < 1$. This inhibition-dominated regime is the
+operating point identified by a body of work on stabilized supralinear
+networks, in which sufficiently strong recurrent excitation requires feedback
+inhibition for stability and the degree of this stabilisation governs
+response sharpness, gain, and the stimulus-driven quenching of shared
+population variability, including when comparable models are fit directly to
+spiking recordings from mouse cortex \citep{ahmadian2013, rubin2015,
+hennequin2018, stringer2016}. We emphasise, however, that our central
+empirical claim does not depend on the correctness of any circuit-level
+interpretation.
  
 Our findings extend, rather than contradict, existing accounts of V1
 population geometry. The high-dimensional spontaneous state we observe
-(pre-stimulus per-mouse PR $\approx 35.6$) is consistent with the
-high-dimensional power-law eigenspectrum reported by \citet{stringer2019}; the
-per-mouse PR, not the cross-mouse-averaged PR of $\approx 108$, is the
-quantity comparable to their within-animal measurements, since averaging
-similarity matrices across mice inflates apparent dimensionality by washing
-out cross-mouse disagreement. A more recent study re-analysing the Stringer
-\textit{et al.} dataset itself revises their eigenspectrum characterisation:
-using a bias-corrected estimator, \citet{pospisil2025} report that V1 population
-responses follow a broken power law, rather than the single power law
-originally proposed, with roughly ten dominant modes carrying $\sim$30\% of
-signal variance. Their eigendecomposition is of a single-mouse
-neuron-covariance matrix, not our cross-mouse-averaged image-similarity
-matrix, so the two percentages are not directly comparable, but it is a useful
-cross-check that both land on a similarly small number of dominant dimensions
---- ten there, versus the 8 eigenvectors accounting for 35.2\% of variance we
-recover at the consistency peak here.
+(pre-stimulus per-mouse PR $\approx 35.6$) matches the power-law eigenspectrum
+reported for V1 \citep{stringer2019}, and a bias-corrected re-analysis of
+that same dataset recovers a similarly small number of dominant dimensions
+using an independent estimator ($\sim$10 modes, $\sim$30\% of variance,
+versus our 8 eigenvectors and 35.2\% at the consistency peak, though the two
+are not directly comparable given the different underlying matrices)
+\citep{pospisil2025}. Decomposing a visual response by time, rather than
+collapsing it into one window, reveals structure invisible to static
+approaches --- a lesson also drawn from time-resolved RSA of human MEG, which
+dissociates an early, transient representational component from a later,
+more persistent one \citep{cichy2014}. Our own RSA approach differs from
+Procrustes alignment and hyperalignment \citep{williams2021, haxby2011} in
+measuring agreement on representational \textit{structure} rather than the
+orientation of neural axes, a distinction that, together with a within-mouse
+RDM-space reliability of $r = 0.832$ against a mean cross-mouse consistency of
+$r = 0.314$, indicates that a substantial share of the representational
+signal is shared across individuals. Finally, the feedforward/recurrent
+distinction \citep{lamme2000} maps naturally onto our two-component profile:
+the $\sim$100~ms transient falls within the early feedforward epoch, when
+shared thalamic-driven tuning should be more stereotyped across individuals
+than recurrent contributions shaped by individual experience.
  
-Our contribution is to show that stimulus onset drives a rapid, shared
-collapse in both measures, and that the transient is when individuals agree
-most. This mirrors a broader lesson from time-resolved
-representational similarity analysis in human MEG, where an early, transient
-representational component and a later, more persistent one map onto distinct
-anatomical sources along the ventral stream \citep{cichy2014}; our approach
-applies the same logic to what is shared across brains rather than to what is
-decodable within one. Our RSA approach also differs from Procrustes alignment
-\citep{williams2021} and hyperalignment \citep{haxby2011} in measuring
-agreement on representational \textit{structure} --- which stimuli are similar
-to which others --- rather than the orientation of neural axes, making it
-invariant to individual differences in which neurons are tuned to which
-features. Against a within-mouse RDM-space reliability of $r = 0.832$, the
-mean cross-mouse consistency of $r = 0.314$ indicates that a substantial share
-of the available representational signal is shared across individuals.
-Finally, the feedforward/recurrent distinction of \citet{lamme2000} maps
-naturally onto our two-component profile: the transient at $\sim$100~ms falls
-within the early feedforward epoch, and its being the moment of maximal
-cross-mouse agreement is consistent with shared thalamic-driven tuning being
-more stereotyped across individuals than recurrent contributions shaped by
-individual experience.
- 
-The transient's absence for static gratings fits a broader literature showing
-that sparsification and decorrelation in V1 are engaged by natural-scene
-statistics specifically, rather than by visual stimulation generically. In
-macaque V1, stimulating the nonclassical receptive field with the extended
-spatial context present in natural images, but largely absent from an isolated
-grating patch, increases single-neuron sparseness and decorrelates pairwise
-responses \citep{vinje2000}; a comparable natural-scene-specific sparsening of
-the population code --- in which higher-order correlations present in natural
-movies, but not simpler control stimuli, drive a sparser and more easily
-read-out representation --- has been described in mouse V1 itself
-\citep{froudarakis2014}. Both effects were reported as at least partly
-state-dependent, which is a caution rather than a confound for our own
-likely underpowered behavioural-state controls (Results): a between-mouse
-difference in overall engagement, rather than an image-by-image difference in
-arousal, could still modulate how strongly the natural-scene-specific
-transient is expressed in any one session.
+The transient's absence for static gratings --- despite their higher absolute
+consistency ($r = 0.720$ vs.\ $0.314$, confirmed by item-count matching not
+to be a dimensionality artefact) but near-immediate plateau (T/S
+$\approx 1.00\times$) rather than a transient-plus-sustained profile (T/S
+$= 1.68\times$) --- fits a broader literature in which sparsification and
+decorrelation in V1 are engaged by natural-scene statistics specifically,
+demonstrated via nonclassical receptive-field manipulations in macaque V1,
+movie-versus-control comparisons in mouse V1, and parametric removal of
+natural-scene spatial correlations in mouse V1 \citep{vinje2000,
+froudarakis2014, rikhye2015}. It is the specific statistical structure of
+natural images, not stimulus complexity in some more general sense, that
+appears to recruit the compression we observe; gratings, though densely and
+reliably encoded, may simply not engage the mechanism.
  
 \subsection{Limitations}
  
-The Wilson-Cowan model is phenomenological rather than mechanistic: within this
-model family, the fitted connectivity ratio and the empirical T/S ratio move in
-near-lockstep, so ``inhibition-dominated'' is close to a model-based
-restatement of ``a transient exists'' rather than an independent measurement of
-synaptic weights. It also rests on only 9 sessions with enough units of both
-classes, so each cross-validation fold holds out just 1--2 sessions, and the
-optotagged PV$^+$ analysis is smaller still (three sessions, contributing 3, 3,
-and 10 confirmed units). Both should be read as directional support for the
-FSU/RSU dissociation rather than as precise, independently verified estimates.
+The Wilson-Cowan model is phenomenological: the fitted connectivity ratio and
+the empirical T/S ratio move in near-lockstep, so ``inhibition-dominated'' is
+close to a model-based restatement of ``a transient exists'' rather than an
+independent synaptic measurement, and it rests on only 9 sessions and 18
+optotagged units, so both should be read as directional support rather than
+precise estimates. Nor is our $r_\mathrm{EI}$ ratio, a fit to firing rates,
+the kind of direct causal test --- e.g.\ the paradoxical suppression of
+inhibitory firing under optogenetic drive --- used to establish
+inhibition-stabilisation in the formal sense \citep{ahmadian2021}; such tests
+do exist for mouse V1, S1, and motor cortex and find clear evidence for it
+even at rest, offering a plausible resolution for an earlier report of
+non-paradoxical PV responses in V1 layer 2/3 \citep{sanzeni2020, atallah2012}:
+stimulating only a genetically incomplete PV subset can mask a
+population-level paradoxical signature that is nonetheless genuinely present.
+Our fit is best read as weaker, firing-rate-level evidence consistent with,
+rather than equivalent to, this more direct line of work.
  
 The cell-type statistics carry a related caveat: the single-unit tests treat
-1,867 FSU/RSU units as independent even though they are nested within 32
-sessions, so the reported $p$-values, while large enough to survive substantial
-deflation from this clustering, are better read as upper bounds on precision
-than exact values. The pooled-population FSU/RSU comparison is only partially
-resolved for the residual unit-count confound between classes, which is why we
-treat the confound-free single-unit measure --- itself coarser, since it
-compares one unit against another session's full population profile rather
-than a matched neuron --- as the primary evidence. And controlling for response
-magnitude and sparsity, as we do, cannot exhaustively rule out some other
-correlated firing property behind the residual FSU/RSU difference.
+1,867 FSU/RSU units as independent despite their nesting within 32 sessions,
+so the reported $p$-values are better read as upper bounds on precision than
+exact values. The pooled-population comparison is only partially resolved for
+the residual unit-count confound between classes, which is why we treat the
+confound-free single-unit measure --- itself coarser, comparing one unit
+against another session's full population profile rather than a matched
+neuron --- as the primary evidence. And controlling for magnitude and
+sparsity cannot exhaustively rule out some other correlated firing property
+behind the residual FSU/RSU difference.
  
 Two features of the design further bound interpretation. The sustained floor
 ($r = 0.182$, 220--250~ms) comes from a narrow window forced by the
-back-to-back presentation protocol, so we cannot fully rule out early
-contamination from the next image. And the cross-area comparisons share
-sessions and are therefore not statistically independent; the VISp/VISpm
-ordering specifically is not distinguishable once per-session unit count is
-matched. Finally, the two dominant attractor dimensions explain only 19.3\% of
-the shared variance, and the remainder is not accounted for by the image
-statistics examined here.
+back-to-back presentation protocol, so early contamination from the next
+image cannot be fully excluded. And the cross-area comparisons share sessions
+and so are not statistically independent; the VISp/VISpm ordering
+specifically is not distinguishable once unit count is matched. Finally, the
+two dominant attractor dimensions explain only 19.3\% of the shared variance,
+and the remainder is not accounted for by the image statistics examined here.
  
 Taken together, these findings establish the transient compression of the V1
 population code as a measurable, reproducible, and --- in our data ---
-mechanistically interpretable property of the visual response. The
-cross-validated generalisability of the E/I model implies that the circuit
-mechanism producing this trajectory is a stable property of the mouse V1
-architecture rather than an idiosyncrasy of the 32 mice sampled. More broadly,
-if the shared geometry of V1 is transiently imposed by inhibitory interneurons
-during a 50--150~ms window after stimulus onset, then downstream areas reading
-out V1 during this window receive a cleaner, more stereotyped signal than at
-other times. Such temporal gating of canonical representational structure may be
-a general principle of cortical computation, and the fact that the transient is
-absent for static gratings and lower in extrastriate areas than in VISp
-suggests it is specifically engaged by complex, naturalistic stimuli that
-require active representational compression --- though the drop from VISp to the
-extrastriate areas is not itself a graded, step-by-step gradient.
+mechanistically interpretable property of the visual response, with a
+circuit mechanism that the cross-validated E/I model suggests is a stable
+property of the mouse V1 architecture rather than an idiosyncrasy of the 32
+mice sampled. If the shared geometry of V1 is transiently imposed by
+inhibitory interneurons during a 50--150~ms window after stimulus onset,
+downstream areas reading out V1 during this window receive a cleaner, more
+stereotyped signal than at other times; such temporal gating of canonical
+representational structure may be a general principle of cortical
+computation, specifically engaged by complex, naturalistic stimuli rather
+than by visual stimulation as such (the transient is absent for static
+gratings and lower in extrastriate areas than in VISp, though the drop across
+extrastriate areas is not itself a graded gradient). A recent review of
+response sub-additivity and variability quenching in visual cortex closes by
+proposing population-level geometry as the natural next extension of exactly
+this literature \citep{goris2024}; the present results, linking a moment of
+dimensionality collapse to a moment of maximal cross-individual agreement,
+are one instance of what that extension can look like.
 
 % ── Methods ───────────────────────────────────────────────────────────────────
 \section{Methods}
@@ -1561,10 +1531,11 @@ Python package.  Analysis code is available at
 % ── Acknowledgements ──────────────────────────────────────────────────────────
 \section*{Acknowledgements}
 
-The author thanks the Allen Institute for Brain Science for making the
-Visual Coding Neuropixels dataset publicly available.  This research did
-not receive any specific grant from funding agencies in the public,
-commercial, or not-for-profit sectors.
+I thank the Allen Institute for Brain Science for making the Visual Coding 
+Neuropixels dataset publicly available, and Drs. Carsen Stringer and 
+Tahereh Toosi for helpful inputs. This research did not receive any specific 
+grant from funding agencies in the public, commercial, or not-for-profit 
+sectors.
 
 % ── Competing interests ───────────────────────────────────────────────────────
 \section*{Competing interests}

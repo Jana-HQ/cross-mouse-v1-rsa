@@ -1,9 +1,25 @@
-\begin{thebibliography}{40}
+\begin{thebibliography}{50}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ahmadian and Miller(2021)]{ahmadian2021}
+Yashar Ahmadian and Kenneth~D. Miller.
+\newblock What is the dynamical regime of cerebral cortex?
+\newblock \emph{Neuron}, 109\penalty0 (21):\penalty0 3373--3391, 2021.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2021.07.031}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2021.07.031}.
+
+\bibitem[Ahmadian et~al.(2013)Ahmadian, Rubin, and Miller]{ahmadian2013}
+Yashar Ahmadian, Daniel~B. Rubin, and Kenneth~D. Miller.
+\newblock Analysis of the stabilized supralinear network.
+\newblock \emph{Neural Computation}, 25\penalty0 (8):\penalty0 1994--2037, 2013.
+\newblock ISSN 0899-7667.
+\newblock \doi{10.1162/NECO_a_00472}.
+\newblock URL \url{https://doi.org/10.1162/NECO_a_00472}.
 
 \bibitem[Atallah et~al.(2012)Atallah, Bruns, Carandini, and Scanziani]{atallah2012}
 Bassam~V. Atallah, William Bruns, Matteo Carandini, and Massimo Scanziani.
@@ -62,6 +78,14 @@ SueYeon Chung and L.~F. Abbott.
 \newblock \doi{10.1016/j.conb.2021.10.010}.
 \newblock URL \url{https://doi.org/10.1016/j.conb.2021.10.010}.
 
+\bibitem[Churchland et~al.(2010)Churchland, Yu, Cunningham, Sugrue, Cohen, Corrado, Newsome, Clark, Hosseini, Scott, Bradley, Smith, Kohn, Movshon, Armstrong, Moore, Chang, Snyder, Lisberger, Priebe, Finn, Ferster, Ryu, Santhanam, Sahani, and Shenoy]{churchland2010}
+Mark~M. Churchland, Byron~M. Yu, John~P. Cunningham, Leo~P. Sugrue, Marlene~R. Cohen, Greg~S. Corrado, William~T. Newsome, Andrew~M. Clark, Paymon Hosseini, Benjamin~B. Scott, David~C. Bradley, Matthew~A. Smith, Adam Kohn, J.~Anthony Movshon, Katherine~M. Armstrong, Tirin Moore, Steve~W. Chang, Lawrence~H. Snyder, Stephen~G. Lisberger, Nicholas~J. Priebe, Ian~M. Finn, David Ferster, Stephen~I. Ryu, Gopal Santhanam, Maneesh Sahani, and Krishna~V. Shenoy.
+\newblock Stimulus onset quenches neural variability: a widespread cortical phenomenon.
+\newblock \emph{Nature Neuroscience}, 13\penalty0 (3):\penalty0 369--378, 2010.
+\newblock ISSN 1097-6256.
+\newblock \doi{10.1038/nn.2501}.
+\newblock URL \url{https://doi.org/10.1038/nn.2501}.
+
 \bibitem[Cichy et~al.(2014)Cichy, Pantazis, and Oliva]{cichy2014}
 Radoslaw~Martin Cichy, Dimitrios Pantazis, and Aude Oliva.
 \newblock Resolving human object recognition in space and time.
@@ -106,6 +130,14 @@ Peiran Gao, Eric Trautmann, Byron~M. Yu, Gopal Santhanam, Stephen~I. Ryu, Krishn
 \newblock \emph{bioRxiv}, 2017.
 \newblock \doi{10.1101/214262}.
 
+\bibitem[Goris et~al.(2024)Goris, Coen-Cagli, Miller, Priebe, and Lengyel]{goris2024}
+Robbe L.~T. Goris, Ruben Coen-Cagli, Kenneth~D. Miller, Nicholas~J. Priebe, and M{\'a}t{\'e} Lengyel.
+\newblock Response sub-additivity and variability quenching in visual cortex.
+\newblock \emph{Nature Reviews Neuroscience}, 25\penalty0 (4):\penalty0 237--252, 2024.
+\newblock ISSN 1471-003X.
+\newblock \doi{10.1038/s41583-024-00795-0}.
+\newblock URL \url{https://doi.org/10.1038/s41583-024-00795-0}.
+
 \bibitem[Haxby et~al.(2011)Haxby, Guntupalli, Connolly, Halchenko, Conroy, Gobbini, Hanke, and Ramadge]{haxby2011}
 James~V. Haxby, J.~Swaroop Guntupalli, Andrew~C. Connolly, Yaroslav~O. Halchenko, Bryan~R. Conroy, M.~Ida Gobbini, Michael Hanke, and Peter~J. Ramadge.
 \newblock A common, high-dimensional model of the representational space in human ventral temporal cortex.
@@ -119,6 +151,14 @@ Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
 \newblock Deep residual learning for image recognition.
 \newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 770--778, 2016.
 \newblock \doi{10.1109/CVPR.2016.90}.
+
+\bibitem[Hennequin et~al.(2018)Hennequin, Ahmadian, Rubin, Lengyel, and Miller]{hennequin2018}
+Guillaume Hennequin, Yashar Ahmadian, Daniel~B. Rubin, M{\'a}t{\'e} Lengyel, and Kenneth~D. Miller.
+\newblock The dynamical regime of sensory cortex: Stable dynamics around a single stimulus-tuned attractor account for patterns of noise variability.
+\newblock \emph{Neuron}, 98\penalty0 (4):\penalty0 846--860.e5, 2018.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2018.04.017}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2018.04.017}.
 
 \bibitem[Hoerl and Kennard(1970)]{hoerl1970}
 Arthur~E. Hoerl and Robert~W. Kennard.
@@ -202,6 +242,22 @@ Dean~A. Pospisil and Jonathan~W. Pillow.
 \newblock URL \url{https://doi.org/10.1073/pnas.2506535122}.
 \newblock Received 21 March 2025; accepted 6 September 2025; published 5 November 2025. Originally posted as a bioRxiv preprint, doi:10.1101/2024.02.16.580726 (21 February 2024). IMPORTANT: the preprint's analysis of GABAergic (tdTomato-labeled) interneurons' eigenmode loadings (preprint Fig. 5C-D and Discussion subsection "Inhibitory neurons distinct participation in sensory representation") does NOT appear in the published PNAS version -- confirmed by full-text inspection, including that the published Methods section's description of mouse lines omits the preprint's tdTomato/inhibitory-neuron sentence entirely. Only the eigenspectrum/broken-power-law/dimensionality findings should be attributed to the published paper; do not cite it for the inhibitory-neuron finding. A separate, content-unrelated correction was issued 12 December 2025 (PNAS 122(50), e2533074122) concerning only the data-availability statement and a GitHub accession number.
 
+\bibitem[Rikhye and Sur(2015)]{rikhye2015}
+Rajeev~V. Rikhye and Mriganka Sur.
+\newblock Spatial correlations in natural scenes modulate response reliability in mouse visual cortex.
+\newblock \emph{Journal of Neuroscience}, 35\penalty0 (43):\penalty0 14661--14680, 2015.
+\newblock ISSN 0270-6474.
+\newblock \doi{10.1523/JNEUROSCI.1660-15.2015}.
+\newblock URL \url{https://doi.org/10.1523/JNEUROSCI.1660-15.2015}.
+
+\bibitem[Rubin et~al.(2015)Rubin, Van~Hooser, and Miller]{rubin2015}
+Daniel~B. Rubin, Stephen~D. Van~Hooser, and Kenneth~D. Miller.
+\newblock The stabilized supralinear network: A unifying circuit motif underlying multi-input integration in sensory cortex.
+\newblock \emph{Neuron}, 85\penalty0 (2):\penalty0 402--417, 2015.
+\newblock ISSN 0896-6273.
+\newblock \doi{10.1016/j.neuron.2014.12.026}.
+\newblock URL \url{https://doi.org/10.1016/j.neuron.2014.12.026}.
+
 \bibitem[Runyan et~al.(2010)Runyan, Schummers, Van~Wart, Kuhlman, Wilson, Huang, and Sur]{runyan2010}
 Caroline~A. Runyan, James Schummers, Audra Van~Wart, Sandra~J. Kuhlman, Nathan~R. Wilson, Z.~Josh Huang, and Mriganka Sur.
 \newblock Response features of parvalbumin-expressing interneurons suggest precise roles for subtypes of inhibition in visual cortex.
@@ -209,6 +265,13 @@ Caroline~A. Runyan, James Schummers, Audra Van~Wart, Sandra~J. Kuhlman, Nathan~R
 \newblock ISSN 0896-6273.
 \newblock \doi{10.1016/j.neuron.2010.08.006}.
 \newblock URL \url{https://doi.org/10.1016/j.neuron.2010.08.006}.
+
+\bibitem[Sanzeni et~al.(2020)Sanzeni, Akitake, Goldbach, Leedy, Brunel, and Histed]{sanzeni2020}
+Alessandro Sanzeni, Bradley Akitake, Hannah~C. Goldbach, Caitlin~E. Leedy, Nicolas Brunel, and Mark~H. Histed.
+\newblock Inhibition stabilization is a widespread property of cortical networks.
+\newblock \emph{eLife}, 9:\penalty0 e54875, 2020.
+\newblock \doi{10.7554/eLife.54875}.
+\newblock URL \url{https://doi.org/10.7554/eLife.54875}.
 
 \bibitem[Shapiro et~al.(2022)Shapiro, Gosselin, Michaud, and Crowder]{shapiro2022}
 Jared~T. Shapiro, Emily A.~R. Gosselin, Nicole~M. Michaud, and Nathan~A. Crowder.
@@ -232,6 +295,13 @@ Charles Spearman.
 \newblock \emph{British Journal of Psychology}, 3\penalty0 (3):\penalty0 271--295, 1910.
 \newblock \doi{10.1111/j.2044-8295.1910.tb00206.x}.
 
+\bibitem[Stringer et~al.(2016)Stringer, Pachitariu, Steinmetz, Okun, Bartho, Harris, Sahani, and Lesica]{stringer2016}
+Carsen Stringer, Marius Pachitariu, Nicholas~A. Steinmetz, Michael Okun, Peter Bartho, Kenneth~D. Harris, Maneesh Sahani, and Nicholas~A. Lesica.
+\newblock Inhibitory control of correlated intrinsic variability in cortical networks.
+\newblock \emph{eLife}, 5:\penalty0 e19695, 2016.
+\newblock \doi{10.7554/eLife.19695}.
+\newblock URL \url{https://doi.org/10.7554/eLife.19695}.
+
 \bibitem[Stringer et~al.(2019)Stringer, Pachitariu, Steinmetz, Carandini, and Harris]{stringer2019}
 Carsen Stringer, Marius Pachitariu, Nicholas Steinmetz, Matteo Carandini, and Kenneth~D. Harris.
 \newblock High-dimensional geometry of population responses in visual cortex.
@@ -239,6 +309,14 @@ Carsen Stringer, Marius Pachitariu, Nicholas Steinmetz, Matteo Carandini, and Ke
 \newblock ISSN 1476-4687.
 \newblock \doi{10.1038/s41586-019-1346-5}.
 \newblock URL \url{https://doi.org/10.1038/s41586-019-1346-5}.
+
+\bibitem[Toosi and Miller(2025)]{toosi2025}
+Tahereh Toosi and Kenneth~D. Miller.
+\newblock Natural scene coding consistency in genetically-defined cell populations.
+\newblock \emph{bioRxiv}, 2025.
+\newblock \doi{10.1101/2025.10.29.685363}.
+\newblock URL \url{https://doi.org/10.1101/2025.10.29.685363}.
+\newblock Preprint, posted 29 October 2025; not certified by peer review.
 
 \bibitem[Trainito et~al.(2019)Trainito, von Nicolai, Miller, and Siegel]{trainito2019}
 Caterina Trainito, Constantin von Nicolai, Earl~K. Miller, and Markus Siegel.

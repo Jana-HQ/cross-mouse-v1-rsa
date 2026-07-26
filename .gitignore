@@ -2,3 +2,6 @@ preprocessed_data/
 .*/
 cross_mouse_v1_rsa.ipynb
 src/__pycache__/
+src/dump_notebook.py
+src/scratch.ipynb
+dump/
