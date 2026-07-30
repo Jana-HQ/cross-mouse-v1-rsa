@@ -517,7 +517,10 @@ step (Methods).
 FSU units ($n = 368$) scored roughly $1.9\times$ higher than RSU units
 ($n = 1{,}499$) on this measure (FSU median $= 0.087$, mean $= 0.095$; RSU
 median $= 0.046$, mean $= 0.052$; Mann-Whitney $p = 1.4\times10^{-45}$;
-Figure~\ref{fig:celltypes}B).  Repeating the single-unit scoring for every
+Figure~\ref{fig:celltypes}B).  Because these 1,867 units are nested within
+32 sessions rather than fully independent, this and the following
+single-unit $p$-values are better read as upper bounds on precision than
+exact values.  Repeating the single-unit scoring for every
 sliding-window time point showed that this advantage is not merely a
 magnitude effect: FSU units also show a sharper transient-to-sustained
 shape (T/S $= 3.62\times$; peak $= 0.120$, sustained $= 0.033$) than RSU
@@ -537,7 +540,9 @@ $p = 4.3\times10^{-48}$) attenuated but remained highly significant after
 partialling out both magnitude and sparsity by rank-residualization
 (partial $r = 0.116$, $p = 5.4\times10^{-7}$), indicating that the FSU
 advantage is not simply a restatement of FSU units firing more or less
-sparsely than RSU units.
+sparsely than RSU units.  Controlling for magnitude and sparsity cannot
+exhaustively rule out some other correlated firing property behind the
+residual difference.
 
 \subsubsection{\texorpdfstring{Optotagged PV$^+$ validation}{Optotagged PV+ validation}}
 
@@ -1048,7 +1053,15 @@ population variability, including when comparable models are fit directly to
 spiking recordings from mouse cortex \citep{ahmadian2013, rubin2015,
 hennequin2018, stringer2016}. We emphasise, however, that our central
 empirical claim does not depend on the correctness of any circuit-level
-interpretation.
+interpretation, and that our fit is to firing rates rather than the direct
+causal test used to establish inhibition-stabilisation formally --- e.g.\
+the paradoxical suppression of inhibitory firing under optogenetic drive
+\citep{ahmadian2021}, which has been demonstrated directly in mouse V1,
+S1, and motor cortex even at rest \citep{sanzeni2020}, offering a
+plausible resolution for an earlier report of non-paradoxical PV
+responses in V1 layer 2/3 \citep{atallah2012}: stimulating only a
+genetically incomplete PV subset can mask a population-level paradoxical
+signature that is nonetheless genuinely present.
  
 Our findings extend, rather than contradict, existing accounts of V1
 population geometry. The high-dimensional spontaneous state we observe
@@ -1087,45 +1100,6 @@ froudarakis2014, rikhye2015}. It is the specific statistical structure of
 natural images, not stimulus complexity in some more general sense, that
 appears to recruit the compression we observe; gratings, though densely and
 reliably encoded, may simply not engage the mechanism.
- 
-\subsection{Limitations}
- 
-The Wilson-Cowan model is phenomenological: the fitted connectivity ratio and
-the empirical T/S ratio move in near-lockstep, so ``inhibition-dominated'' is
-close to a model-based restatement of ``a transient exists'' rather than an
-independent synaptic measurement, and it rests on only 9 sessions and 18
-optotagged units, so both should be read as directional support rather than
-precise estimates. Nor is our $r_\mathrm{EI}$ ratio, a fit to firing rates,
-the kind of direct causal test --- e.g.\ the paradoxical suppression of
-inhibitory firing under optogenetic drive --- used to establish
-inhibition-stabilisation in the formal sense \citep{ahmadian2021}; such tests
-do exist for mouse V1, S1, and motor cortex and find clear evidence for it
-even at rest, offering a plausible resolution for an earlier report of
-non-paradoxical PV responses in V1 layer 2/3 \citep{sanzeni2020, atallah2012}:
-stimulating only a genetically incomplete PV subset can mask a
-population-level paradoxical signature that is nonetheless genuinely present.
-Our fit is best read as weaker, firing-rate-level evidence consistent with,
-rather than equivalent to, this more direct line of work.
- 
-The cell-type statistics carry a related caveat: the single-unit tests treat
-1,867 FSU/RSU units as independent despite their nesting within 32 sessions,
-so the reported $p$-values are better read as upper bounds on precision than
-exact values. The pooled-population comparison is only partially resolved for
-the residual unit-count confound between classes, which is why we treat the
-confound-free single-unit measure --- itself coarser, comparing one unit
-against another session's full population profile rather than a matched
-neuron --- as the primary evidence. And controlling for magnitude and
-sparsity cannot exhaustively rule out some other correlated firing property
-behind the residual FSU/RSU difference.
- 
-Two features of the design further bound interpretation. The sustained floor
-($r = 0.182$, 220--250~ms) comes from a narrow window forced by the
-back-to-back presentation protocol, so early contamination from the next
-image cannot be fully excluded. And the cross-area comparisons share sessions
-and so are not statistically independent; the VISp/VISpm ordering
-specifically is not distinguishable once unit count is matched. Finally, the
-two dominant attractor dimensions explain only 19.3\% of the shared variance,
-and the remainder is not accounted for by the image statistics examined here.
  
 Taken together, these findings establish the transient compression of the V1
 population code as a measurable, reproducible, and --- in our data ---
