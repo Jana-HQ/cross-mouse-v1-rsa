@@ -5,3 +5,6 @@ src/__pycache__/
 src/dump_notebook.py
 src/scratch.ipynb
 dump/
+docs/manuscript/manuscript_notes.pdf
+preprocessed_data_old.zip
+src/part6_scratch.ipynb

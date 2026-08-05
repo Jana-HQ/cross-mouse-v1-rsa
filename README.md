@@ -27,13 +27,13 @@ src/
 │   part3_temporal_profile.ipynb
 │   part4_representational_geometry.ipynb
 │   part5_cell_type_dissociation.ipynb
-│   part6_ei_model.ipynb
+│   part6_pr_shrinkage_model.ipynb
 │   part7_controls.ipynb
 │   part8_gratings_vs_natural_scenes.ipynb
 │   part9_cross_area_hierarchy.ipynb
 │
 │   part1_outputs.npz          ← written by Part 1, read by Parts 2, 7, 8, 9
-│   part3_outputs.npz          ← written by Part 3, read by Parts 4, 5, 8, 9
+│   part3_outputs.npz          ← written by Part 3, read by Parts 4, 5, 6, 8, 9
 │   part5_outputs.npz          ← written by Part 5, read by Part 6
 │
 figures/                       ← all figure PNGs saved here (auto-created)
@@ -66,7 +66,7 @@ See `docs\preprocessing_readme.md` for full documentation.
 | **Part 3** — Temporal Profile | Fig. 3 | S3, S7, S8 | `responses.h5` (VISp tensors) | `part3_outputs.npz` |
 | **Part 4** — Representational Geometry | Fig. 4 | S5, S6 | `responses.h5`, `part3_outputs.npz`, `image_templates.npy` | — |
 | **Part 5** — Cell-Type Dissociation | Fig. 5 | S4 | `responses.h5`, `units_meta.parquet`, `part3_outputs.npz` | `part5_outputs.npz` |
-| **Part 6** — E/I Circuit Model | Fig. 6 | S9 | `part5_outputs.npz` | — |
+| **Part 6** — Population Geometry: Cross-Validated PR Shrinkage Model | Fig. 6 | S9 | `responses.h5` (VISp tensors), `part3_outputs.npz`, `part5_outputs.npz` | — |
 | **Part 7** — Controls | Fig. 7 | S10 | `responses.h5` (trial_level), `behavioral_state.parquet`, `part1_outputs.npz` | — |
 | **Part 8** — Gratings vs. Natural Scenes | Fig. 8 | — | `responses.h5` (gratings), `noise_ceiling_gratings_VISp.npy`, `part3_outputs.npz`, `part1_outputs.npz` | — |
 | **Part 9** — Cross-Area Hierarchy | Fig. 9 | — | `responses.h5` (all areas), `part1_outputs.npz`, `part3_outputs.npz` | — |

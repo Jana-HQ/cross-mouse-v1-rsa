@@ -449,6 +449,10 @@ def apply_plot_style():
             'VISal': '#E6B800',
             'VISpm': '#D6455D',
             'VISam': '#7B4FA0',
+            'VISrl': '#F2994A',  # extrastriate cortex, extends the VIS* set
+            'LP':    '#17A398',  # thalamus (higher-order)
+            'LGd':   '#5B5EA6',  # thalamus (first-order relay)
+            'CA1':   '#8B5A2B',  # hippocampus
         },
 
         # --- CNN layer identity (part2, Fig2C/D + FigS2) ---

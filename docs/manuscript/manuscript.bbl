@@ -1,25 +1,9 @@
-\begin{thebibliography}{50}
+\begin{thebibliography}{42}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-
-\bibitem[Ahmadian and Miller(2021)]{ahmadian2021}
-Yashar Ahmadian and Kenneth~D. Miller.
-\newblock What is the dynamical regime of cerebral cortex?
-\newblock \emph{Neuron}, 109\penalty0 (21):\penalty0 3373--3391, 2021.
-\newblock ISSN 0896-6273.
-\newblock \doi{10.1016/j.neuron.2021.07.031}.
-\newblock URL \url{https://doi.org/10.1016/j.neuron.2021.07.031}.
-
-\bibitem[Ahmadian et~al.(2013)Ahmadian, Rubin, and Miller]{ahmadian2013}
-Yashar Ahmadian, Daniel~B. Rubin, and Kenneth~D. Miller.
-\newblock Analysis of the stabilized supralinear network.
-\newblock \emph{Neural Computation}, 25\penalty0 (8):\penalty0 1994--2037, 2013.
-\newblock ISSN 0899-7667.
-\newblock \doi{10.1162/NECO_a_00472}.
-\newblock URL \url{https://doi.org/10.1162/NECO_a_00472}.
 
 \bibitem[Atallah et~al.(2012)Atallah, Bruns, Carandini, and Scanziani]{atallah2012}
 Bassam~V. Atallah, William Bruns, Matteo Carandini, and Massimo Scanziani.
@@ -50,12 +34,6 @@ William Brown.
 \newblock Some experimental results in the correlation of mental abilities.
 \newblock \emph{British Journal of Psychology}, 3\penalty0 (3):\penalty0 296--322, 1910.
 \newblock \doi{10.1111/j.2044-8295.1910.tb00207.x}.
-
-\bibitem[Byrd et~al.(1995)Byrd, Lu, Nocedal, and Zhu]{byrd1995}
-Richard~H. Byrd, Peihuang Lu, Jorge Nocedal, and Ciyou Zhu.
-\newblock A limited memory algorithm for bound constrained optimization.
-\newblock \emph{SIAM Journal on Scientific Computing}, 16\penalty0 (5):\penalty0 1190--1208, 1995.
-\newblock \doi{10.1137/0916069}.
 
 \bibitem[Cadena et~al.(2019)Cadena, Denfield, Walker, Gatys, Tolias, Bethge, and Ecker]{cadena2019}
 Santiago~A. Cadena, George~H. Denfield, Edgar~Y. Walker, Leon~A. Gatys, Andreas~S. Tolias, Matthias Bethge, and Alexander~S. Ecker.
@@ -152,14 +130,6 @@ Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
 \newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 770--778, 2016.
 \newblock \doi{10.1109/CVPR.2016.90}.
 
-\bibitem[Hennequin et~al.(2018)Hennequin, Ahmadian, Rubin, Lengyel, and Miller]{hennequin2018}
-Guillaume Hennequin, Yashar Ahmadian, Daniel~B. Rubin, M{\'a}t{\'e} Lengyel, and Kenneth~D. Miller.
-\newblock The dynamical regime of sensory cortex: Stable dynamics around a single stimulus-tuned attractor account for patterns of noise variability.
-\newblock \emph{Neuron}, 98\penalty0 (4):\penalty0 846--860.e5, 2018.
-\newblock ISSN 0896-6273.
-\newblock \doi{10.1016/j.neuron.2018.04.017}.
-\newblock URL \url{https://doi.org/10.1016/j.neuron.2018.04.017}.
-
 \bibitem[Hoerl and Kennard(1970)]{hoerl1970}
 Arthur~E. Hoerl and Robert~W. Kennard.
 \newblock Ridge regression: Biased estimation for nonorthogonal problems.
@@ -250,14 +220,6 @@ Rajeev~V. Rikhye and Mriganka Sur.
 \newblock \doi{10.1523/JNEUROSCI.1660-15.2015}.
 \newblock URL \url{https://doi.org/10.1523/JNEUROSCI.1660-15.2015}.
 
-\bibitem[Rubin et~al.(2015)Rubin, Van~Hooser, and Miller]{rubin2015}
-Daniel~B. Rubin, Stephen~D. Van~Hooser, and Kenneth~D. Miller.
-\newblock The stabilized supralinear network: A unifying circuit motif underlying multi-input integration in sensory cortex.
-\newblock \emph{Neuron}, 85\penalty0 (2):\penalty0 402--417, 2015.
-\newblock ISSN 0896-6273.
-\newblock \doi{10.1016/j.neuron.2014.12.026}.
-\newblock URL \url{https://doi.org/10.1016/j.neuron.2014.12.026}.
-
 \bibitem[Runyan et~al.(2010)Runyan, Schummers, Van~Wart, Kuhlman, Wilson, Huang, and Sur]{runyan2010}
 Caroline~A. Runyan, James Schummers, Audra Van~Wart, Sandra~J. Kuhlman, Nathan~R. Wilson, Z.~Josh Huang, and Mriganka Sur.
 \newblock Response features of parvalbumin-expressing interneurons suggest precise roles for subtypes of inhibition in visual cortex.
@@ -265,13 +227,6 @@ Caroline~A. Runyan, James Schummers, Audra Van~Wart, Sandra~J. Kuhlman, Nathan~R
 \newblock ISSN 0896-6273.
 \newblock \doi{10.1016/j.neuron.2010.08.006}.
 \newblock URL \url{https://doi.org/10.1016/j.neuron.2010.08.006}.
-
-\bibitem[Sanzeni et~al.(2020)Sanzeni, Akitake, Goldbach, Leedy, Brunel, and Histed]{sanzeni2020}
-Alessandro Sanzeni, Bradley Akitake, Hannah~C. Goldbach, Caitlin~E. Leedy, Nicolas Brunel, and Mark~H. Histed.
-\newblock Inhibition stabilization is a widespread property of cortical networks.
-\newblock \emph{eLife}, 9:\penalty0 e54875, 2020.
-\newblock \doi{10.7554/eLife.54875}.
-\newblock URL \url{https://doi.org/10.7554/eLife.54875}.
 
 \bibitem[Shapiro et~al.(2022)Shapiro, Gosselin, Michaud, and Crowder]{shapiro2022}
 Jared~T. Shapiro, Emily A.~R. Gosselin, Nicole~M. Michaud, and Nathan~A. Crowder.
@@ -294,13 +249,6 @@ Charles Spearman.
 \newblock Correlation calculated from faulty data.
 \newblock \emph{British Journal of Psychology}, 3\penalty0 (3):\penalty0 271--295, 1910.
 \newblock \doi{10.1111/j.2044-8295.1910.tb00206.x}.
-
-\bibitem[Stringer et~al.(2016)Stringer, Pachitariu, Steinmetz, Okun, Bartho, Harris, Sahani, and Lesica]{stringer2016}
-Carsen Stringer, Marius Pachitariu, Nicholas~A. Steinmetz, Michael Okun, Peter Bartho, Kenneth~D. Harris, Maneesh Sahani, and Nicholas~A. Lesica.
-\newblock Inhibitory control of correlated intrinsic variability in cortical networks.
-\newblock \emph{eLife}, 5:\penalty0 e19695, 2016.
-\newblock \doi{10.7554/eLife.19695}.
-\newblock URL \url{https://doi.org/10.7554/eLife.19695}.
 
 \bibitem[Stringer et~al.(2019)Stringer, Pachitariu, Steinmetz, Carandini, and Harris]{stringer2019}
 Carsen Stringer, Marius Pachitariu, Nicholas Steinmetz, Matteo Carandini, and Kenneth~D. Harris.
@@ -346,14 +294,6 @@ Alex~H. Williams, Erin Kunz, Simon Kornblith, and Scott~W. Linderman.
 \newblock \emph{Advances in Neural Information Processing Systems}, 34:\penalty0 4738--4750, 2021.
 \newblock ISSN 1049-5258.
 \newblock URL \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10760997/}.
-
-\bibitem[Wilson and Cowan(1972)]{wilson1972}
-Hugh~R. Wilson and Jack~D. Cowan.
-\newblock Excitatory and inhibitory interactions in localized populations of model neurons.
-\newblock \emph{Biophysical Journal}, 12\penalty0 (1):\penalty0 1--24, 1972.
-\newblock ISSN 0006-3495.
-\newblock \doi{10.1016/S0006-3495(72)86068-5}.
-\newblock URL \url{https://www.sciencedirect.com/science/article/pii/S0006349572860685}.
 
 \bibitem[Yamins and DiCarlo(2016)]{yamins2016}
 Daniel L.~K. Yamins and James~J. DiCarlo.
