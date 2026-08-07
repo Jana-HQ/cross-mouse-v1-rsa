@@ -554,6 +554,21 @@ def print_figure_data(title: str, **named_arrays) -> None:
                     print(arr)
 
 
+def usable_session_count(unit_idx_by_session: dict, target_n: int | dict) -> int:
+    """
+    Number of sessions with at least `target_n` units in their pool, i.e. the
+    number of sessions `unit_matched_sliding_curve` would treat as usable for
+    a given unit-count target. Lets callers pick a `target_n_sessions` that is
+    guaranteed not to exceed any area's post-unit-count-filter usable-session
+    count, without running the full sliding-window computation.
+    """
+    target_n_by_sid = target_n if isinstance(target_n, dict) else {
+        sid: target_n for sid in unit_idx_by_session
+    }
+    return sum(1 for sid, idx in unit_idx_by_session.items()
+               if len(idx) >= target_n_by_sid[sid])
+
+
 def unit_matched_sliding_curve(
     tensors_by_session:   dict,
     unit_idx_by_session:  dict,
@@ -563,6 +578,7 @@ def unit_matched_sliding_curve(
     n_draws:              int   = 50,
     seed:                 int   = 42,
     bin_edges:            np.ndarray | None = None,
+    target_n_sessions:    int | None = None,
 ):
     """
     Sliding-window consistency curve after subsampling every session's unit
@@ -589,6 +605,14 @@ def unit_matched_sliding_curve(
     n_draws             : number of random subsample draws
     seed                : random seed
     bin_edges           : passed through to window_response
+    target_n_sessions   : if given, additionally subsample the number of
+                           usable sessions down to this count on every draw
+                           (drawn without replacement from the sessions
+                           passing the unit-count threshold), so that both
+                           unit count and session count are matched across
+                           groups being compared. If None (default), every
+                           usable session is used on every draw, matching
+                           only unit count (original behaviour).
 
     Returns
     -------
@@ -596,6 +620,9 @@ def unit_matched_sliding_curve(
     mean_c    : (n_windows,) mean consistency curve across draws
     ci_lo, ci_hi : (n_windows,) 2.5/97.5 percentile band across draws
     ts_draws  : (n_draws,) T/S ratio computed separately for each draw
+    peak_draws : (n_draws,) peak consistency (max over the 0-250 ms
+                 post-stimulus window, same convention as `ts_ratio`)
+                 computed separately for each draw
     """
     rng = np.random.default_rng(seed)
 
@@ -605,20 +632,32 @@ def unit_matched_sliding_curve(
     usable_sids = [sid for sid, idx in unit_idx_by_session.items()
                    if len(idx) >= target_n_by_sid[sid]]
 
+    if target_n_sessions is not None and target_n_sessions > len(usable_sids):
+        raise ValueError(
+            f'target_n_sessions={target_n_sessions} exceeds the number of '
+            f'usable sessions ({len(usable_sids)}) after the unit-count filter. '
+            f'target_n_sessions must be computed from post-unit-count-filter '
+            f'usable-session counts across areas, not raw session counts.'
+        )
+
     times = np.asarray(window_centers_ms, dtype=float)
     curves = np.zeros((n_draws, len(times)))
 
     for d in range(n_draws):
+        draw_sids = (
+            rng.choice(usable_sids, size=target_n_sessions, replace=False).tolist()
+            if target_n_sessions is not None else usable_sids
+        )
         draw_idx = {
             sid: rng.choice(unit_idx_by_session[sid], size=target_n_by_sid[sid], replace=False)
-            for sid in usable_sids
+            for sid in draw_sids
         }
         for w, t_ms in enumerate(times):
             t_lo = t_ms - window_width_ms / 2
             t_hi = t_ms + window_width_ms / 2
             mats = [
                 window_response(tensors_by_session[sid][:, draw_idx[sid], :], t_lo, t_hi, bin_edges)
-                for sid in usable_sids
+                for sid in draw_sids
             ]
             sims = compute_similarity_matrices(mats)
             c, _, _ = per_image_consistency(sims)
@@ -627,9 +666,10 @@ def unit_matched_sliding_curve(
     mean_c = curves.mean(0)
     ci_lo  = np.percentile(curves, 2.5,  axis=0)
     ci_hi  = np.percentile(curves, 97.5, axis=0)
-    ts_draws = np.array([ts_ratio(curves[d], times)[0] for d in range(n_draws)])
+    ts_draws   = np.array([ts_ratio(curves[d], times)[0] for d in range(n_draws)])
+    peak_draws = np.array([ts_ratio(curves[d], times)[1] for d in range(n_draws)])
 
-    return times, mean_c, ci_lo, ci_hi, ts_draws
+    return times, mean_c, ci_lo, ci_hi, ts_draws, peak_draws
 
 
 def image_matched_sliding_curve(
