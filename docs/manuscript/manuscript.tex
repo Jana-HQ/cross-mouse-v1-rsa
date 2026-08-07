@@ -17,6 +17,7 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{orcidlink}
+\usepackage{placeins}
 
 \hypersetup{
   colorlinks=true,
@@ -25,12 +26,22 @@
   urlcolor=blue!60!black,
 }
 
+% Loosen default float-placement thresholds so figures land close to their
+% in-text reference instead of drifting to the end of the section queue.
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.8}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{4}
+\setcounter{totalnumber}{6}
+
 \doublespacing
 \linenumbers
 
 % ── Title block ───────────────────────────────────────────────────────────────
-\title{\textbf{Mouse V1 Passes Through a Transient Low-Dimensional State
-of Peak Cross-Individual Representational Consistency During Natural
+\title{\textbf{Mouse V1 Passes Through an Inhibition-Driven Transient Low-Dimensional 
+State of Peak Cross-Individual Representational Consistency During Natural
 Image Viewing}}
 
 \author[1]{Z. Jana\orcidlink{0009-0009-3316-7476}}
@@ -46,9 +57,9 @@ The American University in Cairo}
 % ── Abstract ──────────────────────────────────────────────────────────────────
 \begin{abstract}
 
-When different mice view the same natural image, their primary visual cortex (V1) populations share a measurable fraction of representational structure, yet whether this cross-individual agreement is constant across the visual response or concentrated in a particular moment is unknown. Using millisecond-resolution representational similarity analysis (RSA) of Neuropixels recordings from all 32 \texttt{brain\_observatory\_1.1} sessions of the Allen Brain Observatory (32 mice, 118 natural images), we show that cross-mouse consistency is dynamic: it rises to a transient peak $\sim$100~ms after stimulus onset (Spearman $r = 0.307$) before decaying to a lower sustained floor ($r = 0.182$). This peak coincides precisely with a several-fold collapse in the effective dimensionality of the shared representation, and dimensionality and consistency remain tightly coupled across the entire post-stimulus epoch ($r = -0.929$ on independent, non-overlapping windows). The moment mice agree most is the moment the population code is most compressed. This transient state is specific to naturalistic stimuli --- static gratings produce a flat curve with no transient peak --- and is highest in V1, lower across extrastriate cortex, and substantially weaker in thalamus.
+When different mice view the same natural image, their primary visual cortex (V1) populations share a measurable fraction of representational structure, yet whether this cross-individual agreement is constant across the visual response or concentrated in a particular moment is unknown. Using millisecond-resolution representational similarity analysis (RSA) of Neuropixels recordings from all 32 \texttt{brain\_observatory\_1.1} sessions of the Allen Brain Observatory (32 mice, 118 natural images), we show that cross-mouse consistency is dynamic: it rises to a transient peak $\sim$100~ms after stimulus onset (Spearman $r = 0.307$) before decaying to a lower sustained floor ($r = 0.182$). This peak coincides precisely with a several-fold collapse in the effective dimensionality of the shared representation, and dimensionality and consistency remain tightly coupled across the entire post-stimulus epoch ($r = -0.929$). The moment mice agree most is the moment the population code is most compressed. This transient state is specific to naturalistic stimuli --- static gratings produce a flat curve with no transient peak --- and is highest in V1, lower across extrastriate cortex, and substantially weaker in thalamus.
 
-To probe what produces this compression, we dissociated fast-spiking (FSU, putative inhibitory) from regular-spiking (RSU) units. Individual FSU units carry $\sim$1.9$\times$ the cross-mouse-consistent signal of RSU units (Mann--Whitney $p = 1.4 \times 10^{-45}$), an advantage that survives controlling for firing magnitude and sparsity and that includes a sharper transient shape; optotagged PV$^+$ interneurons behave consistently with this dissociation. A minimal mechanistic model — each unit's early response shrunk toward the population mean in proportion to measured FSU population activity — reproduces the timing of this collapse and recovery (cross-validated shape-$R^2 = 0.81$ across held-out sessions) but systematically underestimates its magnitude, indicating FSU-gated shrinkage contributes to, but does not fully account for, the observed compression. Together, these results show that mouse V1 passes through a transient, low-dimensional state during natural image viewing --- plausibly imposed by fast-spiking inhibition --- and that this state is precisely when representational structure is most shared across individuals.
+To probe what produces this compression, we dissociated fast-spiking (FSU, putative inhibitory) from regular-spiking (RSU) units. Individual FSU units carry $\sim$1.9$\times$ the cross-mouse-consistent signal of RSU units (Mann--Whitney $p = 1.4 \times 10^{-45}$); optotagged PV$^+$ interneurons behave consistently with this dissociation. A minimal mechanistic model — each unit's early response shrunk toward the population mean in proportion to measured FSU population activity — reproduces the timing of this collapse and recovery (cross-validated shape-$R^2 = 0.81$ across held-out sessions) but systematically underestimates its magnitude, indicating FSU-gated shrinkage contributes to, but does not fully account for, the observed compression. Together, these results show that mouse V1 passes through a transient, low-dimensional state during natural image viewing --- plausibly imposed by fast-spiking inhibition --- and that this state is precisely when representational structure is most shared across individuals.
 
 \end{abstract}
 
@@ -134,9 +145,11 @@ minimum dimensionality. We then turn to mechanism: waveform-based
 cell-class dissociation, optotagged PV$^+$ recordings, and a cross-validated
 model testing whether FSU population activity, acting as a gating signal
 for shrinkage toward the population mean, can reproduce the
-participation-ratio trajectory itself. As mechanistic contrasts, we compare the temporal profiles
-of natural scenes with static gratings and examine how consistency varies
-across cortex, thalamus, and a hippocampal control region. Extended predictor, robustness, and validation
+participation-ratio trajectory itself. As mechanistic contrasts, we 
+compare the temporal profiles of natural scenes with static gratings 
+and examine how consistency varies
+across cortex, thalamus, and a hippocampal control region. Extended 
+predictor, robustness, and validation
 analyses that support but do not change these headline results are
 reported in the Supplementary Information.
 
@@ -148,7 +161,8 @@ image sparsity}
 
 We used recorded spike times from VISp units in 32 mice viewing 118 natural
 images (250~ms each, 50 repetitions per image) from the Allen Brain
-Observatory \textit{brain\_observatory\_1.1} dataset \citep{siegle2021}, see Methods \ref{Methods:Dataset}.
+Observatory \textit{brain\_observatory\_1.1} dataset \citep{siegle2021}, 
+see Methods \ref{Methods:Dataset}.
 For each session, units passing quality control ($n = 14$--$110$ units per
 session) \ref{Methods:QC} were used to construct a $118 \times n_\mathrm{units}$
 trial-averaged, column-wise z-scored response matrix, and cross-mouse
@@ -161,18 +175,20 @@ range $[0.968, 0.983]$), confirming the analysis is not limited by
 within-session trial noise; the more directly comparable reliability
 estimate --- computed in the same image-by-image similarity space (RDM
 space) that consistency itself is computed in --- was lower but still high
-(mean $r = 0.832$, range $[0.609, 0.929]$), see Methods \ref{Methods:Within-mouse reliability}. Against this ceiling,
+(mean $r = 0.832$, range $[0.609, 0.929]$), see Methods 
+\ref{Methods:Within-mouse reliability}. Against this ceiling,
 cross-mouse consistency was significant for every one of the 118 images
 (mean $r = 0.314$, range 0.142--0.588; Fig.~\ref{fig:consistency}), with a
 fourfold range across images indicating that some images drive strongly
-shared representations while others are encoded more idiosyncratically (Supp. Fig.~\ref{fig:Sgallery}).
+shared representations while others are encoded more idiosyncratically 
+(Supp. Fig.~\ref{fig:Sgallery}).
 
 Response sparsity --- the fraction of units responding below the
 per-mouse median absolute z-score --- was the strongest image-level
 predictor of consistency (Spearman $r = -0.470$, $p = 7.8 \times 10^{-8}$):
-denser images (fewer silent units) were more consistently represented across mice. Response
-magnitude was a weaker, positively-signed predictor ($r = +0.276$,
-$p = 2.5 \times 10^{-3}$), and a ResNet50 CNN feature embedding added
+denser images (fewer silent units) were more consistently represented 
+across mice. Response magnitude was a weaker, positively-signed predictor 
+($r = +0.276$, $p = 2.5 \times 10^{-3}$), and a ResNet50 CNN feature embedding added
 explanatory power beyond sparsity in a nested model comparison
 ($\Delta R^2 = +0.184$ for the best-fitting layer). These relationships,
 together with partial-correlation robustness checks and a gallery of the
@@ -197,13 +213,15 @@ Results (\S\ref{supp:predictors}; Supp. Fig.~\ref{fig:Spredictors}--\ref{fig:Scn
   zero.}
   \label{fig:consistency}
 \end{figure}
+\FloatBarrier
 
 \subsection{Cross-mouse consistency follows a stereotyped two-component
 temporal trajectory}
 
 To characterise how cross-mouse agreement evolves over the visual
 response, we applied the RSA pipeline to 25~ms sliding windows stepped at
-10~ms increments from $-50$ to $+370$~ms relative to stimulus onset, see Methods \ref{Methods:Sliding window}.
+10~ms increments from $-50$ to $+370$~ms relative to stimulus onset, 
+see Methods \ref{Methods:Sliding window}.
 Pre-stimulus consistency was near zero (mean $r = 4 \times 10^{-5}$),
 confirming the measure is not contaminated by correlated spontaneous
 activity (Fig.~\ref{fig:temporal}). Following stimulus onset, consistency
@@ -236,6 +254,7 @@ $r = 0.950$ (Supp. Fig.~\ref{fig:Ssecondorder}).
   ($\sim$290--300~ms onset).}
   \label{fig:temporal}
 \end{figure}
+\FloatBarrier
 
 \subsection{The transient peak coincides with a collapse of the shared
 representation into a low-dimensional attractor}
@@ -244,12 +263,15 @@ To characterise the geometry of the shared representation at each time
 point, we computed the participation ratio (PR) of the average cosine
 similarity matrix across mice,
 $\mathrm{PR} = (\sum_i \lambda_i)^2 / \sum_i \lambda_i^2$, where
-$\lambda_i$ are the eigenvalues of that matrix, see Methods \ref{Methods:PR}; PR measures
-effective dimensionality, from 1 (one dominant eigenvalue) to $n$
+$\lambda_i$ are the eigenvalues of that matrix, see Methods \ref{Methods:PR}; 
+PR measures effective dimensionality, from 1 (one dominant eigenvalue) to $n$
 (uniform eigenvalues). Pre-stimulus PR was $\approx 108$, close to the
 maximum of 118 possible, indicating an approximately uniform,
-unstructured geometry at baseline. At the consistency peak (100~ms), PR
-dropped to 31.5 --- the shared representation occupied only
+unstructured geometry at baseline --- consistent with the smoothly
+decaying, power-law eigenspectrum reported for spontaneous V1 population
+activity, in which variance is spread across many components rather than
+concentrated below a sharp cutoff \citep{stringer2019}. At the consistency 
+peak (100~ms), PR dropped to 31.5 --- the shared representation occupied only
 $\approx$27\% of the available dimensions --- before partially
 recovering to 61.2 by 250~ms (Fig.~\ref{fig:geometry}A). The same pattern
 held when PR was computed within each mouse individually and only then
@@ -268,8 +290,9 @@ correlation are not independent and the analytic $p$-values above
 understate the true $p$-value. Recomputing on fully independent,
 non-overlapping 30~ms-spaced windows (13 points, no shared spike-count
 bins) confirmed the coupling under a conventional test requiring no
-autocorrelation correction ($r = -0.929$, $p = 4.6 \times 10^{-6}$), see Methods \ref{Methods:PR}. A
-circular-shift permutation test, and a control for a shared dependence on
+autocorrelation correction ($r = -0.929$, $p = 4.6 \times 10^{-6}$), 
+see Methods \ref{Methods:PR}. A circular-shift permutation test, 
+and a control for a shared dependence on
 the raw stimulus-evoked response envelope, gave consistent results and are
 reported in the Supplementary Results
 (\S\ref{supp:pr-envelope}); briefly, the PR--consistency coupling survived
@@ -280,12 +303,14 @@ did not survive the autocorrelation-robust test.
 Eigendecomposition of the average similarity matrix at the 100~ms peak
 showed a gradually decaying spectrum: the top 8 eigenvectors accounted for
 35.2\% of variance (14.75\%, 4.60\%, 3.57\%, 3.21\%, 2.77\%, 2.12\%,
-2.07\%, 2.07\% for dimensions 1--8; Fig.~\ref{fig:geometry}B). The two
-dominant dimensions were interpretable in terms of low-level image
-statistics --- Dim~1 as a signal-strength axis (correlated with response
-magnitude, $r = +0.44$, and early CNN features) and Dim~2 as a
-spatial-scale axis (correlated with sparsity, $r = -0.51$) --- while
-overall cross-mouse consistency did not load strongly onto any single
+2.07\%, 2.07\% for dimensions 1--8; Fig.~\ref{fig:geometry}B) --- a small
+number of dominant dimensions carrying a disproportionate share of the
+signal, consistent with prior estimates of V1 population dimensionality
+\citep{pospisil2025}. The two dominant dimensions were interpretable in 
+terms of low-level image statistics --- Dim~1 as a signal-strength axis 
+(correlated with response magnitude, $r = +0.44$, and early CNN features) 
+and Dim~2 as a spatial-scale axis (correlated with sparsity, $r = -0.51$) 
+--- while overall cross-mouse consistency did not load strongly onto any single
 eigenvector (maximum $|r| = 0.28$; Fig.~\ref{fig:geometry}C), consistent
 with the shared structure being distributed across the compressed space
 rather than concentrated along one axis. The full eigenvector-property
@@ -314,6 +339,7 @@ Supplementary Fig.~\ref{fig:Seigen}--\ref{fig:Sattractor}.
   cross-mouse consistency.}
   \label{fig:geometry}
 \end{figure}
+\FloatBarrier
 
 \subsection{Fast-spiking units carry disproportionately more
 cross-mouse-consistent signal than regular-spiking units}
@@ -333,7 +359,8 @@ We evaluated the FSU/RSU dissociation two ways: at the pooled-population
 level, where response matrices combine many units per session, and at the
 single-unit level, where each unit's own response is scored individually
 against every other session's population, with no pooling or unit-count
-confound at any step, see Methods \ref{Methods:RSU_FSU}. The single-unit approach is the more robust of the
+confound at any step, see Methods \ref{Methods:RSU_FSU}. The single-unit 
+approach is the more robust of the
 two: pooled-population sessions must have $\geq$15 units of both classes,
 restricting that analysis to 9/32 sessions and to comparisons sensitive to
 between-class differences in unit count. After controlling for this by
@@ -361,7 +388,8 @@ simply a restatement of firing-rate differences.
 
 To validate the waveform-based classification against ground truth, we
 identified 18 optotagged VISp units across five Pvalb-IRES-Cre$\times$Ai32
-sessions, see Methods \ref{Methods:Optotagging}. Sensitivity of the waveform classifier (PV$^+ \to$ GMM FSU) was
+sessions, see Methods \ref{Methods:Optotagging}. Sensitivity of the 
+waveform classifier (PV$^+ \to$ GMM FSU) was
 78\%, and precision (GMM FSU $\to$ PV$^+$) was 27\% --- typical of
 duration-based interneuron classification generally
 \citep[cf.][]{ye2025}. Scored individually, optotagged units fell at the
@@ -394,6 +422,7 @@ waveform FSU and RSU single-unit curves (Fig.~\ref{fig:celltypes}B,D).
   (teal-blue dotted, T/S $= 3.18\times$).}
   \label{fig:celltypes}
 \end{figure}
+\FloatBarrier
 
 \subsection{FSU-gated shrinkage toward the population mean reproduces the
 timing, but not the magnitude, of the dimensionality collapse}
@@ -403,10 +432,14 @@ dimensionality (\S2.3) and the disproportionate cross-mouse-consistent
 signal carried by FSU units (\S2.4) co-occur, but do not test whether FSU
 activity is mechanistically sufficient to produce the collapse itself. We
 constructed a model in which each unit's response to each image is fixed at
-its value in an early window (30--50~ms post-onset, before recurrent or
-feedback contributions are thought to dominate; see Introduction) and is
-then shrunk toward the per-image population mean by a time-varying factor
-$\lambda(t)$:
+its value in an early window (30--50~ms post-onset, chosen to precede
+recurrent and feedback contributions reported from $\sim$75--90~ms
+onward; \citep{lamme2000, kirchberger2021}) and is
+then shrunk toward the per-image population mean by a common, time-varying
+factor $\lambda(t)$ --- consistent with anatomical evidence that PV$^+$
+interneurons form densely, non-specifically connected local circuits
+providing comparatively uniform inhibition to nearby excitatory neurons
+\citep{packer2011}, rather than neuron-specific feedback:
 \begin{equation}
   \lambda(t) = \lambda_\mathrm{max} \cdot \frac{g(t)}{\kappa + g(t)}, \qquad
   r_i(\mathrm{image}, t) = f_i(\mathrm{image}) - \lambda(t)\,
@@ -414,7 +447,9 @@ $\lambda(t)$:
 \end{equation}
 where $f_i(\mathrm{image})$ is unit $i$'s frozen early-window response,
 $\bar{f}(\mathrm{image})$ is the per-image population mean across units in
-that same window, and $g(t)$ is the measured FSU population cross-mouse
+that same window, $r_i(\mathrm{image}, t)$ is the model's predicted
+response for that unit and image at time $t$, and $g(t)$ is the measured
+FSU population cross-mouse
 consistency curve (Fig.~\ref{fig:celltypes}C, teal curve), rescaled to
 $[0,1]$. Neither $f_i$ nor $g(t)$ is fit; the only free parameters are
 $\lambda_\mathrm{max}$ (the ceiling on shrinkage strength) and $\kappa$
@@ -423,14 +458,15 @@ Participation ratio was then computed from the resulting model responses
 using the identical pipeline as the real data (\S2.3, Methods
 \ref{Methods:PR}).
 
-Because raw participation ratio computed from a small subset of sessions
-reads systematically lower than the full-dataset value at every time point
-(a known small-sample bias in this statistic, arising from noisier averaged
-similarity matrices at low session counts), parameters were selected by
+Raw participation ratio is a biased statistic at low sample sizes
+\citep{chun2026estimating}: PR computed from a small random subset of
+sessions reads systematically lower than PR computed from the full
+32-session average, at every time point, because the naive PR estimator's
+bias scales as $O(1/P + 1/Q)$ in the number of sampled stimuli and
+neurons. Because of this, parameters were selected by
 five-fold cross-validation across the 32 VISp sessions using a
 shape-normalised $R^2$ (both model and held-out real curves min-max
-normalised before comparison, restricted to the 0--250~ms window used
-throughout this paper to avoid next-image contamination), rather than by
+normalised before comparison), rather than by
 fitting the raw scale directly, see Methods \ref{Methods:Shrinkage}. This
 selected $\lambda_\mathrm{max} = 0.9$ and $\kappa = 0.2$ in every fold (mean
 held-out shape-$R^2 = 0.808 \pm 0.061$; Fig.~\ref{fig:shrinkage}D).
@@ -469,6 +505,7 @@ account for the full depth of compression observed.
   0.061$ (dashed line).}
   \label{fig:shrinkage}
 \end{figure}
+\FloatBarrier
 
 \subsection{Controls: adaptation and behavioural state do not explain the
 results}
@@ -505,11 +542,13 @@ sorted curves, are in Supplementary Results
   (Spearman $r = -0.033$, $p = 0.72$, $n = 32$ sessions).}
   \label{fig:controls}
 \end{figure}
+\FloatBarrier
 
 \subsection{The transient is specific to natural scenes}
 
 Static gratings produced substantially higher absolute consistency than
-natural scenes, see Methods \ref{Methods:Grating} (mean $r = 0.720$ vs.\ $r = 0.314$, fixed 0--250~ms
+natural scenes, see Methods \ref{Methods:Grating} 
+(mean $r = 0.720$ vs.\ $r = 0.314$, fixed 0--250~ms
 window; Fig.~\ref{fig:gratings}A), despite comparably high within-mouse
 response reliability for both stimulus classes (gratings $0.992$, natural
 scenes $0.978$), ruling out a reliability confound. The temporal
@@ -551,6 +590,7 @@ gratings is an artefact of their smaller stimulus set
   essentially unchanged.}
   \label{fig:gratings}
 \end{figure}
+\FloatBarrier
 
 \subsection{Consistency is highest in V1, present but weaker in
 thalamus, and absent outside the visual system}
@@ -559,7 +599,8 @@ Applying the same pipeline to five additional visual cortical areas
 (VISl, VISal, VISpm, VISam, VISrl; 20--28 sessions each,
 $\geq$10 QC-passing units per session) showed VISp had the highest peak
 sliding-window consistency ($r = 0.307$) of the six cortical areas. The
-five extrastriate areas were lower and broadly comparable to one another (VISl $r = 0.186$; VISal $r =
+five extrastriate areas were lower and broadly comparable to one another 
+(VISl $r = 0.186$; VISal $r =
 0.234$; VISpm $r = 0.210$; VISam $r = 0.238$; VISrl $r = 0.187$;
 Fig.~\ref{fig:hierarchy}A), with transient-plus-sustained temporal
 structure qualitatively present in all six areas. Reliability was high
@@ -576,19 +617,30 @@ indicating that cortex adds representational structure beyond what is
 inherited from thalamic input. Hippocampal area CA1, included as a
 negative control, showed no stimulus-locked consistency at any time
 point (peak $r = 0.002$), confirming the measure is specific to
-visually-responsive structures rather than a generic property of neural
-population recordings.
+visually-responsive structures.
 
-Because these nine areas differ systematically in per-session unit
-count, which inflates raw consistency independently of any genuine
-areal difference, we recomputed peak consistency after subsampling
-every area's unit pool to a common count (39 units/session, the
-smallest area's mean; 20 draws). The ordering among the six cortical
-areas was materially unchanged; among the thalamic and hippocampal
-areas, LGd's matched estimate closely tracked its raw value, while LP's
-matched estimate should be interpreted cautiously given its smaller
-session count (19) and correspondingly wider bootstrap interval (full
-values in Methods \ref{Methods:QC}).
+Because these nine areas differ systematically in both per-session unit
+count and session count, either of which can inflate raw consistency
+independently of any genuine areal difference, we recomputed peak
+consistency after jointly subsampling every area's unit pool to a common
+count (39 units/session, the smallest area's mean) and, on each of 20
+draws, restricting to a common number of sessions (11, the smallest
+area's usable session count remaining after the unit-count filter).
+Matched peak consistency (mean $\pm$ half-width of the 95\% bootstrap CI
+across draws) was: VISp $0.276 \pm 0.052$; VISpm $0.241 \pm 0.013$;
+VISal $0.211 \pm 0.033$; VISl $0.191 \pm 0.013$; VISam $0.188 \pm 0.030$;
+VISrl $0.176 \pm 0.021$; LP $0.109 \pm 0.033$; LGd $0.087 \pm 0.009$;
+CA1 $0.003 \pm 0.001$. The ordering among the six cortical areas changed
+relative to the raw values: VISp remained highest, but VISpm rose above
+VISal and VISam under this stricter joint control. 
+Among the thalamic and hippocampal areas, LGd's matched
+estimate closely tracked its raw value ($0.092 \to 0.087 \pm 0.009$),
+while LP's matched estimate carried a wider interval relative to its mean
+($0.140 \to 0.109 \pm 0.033$) despite a comparable usable-session count
+to LGd's (14 vs.\ 12), suggesting the width of LP's interval reflects
+genuine variability in that area's consistency. 
+CA1's matched estimate remained indistinguishable from
+zero ($0.003 \pm 0.001$), consistent with its raw value.
 
 \begin{figure}[htbp]
   \centering
@@ -609,30 +661,34 @@ values in Methods \ref{Methods:QC}).
   per area; session counts vary by area (Methods \ref{Methods:QC}).}
   \label{fig:hierarchy}
 \end{figure}
+\FloatBarrier
 
 % ── Discussion ────────────────────────────────────────────────────────────────
 
 \section{Discussion}
 
 We have shown that mouse V1 does not represent natural images with a
-constant degree of cross-individual agreement. Instead, it passes through
-a transient, low-dimensional population state --- peaking at $\sim$100~ms
-post-stimulus and visible directly in the participation ratio of the
-shared representation --- and this transient state is precisely the
-moment at which different animals' representations are most alike. This
-is the strongest and most direct result in the paper, requiring no
-cell-type classification, circuit model, or auxiliary assumptions: the
-temporal profile is incompatible with either purely feedforward tuning (a
-step function) or purely recurrent attractor dynamics (a sustained
-plateau), and its peak coincides with a collapse of the shared geometry to
-its minimum dimensionality. In the language of neural population geometry
+constant degree of cross-individual agreement over time --- a temporal
+structure that is only visible once the response is decomposed into fine
+time windows rather than collapsed into one, echoing time-resolved RSA of
+human MEG, which similarly dissociates an early, transient
+representational component from a later, more persistent one
+\citep{cichy2014}. Instead, it passes through a transient, 
+low-dimensional population state --- peaking at
+$\sim$100~ms post-stimulus and reflected in a marked drop in the
+participation ratio of the shared representation--- and this transient
+state is precisely the moment at which different animals' representations
+are most alike. In the language of neural population geometry
 \citep{chung2021}, stimulus onset transiently contracts the
 representational space rather than adding a new, image-specific
 direction to it. Such contraction is not specific to vision or to this
-particular statistic: comparable stimulus-triggered reductions in
-population dimensionality or trial-to-trial variability have been
-reported across cortical areas, species, and recording modalities
-\citep{churchland2010, mazzucato2016}. The coupling between dimensionality
+particular statistic: stimulus onset reliably quenches trial-to-trial
+variability across visual, auditory, and gustatory cortex in multiple
+species and behavioral states \citep{churchland2010}, and this quenching
+co-occurs with a collapse in the dimensionality of population activity,
+consistent with stimuli confining dynamics to a stimulus-selective
+subset of an otherwise higher-dimensional repertoire
+\citep{mazzucato2016}. The coupling between dimensionality
 and consistency is robust to three independent checks that rule out it
 being merely definitional: it holds when PR is computed within each mouse
 and only then averaged, it survives partialling out the shared
@@ -648,21 +704,23 @@ converging reasons to expect exactly this pattern: parvalbumin-expressing
 interneurons pool broadly across the local excitatory population, tracking
 the net tuning bias of their neighbours rather than a sharp, private
 receptive field, so an averaged signal should by default vary less across
-animals; they impose a largely divisive, gain-like transformation on
-pyramidal output, consistent with the iceberg-style sharpening already
-invoked to explain the transient's shape; and their recruitment, some
+animals \citep{kerlin2010}; they impose a largely divisive, gain-like
+transformation on pyramidal output, consistent with the iceberg-style
+sharpening already invoked to explain the transient's shape
+\citep{atallah2012, shapiro2022, troyer1998}; and their recruitment, some
 50--60~ms after the initial feedforward volley, is closer to the timescale
 of feedback inhibition than to that earliest feedforward wave itself
-\citep{kerlin2010, atallah2012, shapiro2022, troyer1998, lamme2000,
-kirchberger2023, isaacson2011}. A recent preprint applying an analogous
-consistency logic to the same 118-image stimulus set, recorded via
+\citep{lamme2000, kirchberger2023, isaacson2011} --- a feedforward/recurrent
+distinction that maps naturally onto our own two-component profile, since
+the $\sim$100~ms transient falls within the early feedforward epoch, when
+shared thalamic-driven tuning should be more stereotyped across
+individuals than the recurrent contributions that follow, shaped as they
+are by individual experience. A recent preprint applying
+an analogous consistency logic to the same 118-image stimulus set, recorded via
 two-photon imaging across genetically-defined Cre lines, similarly finds
 inhibitory (PV, SST, VIP) population geometry clustering by cell-type
 identity almost independent of visual area, unlike excitatory geometry
-\citep{toosi2025}. Within our own data this dissociation is corroborated by
-pooled-population and optotagging analyses, the latter consistent with
-the known, imperfect agreement between waveform-based and genetic
-interneuron classification more generally \citep{ye2025}.
+\citep{toosi2025}.
 
 The FSU-gated shrinkage model provides a direct, cross-validated test of
 whether FSU activity is mechanistically sufficient to produce the observed
@@ -678,49 +736,30 @@ among RSU units, that are not represented in this minimal model. This
 converging pattern, in which the timing but not the full magnitude of an
 FSU-linked effect can be captured by the simplest sufficient mechanism, is
 consistent with the broader iceberg-effect framing already invoked to
-explain the transient's shape (\citep{shapiro2022, troyer1998}): inhibition
-sculpts and times the compression, without being its sole source.
-
-Our findings extend rather than contradict existing accounts of V1
-population geometry. The high-dimensional spontaneous state we observe
-matches the power-law eigenspectrum reported for V1 \citep{stringer2019},
-and a bias-corrected re-analysis of that same dataset recovers a similarly
-small number of dominant dimensions using an independent estimator
-\citep{pospisil2025}. Decomposing a visual response by time, rather than
-collapsing it into one window, reveals structure invisible to static
-approaches --- a lesson also drawn from time-resolved RSA of human MEG,
-which dissociates an early, transient representational component from a
-later, more persistent one \citep{cichy2014}. Our RSA approach differs from
-Procrustes alignment and hyperalignment \citep{williams2021, haxby2011} in
-measuring agreement on representational \textit{structure} rather than the
-orientation of neural axes; a within-mouse RDM-space reliability of
-$r = 0.832$ against a mean cross-mouse consistency of $r = 0.314$ indicates
-that a substantial share of the representational signal is nonetheless
-shared across individuals. Finally, the feedforward/recurrent distinction
-\citep{lamme2000} maps naturally onto our two-component profile: the
-$\sim$100~ms transient falls within the early feedforward epoch, when
-shared thalamic-driven tuning should be more stereotyped across
-individuals than recurrent contributions shaped by individual experience.
+explain the transient's shape \citep{shapiro2022, troyer1998}, in which
+inhibition compresses a broader excitatory pattern toward a sharper,
+shared response: inhibition sculpts and times the compression, without
+being its sole source --- and consistent with anatomical evidence that
+PV$^+$ interneurons provide comparatively uniform, non-specific local
+inhibition rather than neuron-selective feedback \citep{packer2011}.
 
 The transient's absence for static gratings --- despite their higher
 absolute consistency but near-immediate plateau rather than a
 transient-plus-sustained profile --- fits a broader literature in which
 sparsification and decorrelation in V1 are engaged by natural-scene
 statistics specifically, demonstrated via nonclassical receptive-field
-manipulations in macaque V1, movie-versus-control comparisons in mouse V1,
-and parametric removal of natural-scene spatial correlations in mouse V1
-\citep{vinje2000, froudarakis2014, rikhye2015}. It is the specific
-statistical structure of natural images, not stimulus complexity in some
-more general sense, that appears to recruit the compression we observe;
-gratings, though densely and reliably encoded, may simply not engage the
-mechanism.
+manipulations in macaque V1 \citep{vinje2000}, movie-versus-control
+comparisons in mouse V1 \citep{froudarakis2014}, and parametric removal
+of natural-scene spatial correlations in mouse V1 \citep{rikhye2015}.
+It is the specific statistical structure of natural images, not stimulus 
+complexity in some more general sense, that appears to recruit the 
+compression we observe; gratings, though densely and reliably encoded, 
+may simply not engage the mechanism.
 
 Taken together, these findings establish the transient compression of the
 V1 population code as a measurable, reproducible, and --- in our data ---
-mechanistically interpretable property of the visual response, with a
-circuit mechanism that the cross-validated E/I model suggests is a stable
-property of the mouse V1 architecture rather than an idiosyncrasy of the
-32 mice sampled. If the shared geometry of V1 is transiently imposed by
+mechanistically interpretable property of the visual response. 
+If the shared geometry of V1 is transiently imposed by
 inhibitory interneurons during a 50--150~ms window after stimulus onset,
 downstream areas reading out V1 during this window receive a cleaner, more
 stereotyped signal than at other times; such temporal gating of canonical
@@ -768,14 +807,7 @@ area. All 32 sessions met this threshold for VISp (range: 14--110 units).
 Session counts for other areas were: VISl 24, VISal 23, VISpm 20,
 VISam 26, VISrl 28, LP 19, LGd 16, CA1 25; mean units/session: VISp
 63.0, VISl 38.9, VISal 67.1, VISpm 44.0, VISam 57.9, VISrl 50.5, LP
-75.6, LGd 55.0, CA1 97.4. To control for the resulting SNR confound in
-cross-area comparisons, each area's unit pool was randomly subsampled
-to 39 units/session (VISl's mean, the smallest of the nine) over 20
-draws, and the sliding consistency curve was recomputed on each matched
-draw (raw $\to$ matched peak: VISp $0.307 \to 0.273$; VISl $0.186 \to
-0.195$; VISal $0.234 \to 0.205$; VISpm $0.210 \to 0.240$; VISam $0.238
-\to 0.195$; VISrl $0.187 \to 0.176$; LP $0.140 \to 0.112$; LGd $0.092
-\to 0.087$; CA1 $0.002 \to 0.001$).
+75.6, LGd 55.0, CA1 97.4.
 
 \subsection{Preprocessing and response matrix construction}
 \label{Methods:Preprocessing}
@@ -796,7 +828,8 @@ rank correlation, repeated over 20 splits and Spearman-Brown corrected
 \citep{spearman1910,brown1910}. This response-vector reliability is a QC
 diagnostic computed in a different space than consistency (raw per-unit
 response vectors vs.\ image-by-image similarity structure) and is not
-used to normalise it. A directly comparable RDM-space reliability was additionally computed by splitting each mouse's
+used to normalise it. A directly comparable RDM-space reliability 
+was additionally computed by splitting each mouse's
 trials in half, converting each half to a similarity matrix, and
 Spearman-correlating the two per-mouse matrices exactly as consistency
 correlates two different mice's matrices, then Spearman-Brown correcting
@@ -812,7 +845,12 @@ $S_{ij} = \mathbf{x}_i \cdot \mathbf{x}_j /
 (\|\mathbf{x}_i\| \|\mathbf{x}_j\| + \epsilon)$, $\epsilon = 10^{-8}$.
 Per-image cross-mouse consistency was the mean Spearman rank correlation,
 across all mouse pairs $(a,b)$, between their row-wise similarity profiles
-for each image \citep{kriegeskorte2008}. Cluster bootstrap confidence
+for each image \citep{kriegeskorte2008}. This RSA approach differs from
+Procrustes alignment and hyperalignment \citep{williams2021, haxby2011} in
+measuring agreement on representational structure --- the pattern of
+pairwise (dis)similarities among images --- rather than on the orientation
+of neural axes themselves, and does not require establishing a
+correspondence between individual units across mice. Cluster bootstrap confidence
 intervals resampled whole mice (not pairs) with replacement for 1000
 iterations; pairs consisting of two copies of the same resampled mouse
 were excluded to prevent spurious self-correlation.
@@ -989,6 +1027,9 @@ claims made in the main text, but whose omission does not change the
 paper's conclusions. Cross-references from the main text point here for
 full statistical detail.
 
+\setcounter{figure}{0}
+\renewcommand{\thefigure}{S\arabic{figure}}
+
 \subsection*{Image-level predictors of consistency}
 \label{supp:predictors}
 
@@ -1030,6 +1071,70 @@ be dense, textured, and spatially distributed, while low-consistency
 images tend to be dominated by a single salient, spatially compact
 feature.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig2_image_predictors.png}
+  \caption{\textbf{Response sparsity and CNN-layer features each explain
+  distinct variance in cross-mouse consistency.}
+  \textbf{(A)} Consistency vs.\ response sparsity (fraction of units
+  below per-mouse median $|z|$; Spearman $r = -0.470$,
+  $p = 7.8 \times 10^{-8}$). Line: linear reference fit.
+  \textbf{(B)} Consistency vs.\ mean $|$z-scored response$|$
+  (Spearman $r = +0.276$, $p = 2.5 \times 10^{-3}$).
+  \textbf{(C)} LOO Pearson $r$ per ResNet50 layer (purple: layer~2,
+  the primary CNN predictor; teal: the final layer, the secondary
+  predictor; grey: other layers).
+  \textbf{(D)} Nested $R^2$: a sparsity-only model ($R^2 = 0.269$)
+  compared against sparsity~$+$~layer~2 ($R^2 = 0.453$,
+  $\Delta R^2 = +0.184$) and sparsity~$+$~final layer ($R^2 = 0.374$,
+  $\Delta R^2 = +0.105$). This model-comparison statistic, rather than
+  the partial-correlation coefficient, is the primary evidence that CNN
+  features add explanatory power beyond sparsity; partial-correlation
+  estimates, which vary substantially with partialling method, are
+  reported as a robustness check in Supp. Fig.~\ref{fig:Scnn}.}
+  \label{fig:Spredictors}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/figS1_image_gallery.png}
+  \caption{\textbf{Gallery of high- and low-consistency natural images.}
+  Top and bottom 8 images ranked by cross-mouse consistency. Consistency
+  values shown in subtitles. High-consistency images tend to be dense
+  and spatially distributed; low-consistency images tend to contain a
+  single dominant feature against a background. This is a qualitative
+  illustration; no statistical test is performed on image content.}
+  \label{fig:Sgallery}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/figS2_cnn_detail.png}
+  \caption{\textbf{Partial-correlation robustness checks for the
+  CNN--sparsity relationship, layer~2 and the final ResNet50 layer ---
+  see Supp. Fig.~\ref{fig:Spredictors}D for the headline nested-$R^2$
+  result.} Layer~2 (purple circles) and the final layer (teal circles)
+  are shown together in every panel to confirm the pattern is not
+  specific to one layer.
+  \textbf{(A)} Added-variable residual scatter, sparsity~$|$~CNN
+  (layer~2: partial $r = -0.523$; final: partial $r = -0.424$).
+  \textbf{(B)} Added-variable residual scatter, CNN~$|$~sparsity
+  (layer~2: partial $r = -0.501$; final: partial $r = -0.378$).
+  \textbf{(C)} Rank-based (Spearman) partial correlation, CNN~$|$~sparsity
+  (layer~2: $r = -0.828$, $p = 5.5\times10^{-31}$; final: $r = -0.887$,
+  $p = 9.9\times10^{-41}$) --- a substantially larger-magnitude partial
+  correlation than the added-variable estimates in (A)--(B), a signature
+  of sparsity acting as a partial suppressor. This value should be read
+  as illustrative rather than as a precise effect size.
+  \textbf{(D)} Nested-$R^2$/partial-$r$ summary table comparing the
+  added-variable (OLS) and rank-residualisation (Spearman) methods side
+  by side, for both layers.}
+  \label{fig:Scnn}
+\end{figure}
+\FloatBarrier
+
 \subsection*{Robustness of the temporal profile: early/late windows,
 rank stability, and second-order RSA}
 \label{supp:temporal-robustness}
@@ -1059,6 +1164,55 @@ temporal peak at exactly 100~ms, matching the first-order peak. Because
 second-order $r$ correlates with first-order consistency at $r = 0.950$
 across images ($p = 2.4\times10^{-60}$), it is best read as a related
 re-parameterisation of the same underlying signal (Supp. Fig.~\ref{fig:Ssecondorder}).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/figS3_early_vs_late.png}
+  \caption{\textbf{Early vs.\ late window consistency (coarse,
+  non-overlapping-window robustness check).}
+  Per-image consistency in the early feedforward epoch (0--75~ms) vs.\ the
+  late epoch (75--250~ms; dashed line: equal consistency). Early mean
+  $= 0.084$, late mean $= 0.320$; Wilcoxon signed-rank
+  $p = 4.2 \times 10^{-21}$; image rankings preserved (Spearman
+  $r = 0.365$).}
+  \label{fig:Searlylate}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/figS7_rank_stability.png}
+  \caption{\textbf{Image-ranking stability across the response epoch.}
+  \textbf{(A)} Spearman rank-correlation matrix of per-image consistency
+  across six epochs ($-25$, 25, 50, 100, 175, 250~ms). Image rankings are
+  near-zero before 50~ms, correlated between peak and sustained epochs
+  (100 vs.\ 250~ms: $r = 0.652$), and near-zero between pre-stimulus and
+  any post-stimulus epoch.
+  \textbf{(B)} Rolling Spearman correlation of per-image consistency at
+  each sliding window vs.\ the 100~ms reference. Significance coding
+  (filled marker: $p < 0.05$, hollow marker: n.s.) uses uncorrected
+  $p$-values for illustration; overlapping windows are not independent.}
+  \label{fig:Srank}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/figS8_second_order_rsa.png}
+  \caption{\textbf{Second-order RSA recovers the same temporal peak.}
+  \textbf{(A)} Distribution of second-order Spearman $r$ across 118 images
+  (mean $= 0.187$; all images $> 0$).
+  \textbf{(B)} Per-window mean second-order $r$ (bars $\pm$ SEM across
+  images). The peak window (100~ms) yields the highest value
+  ($r = 0.307$), matching the first-order consistency peak exactly.
+  \textbf{(C)} Second-order $r$ vs.\ first-order consistency
+  (Spearman $r = 0.950$, $p = 2.4 \times 10^{-60}$): the near-redundancy
+  of the two measures indicates second-order RSA tracks the same
+  underlying signal as first-order consistency, rather than providing an
+  orthogonal confirmation of it.}
+  \label{fig:Ssecondorder}
+\end{figure}
+\FloatBarrier
 
 \subsection*{PR--envelope control}
 \label{supp:pr-envelope}
@@ -1117,99 +1271,6 @@ consistency vs.\ raw response magnitude by cell class, the scatter
 underlying the magnitude/sparsity confound-control analysis in the main
 text.
 
-\subsection*{Adaptation control, extended}
-\label{supp:adaptation-extended}
-
-The distribution of per-image (early $-$ late) consistency differences
-was centred slightly positive (mean $= +0.015$, one-sample $t$-test
-$p = 1.1 \times 10^{-8}$), and both the early-half and late-half
-per-image consistency curves closely tracked full-session consistency
-($r = 0.985$ and $r = 0.984$ respectively), confirming that image rankings
-are stable across trial halves and that the small absolute attenuation
-late in the session is consistent with non-selective neural fatigue
-rather than any consistency-relevant adaptation
-(Supp. Fig.~\ref{fig:Sadapt}).
-
-% ── Supplementary Figures ──────────────────────────────────────────────────────
-\clearpage
-\section*{Supplementary Figures}
-\setcounter{figure}{0}
-\renewcommand{\thefigure}{S\arabic{figure}}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{figures/fig2_image_predictors.png}
-  \caption{\textbf{Response sparsity and CNN-layer features each explain
-  distinct variance in cross-mouse consistency.}
-  \textbf{(A)} Consistency vs.\ response sparsity (fraction of units
-  below per-mouse median $|z|$; Spearman $r = -0.470$,
-  $p = 7.8 \times 10^{-8}$). Line: linear reference fit.
-  \textbf{(B)} Consistency vs.\ mean $|$z-scored response$|$
-  (Spearman $r = +0.276$, $p = 2.5 \times 10^{-3}$).
-  \textbf{(C)} LOO Pearson $r$ per ResNet50 layer (purple: layer~2,
-  the primary CNN predictor; teal: the final layer, the secondary
-  predictor; grey: other layers).
-  \textbf{(D)} Nested $R^2$: a sparsity-only model ($R^2 = 0.269$)
-  compared against sparsity~$+$~layer~2 ($R^2 = 0.453$,
-  $\Delta R^2 = +0.184$) and sparsity~$+$~final layer ($R^2 = 0.374$,
-  $\Delta R^2 = +0.105$). This model-comparison statistic, rather than
-  the partial-correlation coefficient, is the primary evidence that CNN
-  features add explanatory power beyond sparsity; partial-correlation
-  estimates, which vary substantially with partialling method, are
-  reported as a robustness check in Supp. Fig.~\ref{fig:Scnn}.}
-  \label{fig:Spredictors}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{figures/figS1_image_gallery.png}
-  \caption{\textbf{Gallery of high- and low-consistency natural images.}
-  Top and bottom 8 images ranked by cross-mouse consistency. Consistency
-  values shown in subtitles. High-consistency images tend to be dense
-  and spatially distributed; low-consistency images tend to contain a
-  single dominant feature against a background. This is a qualitative
-  illustration; no statistical test is performed on image content.}
-  \label{fig:Sgallery}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{figures/figS2_cnn_detail.png}
-  \caption{\textbf{Partial-correlation robustness checks for the
-  CNN--sparsity relationship, layer~2 and the final ResNet50 layer ---
-  see Supp. Fig.~\ref{fig:Spredictors}D for the headline nested-$R^2$
-  result.} Layer~2 (purple circles) and the final layer (teal circles)
-  are shown together in every panel to confirm the pattern is not
-  specific to one layer.
-  \textbf{(A)} Added-variable residual scatter, sparsity~$|$~CNN
-  (layer~2: partial $r = -0.523$; final: partial $r = -0.424$).
-  \textbf{(B)} Added-variable residual scatter, CNN~$|$~sparsity
-  (layer~2: partial $r = -0.501$; final: partial $r = -0.378$).
-  \textbf{(C)} Rank-based (Spearman) partial correlation, CNN~$|$~sparsity
-  (layer~2: $r = -0.828$, $p = 5.5\times10^{-31}$; final: $r = -0.887$,
-  $p = 9.9\times10^{-41}$) --- a substantially larger-magnitude partial
-  correlation than the added-variable estimates in (A)--(B), a signature
-  of sparsity acting as a partial suppressor. This value should be read
-  as illustrative rather than as a precise effect size.
-  \textbf{(D)} Nested-$R^2$/partial-$r$ summary table comparing the
-  added-variable (OLS) and rank-residualisation (Spearman) methods side
-  by side, for both layers.}
-  \label{fig:Scnn}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{figures/figS3_early_vs_late.png}
-  \caption{\textbf{Early vs.\ late window consistency (coarse,
-  non-overlapping-window robustness check).}
-  Per-image consistency in the early feedforward epoch (0--75~ms) vs.\ the
-  late epoch (75--250~ms; dashed line: equal consistency). Early mean
-  $= 0.084$, late mean $= 0.320$; Wilcoxon signed-rank
-  $p = 4.2 \times 10^{-21}$; image rankings preserved (Spearman
-  $r = 0.365$).}
-  \label{fig:Searlylate}
-\end{figure}
-
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/figS4_population_controls_and_validation.png}
@@ -1231,6 +1292,39 @@ rather than any consistency-relevant adaptation
   trends.}
   \label{fig:Spoplevel}
 \end{figure}
+\FloatBarrier
+
+\subsection*{Adaptation control, extended}
+\label{supp:adaptation-extended}
+
+The distribution of per-image (early $-$ late) consistency differences
+was centred slightly positive (mean $= +0.015$, one-sample $t$-test
+$p = 1.1 \times 10^{-8}$), and both the early-half and late-half
+per-image consistency curves closely tracked full-session consistency
+($r = 0.985$ and $r = 0.984$ respectively), confirming that image rankings
+are stable across trial halves and that the small absolute attenuation
+late in the session is consistent with non-selective neural fatigue
+rather than any consistency-relevant adaptation
+(Supp. Fig.~\ref{fig:Sadapt}).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/figS10_adaptation_control.png}
+  \caption{\textbf{Adaptation control extended.}
+  \textbf{(A)} Distribution of per-image (early $-$ late) consistency
+  differences (mean $= +0.015$; one-sample $t$-test $p = 1.1 \times
+  10^{-8}$). Positive mean indicates slight attenuation in the second
+  half, opposite to a shared adaptation confound.
+  \textbf{(B)} Early-half per-image consistency vs.\ full-session
+  consistency ($r = 0.985$, $p = 2.6 \times 10^{-90}$).
+  \textbf{(C)} Late-half per-image consistency vs.\ full-session
+  consistency ($r = 0.984$, $p = 2.4 \times 10^{-88}$).}
+  \label{fig:Sadapt}
+\end{figure}
+\FloatBarrier
+
+% ── Supplementary Figures (uncaptured by a specific subsection above) ──────────
+\clearpage
 
 \begin{figure}[htbp]
   \centering
@@ -1254,54 +1348,7 @@ rather than any consistency-relevant adaptation
   bottom 6 projections per dimension).}
   \label{fig:Sattractor}
 \end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{figures/figS7_rank_stability.png}
-  \caption{\textbf{Image-ranking stability across the response epoch.}
-  \textbf{(A)} Spearman rank-correlation matrix of per-image consistency
-  across six epochs ($-25$, 25, 50, 100, 175, 250~ms). Image rankings are
-  near-zero before 50~ms, correlated between peak and sustained epochs
-  (100 vs.\ 250~ms: $r = 0.652$), and near-zero between pre-stimulus and
-  any post-stimulus epoch.
-  \textbf{(B)} Rolling Spearman correlation of per-image consistency at
-  each sliding window vs.\ the 100~ms reference. Significance coding
-  (filled marker: $p < 0.05$, hollow marker: n.s.) uses uncorrected
-  $p$-values for illustration; overlapping windows are not independent.}
-  \label{fig:Srank}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{figures/figS8_second_order_rsa.png}
-  \caption{\textbf{Second-order RSA recovers the same temporal peak.}
-  \textbf{(A)} Distribution of second-order Spearman $r$ across 118 images
-  (mean $= 0.187$; all images $> 0$).
-  \textbf{(B)} Per-window mean second-order $r$ (bars $\pm$ SEM across
-  images). The peak window (100~ms) yields the highest value
-  ($r = 0.307$), matching the first-order consistency peak exactly.
-  \textbf{(C)} Second-order $r$ vs.\ first-order consistency
-  (Spearman $r = 0.950$, $p = 2.4 \times 10^{-60}$): the near-redundancy
-  of the two measures indicates second-order RSA tracks the same
-  underlying signal as first-order consistency, rather than providing an
-  orthogonal confirmation of it.}
-  \label{fig:Ssecondorder}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{figures/figS10_adaptation_control.png}
-  \caption{\textbf{Adaptation control extended.}
-  \textbf{(A)} Distribution of per-image (early $-$ late) consistency
-  differences (mean $= +0.015$; one-sample $t$-test $p = 1.1 \times
-  10^{-8}$). Positive mean indicates slight attenuation in the second
-  half, opposite to a shared adaptation confound.
-  \textbf{(B)} Early-half per-image consistency vs.\ full-session
-  consistency ($r = 0.985$, $p = 2.6 \times 10^{-90}$).
-  \textbf{(C)} Late-half per-image consistency vs.\ full-session
-  consistency ($r = 0.984$, $p = 2.4 \times 10^{-88}$).}
-  \label{fig:Sadapt}
-\end{figure}
+\FloatBarrier
 
 % ── References ────────────────────────────────────────────────────────────────
 \clearpage

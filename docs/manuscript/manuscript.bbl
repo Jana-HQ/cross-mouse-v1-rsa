@@ -1,4 +1,4 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{45}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -47,6 +47,12 @@ Jessica~A. Cardin, Marie Carl{\'e}n, Konstantinos Meletis, Ulf Knoblich, Feng Zh
 \newblock Targeted optogenetic stimulation and recording of neurons in vivo using cell-type-specific expression of channelrhodopsin-2.
 \newblock \emph{Nature Protocols}, 5\penalty0 (2):\penalty0 247--254, 2010.
 \newblock \doi{10.1038/nprot.2009.228}.
+
+\bibitem[Chun et~al.(2026)Chun, Canatar, Chung, and Lee]{chun2026estimating}
+Chanwoo Chun, Abdulkadir Canatar, SueYeon Chung, and Daniel Lee.
+\newblock Estimating dimensionality of neural representations from finite samples.
+\newblock In \emph{The Fourteenth International Conference on Learning Representations}, 2026.
+\newblock URL \url{https://openreview.net/forum?id=iM4o9a83F7}.
 
 \bibitem[Chung and Abbott(2021)]{chung2021}
 SueYeon Chung and L.~F. Abbott.
@@ -152,6 +158,14 @@ Aaron~M. Kerlin, Mark~L. Andermann, Vladimir~K. Berezovskii, and R.~Clay Reid.
 \newblock \doi{10.1016/j.neuron.2010.08.002}.
 \newblock URL \url{https://doi.org/10.1016/j.neuron.2010.08.002}.
 
+\bibitem[Kirchberger et~al.(2021)Kirchberger, Mukherjee, Schnabel, van Beest, Barsegyan, Levelt, Heimel, Lorteije, van~der Togt, Self, and Roelfsema]{kirchberger2021}
+Lisa Kirchberger, Sreedeep Mukherjee, Ulf~H. Schnabel, Enny~H. van Beest, Areg Barsegyan, Christiaan~N. Levelt, J.~Alexander Heimel, Jeannette A.~M. Lorteije, Chris van~der Togt, Matthew~W. Self, and Pieter~R. Roelfsema.
+\newblock The essential role of recurrent processing for figure-ground perception in mice.
+\newblock \emph{Science Advances}, 7\penalty0 (27):\penalty0 eabe1833, 2021.
+\newblock ISSN 2375-2548.
+\newblock \doi{10.1126/sciadv.abe1833}.
+\newblock URL \url{https://doi.org/10.1126/sciadv.abe1833}.
+
 \bibitem[Kirchberger et~al.(2023)Kirchberger, Mukherjee, Self, and Roelfsema]{kirchberger2023}
 Lisa Kirchberger, Sreedeep Mukherjee, Matthew~W. Self, and Pieter~R. Roelfsema.
 \newblock Contextual drive of neuronal responses in mouse v1 in the absence of feedforward input.
@@ -202,6 +216,14 @@ D.~A. McCormick, B.~W. Connors, J.~W. Lighthall, and D.~A. Prince.
 \newblock ISSN 0022-3077.
 \newblock \doi{10.1152/jn.1985.54.4.782}.
 \newblock URL \url{https://doi.org/10.1152/jn.1985.54.4.782}.
+
+\bibitem[Packer and Yuste(2011)]{packer2011}
+Adam~M. Packer and Rafael Yuste.
+\newblock Dense, unspecific connectivity of neocortical parvalbumin-positive interneurons: a canonical microcircuit for inhibition?
+\newblock \emph{Journal of Neuroscience}, 31\penalty0 (37):\penalty0 13260--13271, 2011.
+\newblock ISSN 0270-6474.
+\newblock \doi{10.1523/JNEUROSCI.3131-11.2011}.
+\newblock URL \url{https://doi.org/10.1523/JNEUROSCI.3131-11.2011}.
 
 \bibitem[Pospisil and Pillow(2025)]{pospisil2025}
 Dean~A. Pospisil and Jonathan~W. Pillow.
