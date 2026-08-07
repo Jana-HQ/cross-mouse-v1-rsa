@@ -57,9 +57,7 @@ The American University in Cairo}
 % ── Abstract ──────────────────────────────────────────────────────────────────
 \begin{abstract}
 
-When different mice view the same natural image, their primary visual cortex (V1) populations share a measurable fraction of representational structure, yet whether this cross-individual agreement is constant across the visual response or concentrated in a particular moment is unknown. Using millisecond-resolution representational similarity analysis (RSA) of Neuropixels recordings from all 32 \texttt{brain\_observatory\_1.1} sessions of the Allen Brain Observatory (32 mice, 118 natural images), we show that cross-mouse consistency is dynamic: it rises to a transient peak $\sim$100~ms after stimulus onset (Spearman $r = 0.307$) before decaying to a lower sustained floor ($r = 0.182$). This peak coincides precisely with a several-fold collapse in the effective dimensionality of the shared representation, and dimensionality and consistency remain tightly coupled across the entire post-stimulus epoch ($r = -0.929$). The moment mice agree most is the moment the population code is most compressed. This transient state is specific to naturalistic stimuli --- static gratings produce a flat curve with no transient peak --- and is highest in V1, lower across extrastriate cortex, and substantially weaker in thalamus.
-
-To probe what produces this compression, we dissociated fast-spiking (FSU, putative inhibitory) from regular-spiking (RSU) units. Individual FSU units carry $\sim$1.9$\times$ the cross-mouse-consistent signal of RSU units (Mann--Whitney $p = 1.4 \times 10^{-45}$); optotagged PV$^+$ interneurons behave consistently with this dissociation. A minimal mechanistic model — each unit's early response shrunk toward the population mean in proportion to measured FSU population activity — reproduces the timing of this collapse and recovery (cross-validated shape-$R^2 = 0.81$ across held-out sessions) but systematically underestimates its magnitude, indicating FSU-gated shrinkage contributes to, but does not fully account for, the observed compression. Together, these results show that mouse V1 passes through a transient, low-dimensional state during natural image viewing --- plausibly imposed by fast-spiking inhibition --- and that this state is precisely when representational structure is most shared across individuals.
+When different mice view the same natural image, their primary visual cortex (V1) populations share a measurable fraction of representational structure, but how this agreement changes over time is unknown. Using millisecond-resolution representational similarity analysis (RSA) of Neuropixels recordings from the Allen Brain Observatory \texttt{brain\_observatory\_1.1} (32 mice, 27M/5F, 118 natural images), we show that cross-mouse consistency is dynamic: it rises to a transient peak $\sim$100~ms after stimulus onset (Spearman $r = 0.307$) before decaying to a lower sustained floor ($r = 0.182$). This peak coincides precisely with a several-fold collapse in the effective dimensionality of the shared representation, compressing it into just $\sim$27\% of its available dimensions. This transient state is specific to naturalistic stimuli --- static gratings produce a flat curve with no transient peak --- and is highest in V1, lower across extrastriate cortex, and substantially weaker in thalamus. To probe what produces this compression, we dissociated fast-spiking (FSU, putative inhibitory) from regular-spiking (RSU) units. Individual FSU units carry $\sim$1.9$\times$ the cross-mouse-consistent signal of RSU units (Mann--Whitney $p = 1.4 \times 10^{-45}$); optotagged PV$^+$ interneurons behave consistently with this dissociation. A minimal mechanistic model — each unit's early response shrunk toward the population mean in proportion to measured FSU population activity — reproduces the timing of this collapse and recovery (cross-validated shape-$R^2 = 0.81$ across held-out sessions) but systematically underestimates its magnitude, indicating FSU-gated shrinkage contributes to, but does not fully account for, the observed compression. Together, these results demonstrate the existence of a transient, inhibition-linked low-dimensional state during the moment V1's representation is most shared across mice.
 
 \end{abstract}
 
@@ -67,6 +65,21 @@ To probe what produces this compression, we dissociated fast-spiking (FSU, putat
 similarity analysis; cross-individual variability; fast-spiking
 interneurons; participation ratio; neural geometry; Allen Brain
 Observatory
+
+% ── Significance Statement ───────────────────────────────────────────────────
+\section*{Significance Statement}
+
+Different animals' brains are wired differently, yet they perceive
+the world in largely the same way. This study shows that different 
+animals' visual cortex responses look most alike during a brief window, 
+about 100 milliseconds after an image appears, rather than throughout 
+the response. At that moment, the neural activity is compressed into 
+a small number of shared dimensions, and fast-spiking inhibitory neurons 
+carry a disproportionate share of this shared signal. A
+simple model in which inhibition transiently pulls neural activity toward
+a common population average reproduces the timing of this compression.
+This identifies an inhibition-linked neural state at the moment 
+individual brains converge most on a shared visual representation.
 
 \newpage
 
@@ -795,7 +808,11 @@ thalamic structures (LP, LGd), and hippocampal area CA1 as a negative
 control. There is one session per mouse in this dataset,
 so ``32 mice'' and ``32 sessions'' are used interchangeably, and sessions
 are the resampling/held-out unit in the cluster bootstrap and
-cross-validation procedures below.
+cross-validation procedures below. The cohort comprised 27 male and 5
+female mice (age 91--141 days at recording); sex was not a variable of
+interest and was not balanced by design, reflecting the composition of
+the publicly released Allen Brain Observatory cohort rather than a choice
+made in this study.
 
 \subsection{Unit quality control}
 \label{Methods:QC}
