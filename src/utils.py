@@ -290,6 +290,212 @@ def cluster_bootstrap_ci(
 
 
 # ---------------------------------------------------------------------------
+# Subpopulation RSA (tie-corrected)
+# ---------------------------------------------------------------------------
+
+def rank_average(a: np.ndarray, axis: int = -1) -> np.ndarray:
+    """
+    Tie-corrected (average) ranks along `axis`, 0-based.
+
+    Identical values receive the same (mean) rank, so a Pearson correlation
+    of these ranks is the tie-corrected Spearman correlation.
+    """
+    from scipy.stats import rankdata
+    return rankdata(a, method='average', axis=axis) - 1
+
+
+def rank_profiles(sim: np.ndarray) -> np.ndarray:
+    """
+    Rank-transformed, mean-centred, unit-norm similarity profile of every item.
+
+    Parameters
+    ----------
+    sim : (..., n_items, n_items) similarity matrices
+
+    Returns
+    -------
+    (..., n_items, n_items - 1) — each item's profile against all other
+    items. The dot product of two sessions' profiles for the same item is
+    their Spearman correlation for that item.
+    """
+    n      = sim.shape[-1]
+    mask   = ~np.eye(n, dtype=bool)
+    ranked = rank_average(sim[..., mask].reshape(sim.shape[:-2] + (n, n - 1)), axis=-1)
+    ranked = ranked - ranked.mean(axis=-1, keepdims=True)
+    return ranked / (np.linalg.norm(ranked, axis=-1, keepdims=True) + 1e-8)
+
+
+def subpopulation_consistency(response_matrices: list, unit_idx: list) -> np.ndarray:
+    """
+    Cross-mouse consistency between unit subpopulations drawn from each session.
+
+    Each session's response matrix is restricted to its selected units,
+    converted to a cosine similarity matrix, and compared across sessions
+    with the tie-corrected Spearman profile correlation used by
+    `per_image_consistency`, averaged over images.
+
+    Parameters
+    ----------
+    response_matrices : list of (n_images, n_units) z-scored arrays, one per session
+    unit_idx          : list of index arrays, the units of each session to include
+
+    Returns
+    -------
+    (n_sessions, n_sessions) matrix of mean-over-images consistency for every
+    session pair (the diagonal is 1)
+    """
+    sims     = compute_similarity_matrices([X[:, idx] for X, idx in zip(response_matrices, unit_idx)])
+    profiles = rank_profiles(np.stack(sims))
+    return np.einsum('sik,tik->st', profiles, profiles) / profiles.shape[1]
+
+
+def mean_pair_consistency(P: np.ndarray, idx: np.ndarray | None = None) -> np.ndarray:
+    """
+    Mean off-diagonal entry of session-pair consistency matrices.
+
+    Parameters
+    ----------
+    P   : (..., n_sessions, n_sessions) pairwise consistency
+    idx : optional (n,) resampled session indices (cluster bootstrap); pairs
+          formed by two copies of the same original session are excluded
+
+    Returns
+    -------
+    (...) mean consistency across session pairs
+    """
+    idx  = np.arange(P.shape[-1]) if idx is None else np.asarray(idx)
+    sub  = P[..., idx[:, None], idx[None, :]]
+    keep = np.triu(idx[:, None] != idx[None, :], 1)
+    return sub[..., keep].mean(axis=-1)
+
+
+def paired_cluster_bootstrap(
+    P_a:    np.ndarray,
+    P_b:    np.ndarray,
+    n_boot: int = 2000,
+    seed:   int = 42,
+):
+    """
+    Cluster bootstrap (resample whole sessions) applied identically to two
+    pairwise-consistency matrices computed on the same sessions.
+
+    Returns
+    -------
+    boot_a, boot_b : each (n_boot, ...) — mean pair consistency of each
+                     matrix on every resample
+    """
+    rng = np.random.default_rng(seed)
+    n   = P_a.shape[-1]
+    idx = rng.integers(0, n, size=(n_boot, n))
+    boot_a = np.stack([mean_pair_consistency(P_a, i) for i in idx])
+    boot_b = np.stack([mean_pair_consistency(P_b, i) for i in idx])
+    return boot_a, boot_b
+
+
+def match_units(cov_a: np.ndarray, cov_b: np.ndarray, caliper: float):
+    """
+    Optimal one-to-one matching of group-A units to group-B units on
+    standardised covariates (minimum total Euclidean distance), keeping only
+    pairs within `caliper`.
+
+    Parameters
+    ----------
+    cov_a, cov_b : (n_a, n_cov), (n_b, n_cov) standardised covariates
+    caliper      : maximum Euclidean distance for a pair to be kept
+
+    Returns
+    -------
+    ia, ib : index arrays of the matched units in A and B
+    """
+    from scipy.optimize import linear_sum_assignment
+
+    if len(cov_a) == 0 or len(cov_b) == 0:
+        return np.empty(0, dtype=int), np.empty(0, dtype=int)
+    dist = np.sqrt(((cov_a[:, None, :] - cov_b[None, :, :]) ** 2).sum(-1))
+    cost = np.where(dist <= caliper, dist, 1e6)
+    rows, cols = linear_sum_assignment(cost)
+    ok = cost[rows, cols] < 1e6
+    return rows[ok], cols[ok]
+
+
+# ---------------------------------------------------------------------------
+# Shared geometry across sessions
+# ---------------------------------------------------------------------------
+
+def shared_dimensionality(sim_matrices, n_partitions: int = 100, seed: int = 42):
+    """
+    Noise-corrected, scale-free dimensionality of the geometry shared across
+    sessions.
+
+    A unit-diagonal similarity matrix is modelled as S_m = I + G + E_m, where
+    G is the off-diagonal geometry present in every session and E_m is
+    session-specific. Sessions are repeatedly split at random into four
+    independent groups with mean matrices A, B, C, D, which are combined so
+    that the session-specific part cancels in expectation: tr(AB) estimates
+    tr(G^2) (the shared off-diagonal energy) and tr(ABCD) estimates tr(G^4).
+    Their combination
+
+        dimension = tr(G^2)^2 / tr(G^4)
+
+    is the effective dimensionality of the squared eigenvalue spectrum of G and is
+    unchanged by the overall scale of G.
+
+    Parameters
+    ----------
+    sim_matrices : (n_sessions, n_items, n_items) unit-diagonal similarity
+                   matrices
+    n_partitions : number of random four-way splits averaged
+    seed         : random seed
+
+    Returns
+    -------
+    energy    : float — estimate of tr(G^2)
+    dimension : float — tr(G^2)^2 / tr(G^4); nan when either estimate is
+                non-positive
+    """
+    sims = np.asarray(sim_matrices, dtype=np.float64)
+    sims = sims - np.eye(sims.shape[-1])
+    rng  = np.random.default_rng(seed)
+    n    = sims.shape[0] // 4
+
+    t2, t4 = [], []
+    for _ in range(n_partitions):
+        order = rng.permutation(sims.shape[0])[:4 * n]
+        A, B, C, D = [sims[order[k * n:(k + 1) * n]].mean(axis=0) for k in range(4)]
+        t2.append(np.mean([np.sum(X * Y) for X, Y in
+                           ((A, B), (A, C), (A, D), (B, C), (B, D), (C, D))]))
+        AB, CD, AC, BD = A @ B, C @ D, A @ C, B @ D
+        t4.append(np.mean([np.sum(AB * CD.T), np.sum(AB * CD), np.sum(AC * BD.T)]))
+
+    energy, quartic = np.mean(t2), np.mean(t4)
+    dimension = energy ** 2 / quartic if energy > 0 and quartic > 0 else np.nan
+    return float(energy), float(dimension)
+
+
+def leave_one_out_dimensionality(sim_matrices, n_partitions: int = 20, seed: int = 42):
+    """
+    `shared_dimensionality` recomputed with each session left out in turn,
+    for jackknife standard errors.
+
+    Returns
+    -------
+    energy, dimension : each (n_sessions,) — values with session j left out
+    """
+    sims = np.asarray(sim_matrices, dtype=np.float64)
+    out  = np.array([shared_dimensionality(np.delete(sims, j, axis=0), n_partitions, seed)
+                     for j in range(sims.shape[0])])
+    return out[:, 0], out[:, 1]
+
+
+def jackknife_se(values) -> float:
+    """Jackknife standard error from leave-one-out statistics (nan values ignored)."""
+    v = np.asarray(values, dtype=float)
+    v = v[~np.isnan(v)]
+    n = len(v)
+    return float(np.sqrt((n - 1) / n * ((v - v.mean()) ** 2).sum()))
+
+
+# ---------------------------------------------------------------------------
 # Across-window correlation testing (autocorrelation-robust)
 # ---------------------------------------------------------------------------
 
@@ -297,7 +503,7 @@ def circular_shift_pvalue(x, y, n_perm: int = 5000, seed: int = 42, corr_fn=None
     """
     Autocorrelation-robust p-value for a correlation between two time series.
 
-    Sliding-window statistics (e.g. PR, consistency) computed from overlapping
+    Sliding-window statistics (e.g. consistency) computed from overlapping
     windows are themselves autocorrelated, so the standard Spearman/Pearson
     p-value (which assumes independent observations) understates the true
     p-value. This builds a null distribution by circularly shifting `y`
@@ -417,16 +623,22 @@ def apply_plot_style():
     import seaborn as sns
 
     plt.rcParams.update({
-        'font.family':     'sans-serif',
         'font.size':       11,
         'axes.labelsize':  12,
         'axes.titlesize':  12,
+        'figure.titlesize': 13,
         'xtick.labelsize': 10,
         'ytick.labelsize': 10,
         'legend.fontsize': 9.5,
         'figure.dpi':      150,
     })
     sns.set_style('ticks')
+    plt.rcParams.update({
+        'font.family':          'serif',
+        'font.serif':           ['cmr10', 'DejaVu Serif'],
+        'mathtext.fontset':     'cm',
+        'axes.formatter.use_mathtext': True,
+    })
 
     return {
         # --- structural roles (same meaning in every notebook) ---
@@ -463,7 +675,7 @@ def apply_plot_style():
         'COL_CNN_SECONDARY': "#468788",
 
         # --- one-off accents, each a distinct quantity used in exactly one notebook ---
-        'COL_DIM':  '#B39DDB',  # dimensionality / participation ratio (part4)
+        'COL_DIM':  '#B39DDB',  # dimensionality (part4)
         'COL_REI':  '#661100',  # r_EI parameter (part6)
         'COL_2ND':  '#9B6A6C',  # 2nd-order RSA (part3 / Fig S8)
 

@@ -5,9 +5,8 @@ src/__pycache__/
 src/dump_notebook.py
 src/scratch.ipynb
 dump/
-docs/manuscript/manuscript_notes.pdf
-docs/manuscript_eneuro_submission_copy/
 preprocessed_data_old.zip
 src/part6_scratch.ipynb
 code_snapshot/
 code_snapshot.zip
+docs/manuscript/
